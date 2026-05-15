@@ -1,0 +1,382 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Geonet",
+    "description": "Run various network tools from multiple geographic locations",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://geonet.shodan.io"
+    }
+  ],
+  "paths": {
+    "/api/ping/{ip}": {
+      "get": {
+        "summary": "Ping",
+        "description": "Ping an IP or hostname",
+        "operationId": "ping_api_ping__ip__get",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ip"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/geoping/{ip}": {
+      "get": {
+        "summary": "Geoping",
+        "operationId": "geoping_api_geoping__ip__get",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ip"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PingResult"
+                  },
+                  "title": "Response Geoping Api Geoping  Ip  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dns/{hostname}": {
+      "get": {
+        "summary": "Dns Query",
+        "operationId": "dns_query_api_dns__hostname__get",
+        "parameters": [
+          {
+            "name": "hostname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Hostname"
+            }
+          },
+          {
+            "name": "rtype",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "A",
+              "title": "Rtype"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DnsResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/geodns/{hostname}": {
+      "get": {
+        "summary": "Geo Dns Query",
+        "operationId": "geo_dns_query_api_geodns__hostname__get",
+        "parameters": [
+          {
+            "name": "hostname",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Hostname"
+            }
+          },
+          {
+            "name": "rtype",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "A",
+              "title": "Rtype"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DnsResult"
+                  },
+                  "title": "Response Geo Dns Query Api Geodns  Hostname  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DnsRecord": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "value"
+        ],
+        "title": "DnsRecord"
+      },
+      "DnsResult": {
+        "properties": {
+          "answers": {
+            "items": {
+              "$ref": "#/components/schemas/DnsRecord"
+            },
+            "type": "array",
+            "title": "Answers"
+          },
+          "from_loc": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              }
+            ],
+            "description": "Location of the server that performed the DNS lookup"
+          }
+        },
+        "type": "object",
+        "required": [
+          "answers",
+          "from_loc"
+        ],
+        "title": "DnsResult"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Location": {
+        "properties": {
+          "city": {
+            "type": "string",
+            "title": "City"
+          },
+          "country": {
+            "type": "string",
+            "title": "Country"
+          },
+          "latlon": {
+            "type": "string",
+            "title": "Latlon"
+          }
+        },
+        "type": "object",
+        "required": [
+          "city",
+          "country",
+          "latlon"
+        ],
+        "title": "Location"
+      },
+      "PingResult": {
+        "properties": {
+          "ip": {
+            "type": "string",
+            "title": "Ip",
+            "description": "IP address that was pinged"
+          },
+          "is_alive": {
+            "type": "boolean",
+            "title": "Is Alive"
+          },
+          "min_rtt": {
+            "type": "number",
+            "title": "Min Rtt"
+          },
+          "avg_rtt": {
+            "type": "number",
+            "title": "Avg Rtt"
+          },
+          "max_rtt": {
+            "type": "number",
+            "title": "Max Rtt"
+          },
+          "rtts": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Rtts"
+          },
+          "packets_sent": {
+            "type": "integer",
+            "title": "Packets Sent"
+          },
+          "packets_received": {
+            "type": "integer",
+            "title": "Packets Received"
+          },
+          "packet_loss": {
+            "type": "number",
+            "title": "Packet Loss"
+          },
+          "from_loc": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              }
+            ],
+            "description": "Location of the server that performed the ping"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ip",
+          "is_alive",
+          "min_rtt",
+          "avg_rtt",
+          "max_rtt",
+          "rtts",
+          "packets_sent",
+          "packets_received",
+          "packet_loss",
+          "from_loc"
+        ],
+        "title": "PingResult"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

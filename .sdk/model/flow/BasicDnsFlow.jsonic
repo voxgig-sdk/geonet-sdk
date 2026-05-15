@@ -1,0 +1,32 @@
+# BasicDnsFlow
+
+main: kit: flow: BasicDnsFlow:
+{
+  entity: "dns",
+  kind: "basic",
+  name: "BasicDnsFlow",
+  step: [
+    {
+      input: {
+        ref: "dns_ref01",
+        srcdatavar: "dns_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "dns01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dns_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDnsFlow"
+}

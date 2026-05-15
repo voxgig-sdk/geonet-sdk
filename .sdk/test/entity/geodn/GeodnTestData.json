@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "geodn": {
+      "GEODN00": {
+        "answer": [],
+        "from_loc": "s15"
+      },
+      "GEODN01": {
+        "answer": [],
+        "from_loc": "s29"
+      },
+      "GEODN02": {
+        "answer": [],
+        "from_loc": "s3d"
+      }
+    }
+  },
+  "new": {
+    "geodn": {
+      "geodn_ref01": {
+        "answer": [],
+        "from_loc": "s51"
+      }
+    }
+  }
+}

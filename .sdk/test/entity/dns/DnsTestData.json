@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "dns": {
+      "DNS00": {
+        "answer": [],
+        "from_loc": "s15"
+      },
+      "DNS01": {
+        "answer": [],
+        "from_loc": "s29"
+      },
+      "DNS02": {
+        "answer": [],
+        "from_loc": "s3d"
+      }
+    }
+  },
+  "new": {
+    "dns": {
+      "dns_ref01": {
+        "answer": [],
+        "from_loc": "s51"
+      }
+    }
+  }
+}

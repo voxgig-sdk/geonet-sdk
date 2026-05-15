@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// Geonet SDK base feature
+
+class GeonetBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(GeonetContext $ctx, array $options): void {}
+    public function PostConstruct(GeonetContext $ctx): void {}
+    public function PostConstructEntity(GeonetContext $ctx): void {}
+    public function SetData(GeonetContext $ctx): void {}
+    public function GetData(GeonetContext $ctx): void {}
+    public function GetMatch(GeonetContext $ctx): void {}
+    public function SetMatch(GeonetContext $ctx): void {}
+    public function PrePoint(GeonetContext $ctx): void {}
+    public function PreSpec(GeonetContext $ctx): void {}
+    public function PreRequest(GeonetContext $ctx): void {}
+    public function PreResponse(GeonetContext $ctx): void {}
+    public function PreResult(GeonetContext $ctx): void {}
+    public function PreDone(GeonetContext $ctx): void {}
+    public function PreUnexpected(GeonetContext $ctx): void {}
+}

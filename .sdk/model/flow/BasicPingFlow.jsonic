@@ -1,0 +1,32 @@
+# BasicPingFlow
+
+main: kit: flow: BasicPingFlow:
+{
+  entity: "ping",
+  kind: "basic",
+  name: "BasicPingFlow",
+  step: [
+    {
+      input: {
+        ref: "ping_ref01",
+        srcdatavar: "ping_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "ping01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ping_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPingFlow"
+}

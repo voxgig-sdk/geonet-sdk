@@ -1,0 +1,32 @@
+# BasicGeodnFlow
+
+main: kit: flow: BasicGeodnFlow:
+{
+  entity: "geodn",
+  kind: "basic",
+  name: "BasicGeodnFlow",
+  step: [
+    {
+      input: {
+        ref: "geodn_ref01",
+        srcdatavar: "geodn_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "geodn01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-geodn_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGeodnFlow"
+}

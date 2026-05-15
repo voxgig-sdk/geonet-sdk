@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "geoping": {
+      "GEOPING00": {
+        "avg_rtt": 100,
+        "from_loc": "s65",
+        "ip": "s66",
+        "is_alive": false,
+        "max_rtt": 104,
+        "min_rtt": 105,
+        "packet_loss": 106,
+        "packets_received": "s6b",
+        "packets_sent": "s6c",
+        "rtt": []
+      },
+      "GEOPING01": {
+        "avg_rtt": 200,
+        "from_loc": "sc9",
+        "ip": "sca",
+        "is_alive": false,
+        "max_rtt": 204,
+        "min_rtt": 205,
+        "packet_loss": 206,
+        "packets_received": "scf",
+        "packets_sent": "sd0",
+        "rtt": []
+      },
+      "GEOPING02": {
+        "avg_rtt": 300,
+        "from_loc": "s12d",
+        "ip": "s12e",
+        "is_alive": false,
+        "max_rtt": 304,
+        "min_rtt": 305,
+        "packet_loss": 306,
+        "packets_received": "s133",
+        "packets_sent": "s134",
+        "rtt": []
+      }
+    }
+  },
+  "new": {
+    "geoping": {
+      "geoping_ref01": {
+        "avg_rtt": 400,
+        "from_loc": "s191",
+        "ip": "s192",
+        "is_alive": false,
+        "max_rtt": 404,
+        "min_rtt": 405,
+        "packet_loss": 406,
+        "packets_received": "s197",
+        "packets_sent": "s198",
+        "rtt": []
+      }
+    }
+  }
+}

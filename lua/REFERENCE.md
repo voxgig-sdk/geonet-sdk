@@ -1,0 +1,340 @@
+# Geonet Lua SDK Reference
+
+Complete API reference for the Geonet Lua SDK.
+
+
+## GeonetSDK
+
+### Constructor
+
+```lua
+local sdk = require("geonet_sdk")
+local client = sdk.new(options)
+```
+
+Create a new SDK client instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `options` | `table` | SDK configuration options. |
+| `options.apikey` | `string` | API key for authentication. |
+| `options.base` | `string` | Base URL for API requests. |
+| `options.prefix` | `string` | URL prefix appended after base. |
+| `options.suffix` | `string` | URL suffix appended after path. |
+| `options.headers` | `table` | Custom headers for all requests. |
+| `options.feature` | `table` | Feature configuration. |
+| `options.system` | `table` | System overrides (e.g. custom fetch). |
+
+
+### Static Methods
+
+#### `sdk.test(testopts, sdkopts)`
+
+Create a test client with mock features active. Both arguments may be `nil`.
+
+```lua
+local client = sdk.test(nil, nil)
+```
+
+
+### Instance Methods
+
+#### `Dns(data)`
+
+Create a new `Dns` entity instance. Pass `nil` for no initial data.
+
+#### `Geodn(data)`
+
+Create a new `Geodn` entity instance. Pass `nil` for no initial data.
+
+#### `Geoping(data)`
+
+Create a new `Geoping` entity instance. Pass `nil` for no initial data.
+
+#### `Ping(data)`
+
+Create a new `Ping` entity instance. Pass `nil` for no initial data.
+
+#### `options_map() -> table`
+
+Return a deep copy of the current SDK options.
+
+#### `get_utility() -> Utility`
+
+Return a copy of the SDK utility object.
+
+#### `direct(fetchargs) -> table, err`
+
+Make a direct HTTP request to any API endpoint.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `fetchargs.path` | `string` | URL path with optional `{param}` placeholders. |
+| `fetchargs.method` | `string` | HTTP method (default: `"GET"`). |
+| `fetchargs.params` | `table` | Path parameter values for `{param}` substitution. |
+| `fetchargs.query` | `table` | Query string parameters. |
+| `fetchargs.headers` | `table` | Request headers (merged with defaults). |
+| `fetchargs.body` | `any` | Request body (tables are JSON-serialized). |
+| `fetchargs.ctrl` | `table` | Control options (e.g. `{ explain = true }`). |
+
+**Returns:** `table, err`
+
+#### `prepare(fetchargs) -> table, err`
+
+Prepare a fetch definition without sending the request. Accepts the
+same parameters as `direct()`.
+
+**Returns:** `table, err`
+
+
+---
+
+## DnsEntity
+
+```lua
+local dns = client:Dns(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `answer` | ``$ARRAY`` | Yes |  |
+| `from_loc` | ``$ANY`` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:Dns(nil):load({ id = "dns_id" }, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DnsEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GeodnEntity
+
+```lua
+local geodn = client:Geodn(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `answer` | ``$ARRAY`` | Yes |  |
+| `from_loc` | ``$ANY`` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:Geodn(nil):load({ id = "geodn_id" }, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GeodnEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## GeopingEntity
+
+```lua
+local geoping = client:Geoping(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `avg_rtt` | ``$NUMBER`` | Yes |  |
+| `from_loc` | ``$ANY`` | Yes |  |
+| `ip` | ``$STRING`` | Yes |  |
+| `is_alive` | ``$BOOLEAN`` | Yes |  |
+| `max_rtt` | ``$NUMBER`` | Yes |  |
+| `min_rtt` | ``$NUMBER`` | Yes |  |
+| `packet_loss` | ``$NUMBER`` | Yes |  |
+| `packets_received` | ``$INTEGER`` | Yes |  |
+| `packets_sent` | ``$INTEGER`` | Yes |  |
+| `rtt` | ``$ARRAY`` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:Geoping(nil):load({ id = "geoping_id" }, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `GeopingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PingEntity
+
+```lua
+local ping = client:Ping(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `avg_rtt` | ``$NUMBER`` | Yes |  |
+| `from_loc` | ``$ANY`` | Yes |  |
+| `ip` | ``$STRING`` | Yes |  |
+| `is_alive` | ``$BOOLEAN`` | Yes |  |
+| `max_rtt` | ``$NUMBER`` | Yes |  |
+| `min_rtt` | ``$NUMBER`` | Yes |  |
+| `packet_loss` | ``$NUMBER`` | Yes |  |
+| `packets_received` | ``$INTEGER`` | Yes |  |
+| `packets_sent` | ``$INTEGER`` | Yes |  |
+| `rtt` | ``$ARRAY`` | Yes |  |
+
+### Operations
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:Ping(nil):load({ id = "ping_id" }, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## Features
+
+| Feature | Version | Description |
+| --- | --- | --- |
+| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+
+
+Features are activated via the `feature` option:
+
+```lua
+local client = sdk.new({
+  feature = {
+    test = { active = true },
+  },
+})
+```
+

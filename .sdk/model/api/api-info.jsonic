@@ -1,0 +1,19 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Run various network tools from multiple geographic locations"
+      servers: [
+        {
+          url: "https://geonet.shodan.io"
+        }
+      ]
+      title: "Geonet"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

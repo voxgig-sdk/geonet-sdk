@@ -1,0 +1,36 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: dns: {
+    path: "/api/dns/{hostname}": {
+      rename: param: "hostname": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: geodn: {
+    path: "/api/geodns/{hostname}": {
+      rename: param: "hostname": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: geoping: {
+    path: "/api/geoping/{ip}": {
+      rename: param: "ip": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: ping: {
+    path: "/api/ping/{ip}": {
+      rename: param: "ip": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}
