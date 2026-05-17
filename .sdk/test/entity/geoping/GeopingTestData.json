@@ -11,7 +11,8 @@
         "packet_loss": 106,
         "packets_received": "s6b",
         "packets_sent": "s6c",
-        "rtt": []
+        "rtt": [],
+        "id": "GEOPING00"
       },
       "GEOPING01": {
         "avg_rtt": 200,
@@ -23,7 +24,8 @@
         "packet_loss": 206,
         "packets_received": "scf",
         "packets_sent": "sd0",
-        "rtt": []
+        "rtt": [],
+        "id": "GEOPING01"
       },
       "GEOPING02": {
         "avg_rtt": 300,
@@ -35,7 +37,8 @@
         "packet_loss": 306,
         "packets_received": "s133",
         "packets_sent": "s134",
-        "rtt": []
+        "rtt": [],
+        "id": "GEOPING02"
       }
     }
   },

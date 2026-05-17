@@ -3,15 +3,18 @@
     "dns": {
       "DNS00": {
         "answer": [],
-        "from_loc": "s15"
+        "from_loc": "s15",
+        "id": "DNS00"
       },
       "DNS01": {
         "answer": [],
-        "from_loc": "s29"
+        "from_loc": "s29",
+        "id": "DNS01"
       },
       "DNS02": {
         "answer": [],
-        "from_loc": "s3d"
+        "from_loc": "s3d",
+        "id": "DNS02"
       }
     }
   },

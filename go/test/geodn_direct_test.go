@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/geonet-sdk"
-	"github.com/voxgig-sdk/geonet-sdk/core"
+	sdk "github.com/voxgig-sdk/geonet-sdk/go"
+	"github.com/voxgig-sdk/geonet-sdk/go/core"
 )
 
 func TestGeodnDirect(t *testing.T) {

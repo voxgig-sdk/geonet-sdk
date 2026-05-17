@@ -1,10 +1,10 @@
 package voxgiggeonetsdk
 
 import (
-	"github.com/voxgig-sdk/geonet-sdk/core"
-	"github.com/voxgig-sdk/geonet-sdk/entity"
-	"github.com/voxgig-sdk/geonet-sdk/feature"
-	_ "github.com/voxgig-sdk/geonet-sdk/utility"
+	"github.com/voxgig-sdk/geonet-sdk/go/core"
+	"github.com/voxgig-sdk/geonet-sdk/go/entity"
+	"github.com/voxgig-sdk/geonet-sdk/go/feature"
+	_ "github.com/voxgig-sdk/geonet-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

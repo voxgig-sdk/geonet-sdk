@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/geonet-sdk/core"
+	"github.com/voxgig-sdk/geonet-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/geonet-sdk/core"
+import "github.com/voxgig-sdk/geonet-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll
