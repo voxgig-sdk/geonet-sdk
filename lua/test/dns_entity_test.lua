@@ -91,7 +91,6 @@ function dns_basic_setup(extra)
     ["GEONET_TEST_DNS_ENTID"] = idmap,
     ["GEONET_TEST_LIVE"] = "FALSE",
     ["GEONET_TEST_EXPLAIN"] = "FALSE",
-    ["GEONET_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function dns_basic_setup(extra)
   if env["GEONET_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["GEONET_APIKEY"],
       },
       extra or {},
     })

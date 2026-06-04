@@ -71,14 +71,12 @@ def dns_direct_setup(mockres)
   env = Runner.env_override({
     "GEONET_TEST_DNS_ENTID" => {},
     "GEONET_TEST_LIVE" => "FALSE",
-    "GEONET_APIKEY" => "NONE",
   })
 
   live = env["GEONET_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["GEONET_APIKEY"],
     }
     client = GeonetSDK.new(merged_opts)
     return {

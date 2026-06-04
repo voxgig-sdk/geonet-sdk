@@ -117,14 +117,12 @@ func geodnDirectSetup(mockres any) *geodnDirectSetupResult {
 	env := envOverride(map[string]any{
 		"GEONET_TEST_GEODN_ENTID": map[string]any{},
 		"GEONET_TEST_LIVE":    "FALSE",
-		"GEONET_APIKEY":       "NONE",
 	})
 
 	live := env["GEONET_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["GEONET_APIKEY"],
 		}
 		client := sdk.NewGeonetSDK(mergedOpts)
 

@@ -15,9 +15,6 @@ module GeonetConfig
       },
       "options" => {
         "base" => "https://geonet.shodan.io",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
