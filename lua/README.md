@@ -10,7 +10,7 @@ The Lua SDK for the Geonet API — an entity-oriented client using Lua conventio
 
 ## Install
 ```bash
-luarocks install geonet-sdk
+luarocks install voxgig-sdk-geonet
 ```
 
 If the module is not yet published, add the source directory to

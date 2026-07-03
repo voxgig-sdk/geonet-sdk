@@ -8,12 +8,14 @@ source = {
   dir = "geonet-sdk/lua"
 }
 description = {
-  summary = "Geonet SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Geonet public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/geonet-sdk",
+  issues_url = "https://github.com/voxgig-sdk/geonet-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "geonet" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

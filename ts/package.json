@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/geonet",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Geonet public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "geonet"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/geonet-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/geonet-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/geonet-sdk/issues"
+  },
   "main": "dist/GeonetSDK.js",
   "type": "commonjs",
   "types": "dist/GeonetSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "Geonet",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

@@ -10,7 +10,7 @@ The PHP SDK for the Geonet API — an entity-oriented client using PHP conventio
 
 ## Install
 ```bash
-composer require voxgig/geonet-sdk
+composer require voxgig-sdk/geonet
 ```
 
 

@@ -10,7 +10,7 @@ The Python SDK for the Geonet API — an entity-oriented client following Python
 
 ## Install
 ```bash
-pip install geonet-sdk
+pip install voxgig-sdk-geonet
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The TypeScript SDK for the Geonet API — a type-safe, entity-oriented client wi
 
 ## Install
 ```bash
-npm install geonet
+npm install @voxgig-sdk/geonet
 ```
 ## Tutorial: your first API call
 

@@ -10,13 +10,13 @@ The Ruby SDK for the Geonet API — an entity-oriented client using idiomatic Ru
 
 ## Install
 ```bash
-gem install geonet-sdk
+gem install voxgig-sdk-geonet
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "geonet-sdk"
+gem "voxgig-sdk-geonet"
 ```
 
 Then run:
