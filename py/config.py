@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://geonet.shodan.io",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -29,46 +32,48 @@ def make_config():
       "dns": {
         "fields": [
           {
+            "active": True,
             "name": "answer",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "from_loc",
             "req": True,
             "type": "`$ANY`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "dns",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "hostname",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "A",
                       "kind": "query",
                       "name": "rtype",
                       "orig": "rtype",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -94,11 +99,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -109,46 +112,48 @@ def make_config():
       "geodn": {
         "fields": [
           {
+            "active": True,
             "name": "answer",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "from_loc",
             "req": True,
             "type": "`$ANY`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "geodn",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "hostname",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "A",
                       "kind": "query",
                       "name": "rtype",
                       "orig": "rtype",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -174,11 +179,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -189,91 +192,93 @@ def make_config():
       "geoping": {
         "fields": [
           {
+            "active": True,
             "name": "avg_rtt",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "from_loc",
             "req": True,
             "type": "`$ANY`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "ip",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "is_alive",
             "req": True,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "max_rtt",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 4,
           },
           {
+            "active": True,
             "name": "min_rtt",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 5,
           },
           {
+            "active": True,
             "name": "packet_loss",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 6,
           },
           {
+            "active": True,
             "name": "packets_received",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 7,
           },
           {
+            "active": True,
             "name": "packets_sent",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 8,
           },
           {
+            "active": True,
             "name": "rtt",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 9,
           },
         ],
         "name": "geoping",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "ip",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -298,11 +303,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -313,91 +316,93 @@ def make_config():
       "ping": {
         "fields": [
           {
+            "active": True,
             "name": "avg_rtt",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "from_loc",
             "req": True,
             "type": "`$ANY`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "ip",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "is_alive",
             "req": True,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "max_rtt",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 4,
           },
           {
+            "active": True,
             "name": "min_rtt",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 5,
           },
           {
+            "active": True,
             "name": "packet_loss",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 6,
           },
           {
+            "active": True,
             "name": "packets_received",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 7,
           },
           {
+            "active": True,
             "name": "packets_sent",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 8,
           },
           {
+            "active": True,
             "name": "rtt",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 9,
           },
         ],
         "name": "ping",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "ip",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -422,11 +427,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

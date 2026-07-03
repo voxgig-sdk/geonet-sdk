@@ -12,28 +12,7 @@ main: {
       ]
       title: "Geonet"
       version: "1.0.0"
-      tagline: "Run ping and DNS lookups against a target from servers distributed around the world"
-      homepage: "https://geonet.shodan.io"
-      docs_url: "https://geonet.shodan.io"
-      license_short: "Shodan service; usage subject to Shodan's terms"
-      license_md: `- Operated by [Shodan](https://www.shodan.io/) as part of its network utility offerings
-- No licence terms are published on the service homepage; use is governed by Shodan's general terms of service
-- Authentication requirements are not documented on the public landing page; check the Shodan account dashboard for current key/quota details`
-      about_md: `[GeoNet](https://geonet.shodan.io) is a small utility API from [Shodan](https://www.shodan.io/) that runs common network diagnostic tools from servers distributed across multiple geographic regions. It is useful for spotting regional outages, anycast routing differences, geofencing, and CDN behaviour that only show up from particular vantage points.
-
-What you get from the API:
-
-- \`geoping\` — latency measurements (min / avg / max, packet loss) to a target host from each probe location
-- \`geodns\` — DNS record lookups for a domain resolved from each probe location, so you can see when answers vary by region
-
-The service exposes two primary HTTP paths, \`/api/geoping/{target}\` and \`/api/geodns/{domain}\`, and is also wrapped by a small command-line client distributed as a \`.deb\` package. CORS is enabled on both endpoints. The landing page does not publish explicit rate limits or authentication details — consult your Shodan account for current key and quota information.`
-      entity_desc: {
-        dns: "DNS lookup operations performed from multiple global probe locations, exposed via `/api/geodns/{domain}`"
-        geodn: "Geographically distributed DNS resolution results, returning per-location answers so regional differences are visible"
-        geoping: "Latency and packet-loss measurements from worldwide probes via `/api/geoping/{target}`"
-        ping: "Single-host reachability and round-trip-time data underlying the geoping aggregation"
-      }
-      auth: false
     }
   }
 }
+

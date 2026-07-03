@@ -15,6 +15,9 @@ module GeonetConfig
       },
       "options" => {
         "base" => "https://geonet.shodan.io",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -29,46 +32,48 @@ module GeonetConfig
         "dns" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "answer",
               "req" => true,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "from_loc",
               "req" => true,
               "type" => "`$ANY`",
-              "active" => true,
               "index$" => 1,
             },
           ],
           "name" => "dns",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "hostname",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                     "query" => [
                       {
+                        "active" => true,
                         "example" => "A",
                         "kind" => "query",
                         "name" => "rtype",
                         "orig" => "rtype",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -94,11 +99,9 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -109,46 +112,48 @@ module GeonetConfig
         "geodn" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "answer",
               "req" => true,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "from_loc",
               "req" => true,
               "type" => "`$ANY`",
-              "active" => true,
               "index$" => 1,
             },
           ],
           "name" => "geodn",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "hostname",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                     "query" => [
                       {
+                        "active" => true,
                         "example" => "A",
                         "kind" => "query",
                         "name" => "rtype",
                         "orig" => "rtype",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -174,11 +179,9 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -189,91 +192,93 @@ module GeonetConfig
         "geoping" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "avg_rtt",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "from_loc",
               "req" => true,
               "type" => "`$ANY`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "ip",
               "req" => true,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 2,
             },
             {
+              "active" => true,
               "name" => "is_alive",
               "req" => true,
               "type" => "`$BOOLEAN`",
-              "active" => true,
               "index$" => 3,
             },
             {
+              "active" => true,
               "name" => "max_rtt",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 4,
             },
             {
+              "active" => true,
               "name" => "min_rtt",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 5,
             },
             {
+              "active" => true,
               "name" => "packet_loss",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 6,
             },
             {
+              "active" => true,
               "name" => "packets_received",
               "req" => true,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 7,
             },
             {
+              "active" => true,
               "name" => "packets_sent",
               "req" => true,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 8,
             },
             {
+              "active" => true,
               "name" => "rtt",
               "req" => true,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 9,
             },
           ],
           "name" => "geoping",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "ip",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -298,11 +303,9 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -313,91 +316,93 @@ module GeonetConfig
         "ping" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "avg_rtt",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "from_loc",
               "req" => true,
               "type" => "`$ANY`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "ip",
               "req" => true,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 2,
             },
             {
+              "active" => true,
               "name" => "is_alive",
               "req" => true,
               "type" => "`$BOOLEAN`",
-              "active" => true,
               "index$" => 3,
             },
             {
+              "active" => true,
               "name" => "max_rtt",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 4,
             },
             {
+              "active" => true,
               "name" => "min_rtt",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 5,
             },
             {
+              "active" => true,
               "name" => "packet_loss",
               "req" => true,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 6,
             },
             {
+              "active" => true,
               "name" => "packets_received",
               "req" => true,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 7,
             },
             {
+              "active" => true,
               "name" => "packets_sent",
               "req" => true,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 8,
             },
             {
+              "active" => true,
               "name" => "rtt",
               "req" => true,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 9,
             },
           ],
           "name" => "ping",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "ip",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -422,11 +427,9 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },

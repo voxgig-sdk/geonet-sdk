@@ -69,12 +69,14 @@ def _geodn_direct_setup(mockres):
     env = runner.env_override({
         "GEONET_TEST_GEODN_ENTID": {},
         "GEONET_TEST_LIVE": "FALSE",
+        "GEONET_APIKEY": "NONE",
     })
 
     live = env.get("GEONET_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("GEONET_APIKEY"),
         }
         client = GeonetSDK(merged_opts)
         return {

@@ -117,6 +117,7 @@ func geopingBasicSetup(extra map[string]any) *entityTestSetup {
 		"GEONET_TEST_GEOPING_ENTID": idmap,
 		"GEONET_TEST_LIVE":      "FALSE",
 		"GEONET_TEST_EXPLAIN":   "FALSE",
+		"GEONET_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["GEONET_TEST_GEOPING_ENTID"])
@@ -127,6 +128,7 @@ func geopingBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["GEONET_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["GEONET_APIKEY"],
 			},
 			extra,
 		})

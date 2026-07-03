@@ -80,12 +80,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'GEONET_TEST_GEODN_ENTID': {},
     'GEONET_TEST_LIVE': 'FALSE',
+    'GEONET_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.GEONET_TEST_LIVE
 
   if (live) {
     const client = new GeonetSDK({
+      apikey: env.GEONET_APIKEY,
     })
 
     let idmap: any = env['GEONET_TEST_GEODN_ENTID']

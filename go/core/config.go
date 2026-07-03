@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://geonet.shodan.io",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -28,46 +31,48 @@ func MakeConfig() map[string]any {
 			"dns": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "answer",
 						"req": true,
 						"type": "`$ARRAY`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "from_loc",
 						"req": true,
 						"type": "`$ANY`",
-						"active": true,
 						"index$": 1,
 					},
 				},
 				"name": "dns",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
+											"active": true,
 											"kind": "param",
 											"name": "id",
 											"orig": "hostname",
 											"reqd": true,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 									"query": []any{
 										map[string]any{
+											"active": true,
 											"example": "A",
 											"kind": "query",
 											"name": "rtype",
 											"orig": "rtype",
 											"reqd": false,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 								},
@@ -93,11 +98,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},
@@ -108,46 +111,48 @@ func MakeConfig() map[string]any {
 			"geodn": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "answer",
 						"req": true,
 						"type": "`$ARRAY`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "from_loc",
 						"req": true,
 						"type": "`$ANY`",
-						"active": true,
 						"index$": 1,
 					},
 				},
 				"name": "geodn",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
+											"active": true,
 											"kind": "param",
 											"name": "id",
 											"orig": "hostname",
 											"reqd": true,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 									"query": []any{
 										map[string]any{
+											"active": true,
 											"example": "A",
 											"kind": "query",
 											"name": "rtype",
 											"orig": "rtype",
 											"reqd": false,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 								},
@@ -173,11 +178,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},
@@ -188,91 +191,93 @@ func MakeConfig() map[string]any {
 			"geoping": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "avg_rtt",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "from_loc",
 						"req": true,
 						"type": "`$ANY`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "ip",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 2,
 					},
 					map[string]any{
+						"active": true,
 						"name": "is_alive",
 						"req": true,
 						"type": "`$BOOLEAN`",
-						"active": true,
 						"index$": 3,
 					},
 					map[string]any{
+						"active": true,
 						"name": "max_rtt",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 4,
 					},
 					map[string]any{
+						"active": true,
 						"name": "min_rtt",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 5,
 					},
 					map[string]any{
+						"active": true,
 						"name": "packet_loss",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 6,
 					},
 					map[string]any{
+						"active": true,
 						"name": "packets_received",
 						"req": true,
 						"type": "`$INTEGER`",
-						"active": true,
 						"index$": 7,
 					},
 					map[string]any{
+						"active": true,
 						"name": "packets_sent",
 						"req": true,
 						"type": "`$INTEGER`",
-						"active": true,
 						"index$": 8,
 					},
 					map[string]any{
+						"active": true,
 						"name": "rtt",
 						"req": true,
 						"type": "`$ARRAY`",
-						"active": true,
 						"index$": 9,
 					},
 				},
 				"name": "geoping",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
+											"active": true,
 											"kind": "param",
 											"name": "id",
 											"orig": "ip",
 											"reqd": true,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 								},
@@ -297,11 +302,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},
@@ -312,91 +315,93 @@ func MakeConfig() map[string]any {
 			"ping": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "avg_rtt",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "from_loc",
 						"req": true,
 						"type": "`$ANY`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "ip",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 2,
 					},
 					map[string]any{
+						"active": true,
 						"name": "is_alive",
 						"req": true,
 						"type": "`$BOOLEAN`",
-						"active": true,
 						"index$": 3,
 					},
 					map[string]any{
+						"active": true,
 						"name": "max_rtt",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 4,
 					},
 					map[string]any{
+						"active": true,
 						"name": "min_rtt",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 5,
 					},
 					map[string]any{
+						"active": true,
 						"name": "packet_loss",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 6,
 					},
 					map[string]any{
+						"active": true,
 						"name": "packets_received",
 						"req": true,
 						"type": "`$INTEGER`",
-						"active": true,
 						"index$": 7,
 					},
 					map[string]any{
+						"active": true,
 						"name": "packets_sent",
 						"req": true,
 						"type": "`$INTEGER`",
-						"active": true,
 						"index$": 8,
 					},
 					map[string]any{
+						"active": true,
 						"name": "rtt",
 						"req": true,
 						"type": "`$ARRAY`",
-						"active": true,
 						"index$": 9,
 					},
 				},
 				"name": "ping",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
+											"active": true,
 											"kind": "param",
 											"name": "id",
 											"orig": "ip",
 											"reqd": true,
 											"type": "`$STRING`",
-											"active": true,
 										},
 									},
 								},
@@ -421,11 +426,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},

@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -113,7 +113,7 @@ local dns = client:Dns(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Dns(nil):load({ id = "dns_id" }, nil)
+local result, err = client:Dns():load({ id = "dns_id" })
 ```
 
 ### Common Methods
@@ -166,7 +166,7 @@ local geodn = client:Geodn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Geodn(nil):load({ id = "geodn_id" }, nil)
+local result, err = client:Geodn():load({ id = "geodn_id" })
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ local geoping = client:Geoping(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Geoping(nil):load({ id = "geoping_id" }, nil)
+local result, err = client:Geoping():load({ id = "geoping_id" })
 ```
 
 ### Common Methods
@@ -288,7 +288,7 @@ local ping = client:Ping(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Ping(nil):load({ id = "ping_id" }, nil)
+local result, err = client:Ping():load({ id = "ping_id" })
 ```
 
 ### Common Methods

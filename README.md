@@ -1,19 +1,8 @@
 # Geonet SDK
 
-Run ping and DNS lookups against a target from servers distributed around the world
+Geonet client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Geonet
-
-[GeoNet](https://geonet.shodan.io) is a small utility API from [Shodan](https://www.shodan.io/) that runs common network diagnostic tools from servers distributed across multiple geographic regions. It is useful for spotting regional outages, anycast routing differences, geofencing, and CDN behaviour that only show up from particular vantage points.
-
-What you get from the API:
-
-- `geoping` — latency measurements (min / avg / max, packet loss) to a target host from each probe location
-- `geodns` — DNS record lookups for a domain resolved from each probe location, so you can see when answers vary by region
-
-The service exposes two primary HTTP paths, `/api/geoping/{target}` and `/api/geodns/{domain}`, and is also wrapped by a small command-line client distributed as a `.deb` package. CORS is enabled on both endpoints. The landing page does not publish explicit rate limits or authentication details — consult your Shodan account for current key and quota information.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install geonet-sdk
 luarocks install geonet-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { GeonetSDK } from 'geonet'
 
-const client = new GeonetSDK({})
+const client = new GeonetSDK({
+  apikey: process.env.GEONET_APIKEY,
+})
 
+// Load dns data
+const dns = await client.Dns().load({})
+console.log(dns.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Dns** | DNS lookup operations performed from multiple global probe locations, exposed via `/api/geodns/{domain}` | `/api/dns/{hostname}` |
-| **Geodn** | Geographically distributed DNS resolution results, returning per-location answers so regional differences are visible | `/api/geodns/{hostname}` |
-| **Geoping** | Latency and packet-loss measurements from worldwide probes via `/api/geoping/{target}` | `/api/geoping/{ip}` |
-| **Ping** | Single-host reachability and round-trip-time data underlying the geoping aggregation | `/api/ping/{ip}` |
+| **Dns** |  | `/api/dns/{hostname}` |
+| **Geodn** |  | `/api/geodns/{hostname}` |
+| **Geoping** |  | `/api/geoping/{ip}` |
+| **Ping** |  | `/api/ping/{ip}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,15 +103,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from geonet_sdk import GeonetSDK
 
-client = GeonetSDK({})
+client = GeonetSDK({
+    "apikey": os.environ.get("GEONET_APIKEY"),
+})
 
 
 # Load a specific dns
-dns, err = client.Dns(None).load(
-    {"id": "example_id"}, None
-)
+dns, err = client.Dns().load({"id": "example_id"})
+print(dns)
 ```
 
 ### PHP
@@ -127,13 +122,14 @@ dns, err = client.Dns(None).load(
 <?php
 require_once 'geonet_sdk.php';
 
-$client = new GeonetSDK([]);
+$client = new GeonetSDK([
+    "apikey" => getenv("GEONET_APIKEY"),
+]);
 
 
 // Load a specific dns
-[$dns, $err] = $client->Dns(null)->load(
-    ["id" => "example_id"], null
-);
+[$dns, $err] = $client->Dns()->load(["id" => "example_id"]);
+print_r($dns);
 ```
 
 ### Golang
@@ -141,8 +137,13 @@ $client = new GeonetSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/geonet-sdk/go"
 
-client := sdk.NewGeonetSDK(map[string]any{})
+client := sdk.NewGeonetSDK(map[string]any{
+    "apikey": os.Getenv("GEONET_APIKEY"),
+})
 
+// Load dns data
+dns, err := client.Dns(nil).Load(map[string]any{}, nil)
+fmt.Println(dns)
 ```
 
 ### Ruby
@@ -150,13 +151,14 @@ client := sdk.NewGeonetSDK(map[string]any{})
 ```ruby
 require_relative "Geonet_sdk"
 
-client = GeonetSDK.new({})
+client = GeonetSDK.new({
+  "apikey" => ENV["GEONET_APIKEY"],
+})
 
 
 # Load a specific dns
-dns, err = client.Dns(nil).load(
-  { "id" => "example_id" }, nil
-)
+dns, err = client.Dns().load({ "id" => "example_id" })
+puts dns
 ```
 
 ### Lua
@@ -164,13 +166,14 @@ dns, err = client.Dns(nil).load(
 ```lua
 local sdk = require("geonet_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("GEONET_APIKEY"),
+})
 
 
 -- Load a specific dns
-local dns, err = client:Dns(nil):load(
-  { id = "example_id" }, nil
-)
+local dns, err = client:Dns():load({ id = "example_id" })
+print(dns)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +192,21 @@ const result = await client.Dns().load({ id: 'test01' })
 ### Python
 
 ```python
-client = GeonetSDK.test(None, None)
-result, err = client.Dns(None).load(
-    {"id": "test01"}, None
-)
+client = GeonetSDK.test()
+result, err = client.Dns().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = GeonetSDK::test(null, null);
-[$result, $err] = $client->Dns(null)->load(
-    ["id" => "test01"], null
-);
+$client = GeonetSDK::test();
+[$result, $err] = $client->Dns()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Dns(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +215,15 @@ result, err := client.Dns(nil).Load(
 ### Ruby
 
 ```ruby
-client = GeonetSDK.test(nil, nil)
-result, err = client.Dns(nil).load(
-  { "id" => "test01" }, nil
-)
+client = GeonetSDK.test
+result, err = client.Dns().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Dns(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Dns():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,14 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Geonet
-
-- Upstream: [https://geonet.shodan.io](https://geonet.shodan.io)
-
-- Operated by [Shodan](https://www.shodan.io/) as part of its network utility offerings
-- No licence terms are published on the service homepage; use is governed by Shodan's general terms of service
-- Authentication requirements are not documented on the public landing page; check the Shodan account dashboard for current key/quota details
 
 ---
 

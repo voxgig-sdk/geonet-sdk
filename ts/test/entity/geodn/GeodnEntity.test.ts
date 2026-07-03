@@ -111,6 +111,7 @@ function basicSetup(extra?: any) {
     'GEONET_TEST_GEODN_ENTID': idmap,
     'GEONET_TEST_LIVE': 'FALSE',
     'GEONET_TEST_EXPLAIN': 'FALSE',
+    'GEONET_APIKEY': 'NONE',
   })
 
   idmap = env['GEONET_TEST_GEODN_ENTID']
@@ -120,6 +121,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new GeonetSDK(merge([
       {
+        apikey: env.GEONET_APIKEY,
       },
       extra
     ]))
