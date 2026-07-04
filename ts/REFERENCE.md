@@ -145,7 +145,7 @@ Alias for `GeonetSDK.test()`.
 ## DnsEntity
 
 ```ts
-const dns = client.dns
+const dns = client.Dns()
 ```
 
 ### Fields
@@ -162,7 +162,7 @@ const dns = client.dns
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.dns.load({ id: 'dns_id' })
+const result = await client.Dns().load({ id: 'dns_id' })
 ```
 
 ### Common Methods
@@ -196,7 +196,7 @@ Return a copy of the entity options.
 ## GeodnEntity
 
 ```ts
-const geodn = client.geodn
+const geodn = client.Geodn()
 ```
 
 ### Fields
@@ -213,7 +213,7 @@ const geodn = client.geodn
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.geodn.load({ id: 'geodn_id' })
+const result = await client.Geodn().load({ id: 'geodn_id' })
 ```
 
 ### Common Methods
@@ -247,7 +247,7 @@ Return a copy of the entity options.
 ## GeopingEntity
 
 ```ts
-const geoping = client.geoping
+const geoping = client.Geoping()
 ```
 
 ### Fields
@@ -272,7 +272,7 @@ const geoping = client.geoping
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.geoping.load({ id: 'geoping_id' })
+const result = await client.Geoping().load({ id: 'geoping_id' })
 ```
 
 ### Common Methods
@@ -306,7 +306,7 @@ Return a copy of the entity options.
 ## PingEntity
 
 ```ts
-const ping = client.ping
+const ping = client.Ping()
 ```
 
 ### Fields
@@ -331,7 +331,7 @@ const ping = client.ping
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ping.load({ id: 'ping_id' })
+const result = await client.Ping().load({ id: 'ping_id' })
 ```
 
 ### Common Methods

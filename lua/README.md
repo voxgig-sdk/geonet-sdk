@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a dns
 
 ```lua
-local result, err = client:dns():load({ id = "example_id" })
+local dns, err = client:Dns():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(dns)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:dns():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Dns():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -186,17 +186,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local dns, err = client:Dns():load({ id = "example_id" })
+    if err then error(err) end
+    -- dns is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -267,7 +272,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.dns`
+Create an instance: `local dns = client:Dns(nil)`
 
 #### Operations
 
@@ -284,14 +289,14 @@ Create an instance: `const dns = client.dns`
 
 #### Example: Load
 
-```ts
-const dns = await client.dns.load({ id: 'dns_id' })
+```lua
+local dns, err = client:Dns():load({ id = "dns_id" })
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.geodn`
+Create an instance: `local geodn = client:Geodn(nil)`
 
 #### Operations
 
@@ -308,14 +313,14 @@ Create an instance: `const geodn = client.geodn`
 
 #### Example: Load
 
-```ts
-const geodn = await client.geodn.load({ id: 'geodn_id' })
+```lua
+local geodn, err = client:Geodn():load({ id = "geodn_id" })
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.geoping`
+Create an instance: `local geoping = client:Geoping(nil)`
 
 #### Operations
 
@@ -340,14 +345,14 @@ Create an instance: `const geoping = client.geoping`
 
 #### Example: Load
 
-```ts
-const geoping = await client.geoping.load({ id: 'geoping_id' })
+```lua
+local geoping, err = client:Geoping():load({ id = "geoping_id" })
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.ping`
+Create an instance: `local ping = client:Ping(nil)`
 
 #### Operations
 
@@ -372,8 +377,8 @@ Create an instance: `const ping = client.ping`
 
 #### Example: Load
 
-```ts
-const ping = await client.ping.load({ id: 'ping_id' })
+```lua
+local ping, err = client:Ping():load({ id = "ping_id" })
 ```
 
 
@@ -448,7 +453,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local dns = client:dns()
+local dns = client:Dns()
 dns:load({ id = "example_id" })
 
 -- dns:data_get() now returns the loaded dns data

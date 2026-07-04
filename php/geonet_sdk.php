@@ -233,10 +233,10 @@ class GeonetSDK
 
     private $_dns = null;
 
-    // Idiomatic facade: $client->dns()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Dns() (PHP method
-    // names are case-insensitive).
-    public function dns($data = null)
+    // Canonical facade: $client->Dns()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->dns()
+    // resolves here too.
+    public function Dns($data = null)
     {
         require_once __DIR__ . '/entity/dns_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class GeonetSDK
 
     private $_geodn = null;
 
-    // Idiomatic facade: $client->geodn()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Geodn() (PHP method
-    // names are case-insensitive).
-    public function geodn($data = null)
+    // Canonical facade: $client->Geodn()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->geodn()
+    // resolves here too.
+    public function Geodn($data = null)
     {
         require_once __DIR__ . '/entity/geodn_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class GeonetSDK
 
     private $_geoping = null;
 
-    // Idiomatic facade: $client->geoping()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Geoping() (PHP method
-    // names are case-insensitive).
-    public function geoping($data = null)
+    // Canonical facade: $client->Geoping()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->geoping()
+    // resolves here too.
+    public function Geoping($data = null)
     {
         require_once __DIR__ . '/entity/geoping_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class GeonetSDK
 
     private $_ping = null;
 
-    // Idiomatic facade: $client->ping()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Ping() (PHP method
-    // names are case-insensitive).
-    public function ping($data = null)
+    // Canonical facade: $client->Ping()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ping()
+    // resolves here too.
+    public function Ping($data = null)
     {
         require_once __DIR__ . '/entity/ping_entity.php';
         if ($data === null) {

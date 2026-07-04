@@ -33,9 +33,10 @@ $client = new GeonetSDK();
 
 ```php
 try {
-    $result = $client->dns()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Dns record (throws on error).
+    $dns = $client->Dns()->load(["id" => "example_id"]);
+    print_r($dns);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = GeonetSDK::test();
+$client = GeonetSDK::test([
+    "entity" => ["dns" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->dns()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$dns = $client->Dns()->load(["id" => "test01"]);
+print_r($dns);
 ```
 
 ### Use a custom fetch function
@@ -276,7 +281,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.dns`
+Create an instance: `$dns = $client->Dns();`
 
 #### Operations
 
@@ -293,14 +298,15 @@ Create an instance: `const dns = client.dns`
 
 #### Example: Load
 
-```ts
-const dns = await client.dns.load({ id: 'dns_id' })
+```php
+// load() returns the bare Dns record (throws on error).
+$dns = $client->Dns()->load(["id" => "dns_id"]);
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.geodn`
+Create an instance: `$geodn = $client->Geodn();`
 
 #### Operations
 
@@ -317,14 +323,15 @@ Create an instance: `const geodn = client.geodn`
 
 #### Example: Load
 
-```ts
-const geodn = await client.geodn.load({ id: 'geodn_id' })
+```php
+// load() returns the bare Geodn record (throws on error).
+$geodn = $client->Geodn()->load(["id" => "geodn_id"]);
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.geoping`
+Create an instance: `$geoping = $client->Geoping();`
 
 #### Operations
 
@@ -349,14 +356,15 @@ Create an instance: `const geoping = client.geoping`
 
 #### Example: Load
 
-```ts
-const geoping = await client.geoping.load({ id: 'geoping_id' })
+```php
+// load() returns the bare Geoping record (throws on error).
+$geoping = $client->Geoping()->load(["id" => "geoping_id"]);
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.ping`
+Create an instance: `$ping = $client->Ping();`
 
 #### Operations
 
@@ -381,8 +389,9 @@ Create an instance: `const ping = client.ping`
 
 #### Example: Load
 
-```ts
-const ping = await client.ping.load({ id: 'ping_id' })
+```php
+// load() returns the bare Ping record (throws on error).
+$ping = $client->Ping()->load(["id" => "ping_id"]);
 ```
 
 
@@ -457,7 +466,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$dns = $client->dns();
+$dns = $client->Dns();
 $dns->load(["id" => "example_id"]);
 
 // $dns->dataGet() now returns the loaded dns data

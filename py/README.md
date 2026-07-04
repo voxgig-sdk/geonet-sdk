@@ -33,10 +33,12 @@ client = GeonetSDK()
 
 ### 3. Load a dns
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.dns.load({"id": "example_id"})
-    print(result)
+    dns = client.Dns().load({"id": "example_id"})
+    print(dns)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GeonetSDK.test()
 
-result = client.dns.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+dns = client.Dns().load({"id": "test01"})
+# dns contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -271,7 +274,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.dns`
+Create an instance: `dns = client.Dns()`
 
 #### Operations
 
@@ -288,14 +291,14 @@ Create an instance: `const dns = client.dns`
 
 #### Example: Load
 
-```ts
-const dns = await client.dns.load({ id: 'dns_id' })
+```python
+dns = client.Dns().load({"id": "dns_id"})
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.geodn`
+Create an instance: `geodn = client.Geodn()`
 
 #### Operations
 
@@ -312,14 +315,14 @@ Create an instance: `const geodn = client.geodn`
 
 #### Example: Load
 
-```ts
-const geodn = await client.geodn.load({ id: 'geodn_id' })
+```python
+geodn = client.Geodn().load({"id": "geodn_id"})
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.geoping`
+Create an instance: `geoping = client.Geoping()`
 
 #### Operations
 
@@ -344,14 +347,14 @@ Create an instance: `const geoping = client.geoping`
 
 #### Example: Load
 
-```ts
-const geoping = await client.geoping.load({ id: 'geoping_id' })
+```python
+geoping = client.Geoping().load({"id": "geoping_id"})
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.ping`
+Create an instance: `ping = client.Ping()`
 
 #### Operations
 
@@ -376,8 +379,8 @@ Create an instance: `const ping = client.ping`
 
 #### Example: Load
 
-```ts
-const ping = await client.ping.load({ id: 'ping_id' })
+```python
+ping = client.Ping().load({"id": "ping_id"})
 ```
 
 
@@ -451,7 +454,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-dns = client.dns
+dns = client.Dns()
 dns.load({"id": "example_id"})
 
 # dns.data_get() now returns the loaded dns data

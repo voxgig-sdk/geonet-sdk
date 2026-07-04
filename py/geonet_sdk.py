@@ -220,73 +220,33 @@ class GeonetSDK:
         }
 
 
-    @property
-    def dns(self):
-        """Idiomatic facade: client.dns.list() / client.dns.load({"id": ...})."""
-        from entity.dns_entity import DnsEntity
-        cached = getattr(self, "_dns", None)
-        if cached is None:
-            cached = DnsEntity(self, None)
-            self._dns = cached
-        return cached
-
-    def Dns(self, data=None):
-        # Deprecated: use client.dns instead.
+    def Dns(self, data=None) -> "DnsEntity":
+        """Entity factory: client.Dns().list({}) / client.Dns().load({"id": ...})."""
         from entity.dns_entity import DnsEntity
         return DnsEntity(self, data)
 
 
-    @property
-    def geodn(self):
-        """Idiomatic facade: client.geodn.list() / client.geodn.load({"id": ...})."""
-        from entity.geodn_entity import GeodnEntity
-        cached = getattr(self, "_geodn", None)
-        if cached is None:
-            cached = GeodnEntity(self, None)
-            self._geodn = cached
-        return cached
-
-    def Geodn(self, data=None):
-        # Deprecated: use client.geodn instead.
+    def Geodn(self, data=None) -> "GeodnEntity":
+        """Entity factory: client.Geodn().list({}) / client.Geodn().load({"id": ...})."""
         from entity.geodn_entity import GeodnEntity
         return GeodnEntity(self, data)
 
 
-    @property
-    def geoping(self):
-        """Idiomatic facade: client.geoping.list() / client.geoping.load({"id": ...})."""
-        from entity.geoping_entity import GeopingEntity
-        cached = getattr(self, "_geoping", None)
-        if cached is None:
-            cached = GeopingEntity(self, None)
-            self._geoping = cached
-        return cached
-
-    def Geoping(self, data=None):
-        # Deprecated: use client.geoping instead.
+    def Geoping(self, data=None) -> "GeopingEntity":
+        """Entity factory: client.Geoping().list({}) / client.Geoping().load({"id": ...})."""
         from entity.geoping_entity import GeopingEntity
         return GeopingEntity(self, data)
 
 
-    @property
-    def ping(self):
-        """Idiomatic facade: client.ping.list() / client.ping.load({"id": ...})."""
-        from entity.ping_entity import PingEntity
-        cached = getattr(self, "_ping", None)
-        if cached is None:
-            cached = PingEntity(self, None)
-            self._ping = cached
-        return cached
-
-    def Ping(self, data=None):
-        # Deprecated: use client.ping instead.
+    def Ping(self, data=None) -> "PingEntity":
+        """Entity factory: client.Ping().list({}) / client.Ping().load({"id": ...})."""
         from entity.ping_entity import PingEntity
         return PingEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "GeonetSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class GeonetSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.dns_entity import DnsEntity
+    from entity.geodn_entity import GeodnEntity
+    from entity.geoping_entity import GeopingEntity
+    from entity.ping_entity import PingEntity

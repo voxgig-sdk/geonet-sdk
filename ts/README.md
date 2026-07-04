@@ -30,11 +30,14 @@ const client = new GeonetSDK()
 
 ### 3. Load a dns
 
-```ts
-const result = await client.dns.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const dns = await client.Dns().load({ id: 'example_id' })
+  console.log(dns)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -52,6 +55,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -80,9 +86,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GeonetSDK.test()
 
-const result = await client.dns.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const dns = await client.Dns().load({ id: 'test01' })
+// dns is a bare entity populated with mock response data
+console.log(dns)
 ```
 
 You can also use the instance method:
@@ -97,7 +103,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.dns
+const entity = client.Dns()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -195,29 +201,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): GeonetSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -316,7 +323,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.dns`
+Create an instance: `const dns = client.Dns()`
 
 #### Operations
 
@@ -334,13 +341,13 @@ Create an instance: `const dns = client.dns`
 #### Example: Load
 
 ```ts
-const dns = await client.dns.load({ id: 'dns_id' })
+const dns = await client.Dns().load({ id: 'dns_id' })
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.geodn`
+Create an instance: `const geodn = client.Geodn()`
 
 #### Operations
 
@@ -358,13 +365,13 @@ Create an instance: `const geodn = client.geodn`
 #### Example: Load
 
 ```ts
-const geodn = await client.geodn.load({ id: 'geodn_id' })
+const geodn = await client.Geodn().load({ id: 'geodn_id' })
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.geoping`
+Create an instance: `const geoping = client.Geoping()`
 
 #### Operations
 
@@ -390,13 +397,13 @@ Create an instance: `const geoping = client.geoping`
 #### Example: Load
 
 ```ts
-const geoping = await client.geoping.load({ id: 'geoping_id' })
+const geoping = await client.Geoping().load({ id: 'geoping_id' })
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.ping`
+Create an instance: `const ping = client.Ping()`
 
 #### Operations
 
@@ -422,7 +429,7 @@ Create an instance: `const ping = client.ping`
 #### Example: Load
 
 ```ts
-const ping = await client.ping.load({ id: 'ping_id' })
+const ping = await client.Ping().load({ id: 'ping_id' })
 ```
 
 
@@ -493,7 +500,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const dns = client.dns
+const dns = client.Dns()
 await dns.load({ id: "example_id" })
 
 // dns.data() now returns the loaded dns data

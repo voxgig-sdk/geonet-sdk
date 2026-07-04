@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## DnsEntity
 
 ```lua
-local dns = client:dns(nil)
+local dns = client:Dns(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local dns = client:dns(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:dns():load({ id = "dns_id" })
+local result, err = client:Dns():load({ id = "dns_id" })
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## GeodnEntity
 
 ```lua
-local geodn = client:geodn(nil)
+local geodn = client:Geodn(nil)
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ local geodn = client:geodn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:geodn():load({ id = "geodn_id" })
+local result, err = client:Geodn():load({ id = "geodn_id" })
 ```
 
 ### Common Methods
@@ -201,7 +201,7 @@ Return the entity name.
 ## GeopingEntity
 
 ```lua
-local geoping = client:geoping(nil)
+local geoping = client:Geoping(nil)
 ```
 
 ### Fields
@@ -226,7 +226,7 @@ local geoping = client:geoping(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:geoping():load({ id = "geoping_id" })
+local result, err = client:Geoping():load({ id = "geoping_id" })
 ```
 
 ### Common Methods
@@ -262,7 +262,7 @@ Return the entity name.
 ## PingEntity
 
 ```lua
-local ping = client:ping(nil)
+local ping = client:Ping(nil)
 ```
 
 ### Fields
@@ -287,7 +287,7 @@ local ping = client:ping(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ping():load({ id = "ping_id" })
+local result, err = client:Ping():load({ id = "ping_id" })
 ```
 
 ### Common Methods

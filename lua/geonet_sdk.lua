@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:dns():list() / client:dns():load({ id = ... })
-function GeonetSDK:dns(data)
+-- Idiomatic facade: client:Dns():list() / client:Dns():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GeonetSDK:Dns(data)
   local EntityMod = require("entity.dns_entity")
   if data == nil then
     if self._dns == nil then
@@ -256,15 +257,10 @@ function GeonetSDK:dns(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:dns() instead.
-function GeonetSDK:Dns(data)
-  local EntityMod = require("entity.dns_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:geodn():list() / client:geodn():load({ id = ... })
-function GeonetSDK:geodn(data)
+-- Idiomatic facade: client:Geodn():list() / client:Geodn():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GeonetSDK:Geodn(data)
   local EntityMod = require("entity.geodn_entity")
   if data == nil then
     if self._geodn == nil then
@@ -275,15 +271,10 @@ function GeonetSDK:geodn(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:geodn() instead.
-function GeonetSDK:Geodn(data)
-  local EntityMod = require("entity.geodn_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:geoping():list() / client:geoping():load({ id = ... })
-function GeonetSDK:geoping(data)
+-- Idiomatic facade: client:Geoping():list() / client:Geoping():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GeonetSDK:Geoping(data)
   local EntityMod = require("entity.geoping_entity")
   if data == nil then
     if self._geoping == nil then
@@ -294,15 +285,10 @@ function GeonetSDK:geoping(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:geoping() instead.
-function GeonetSDK:Geoping(data)
-  local EntityMod = require("entity.geoping_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:ping():list() / client:ping():load({ id = ... })
-function GeonetSDK:ping(data)
+-- Idiomatic facade: client:Ping():list() / client:Ping():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function GeonetSDK:Ping(data)
   local EntityMod = require("entity.ping_entity")
   if data == nil then
     if self._ping == nil then
@@ -310,12 +296,6 @@ function GeonetSDK:ping(data)
     end
     return self._ping
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:ping() instead.
-function GeonetSDK:Ping(data)
-  local EntityMod = require("entity.ping_entity")
   return EntityMod.new(self, data)
 end
 

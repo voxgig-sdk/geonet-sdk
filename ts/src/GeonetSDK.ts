@@ -207,56 +207,28 @@ class GeonetSDK {
 
 
 
-  _dns?: DnsEntity
-
-  // Idiomatic facade: `client.dns.list()` / `client.dns.load({ id })`.
-  get dns(): DnsEntity {
-    return (this._dns ??= new DnsEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.dns` instead. */
+  // Entity access: `client.Dns().list()` / `client.Dns().load({ id })`.
   Dns(data?: any) {
     const self = this
     return new DnsEntity(self,data)
   }
 
 
-  _geodn?: GeodnEntity
-
-  // Idiomatic facade: `client.geodn.list()` / `client.geodn.load({ id })`.
-  get geodn(): GeodnEntity {
-    return (this._geodn ??= new GeodnEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.geodn` instead. */
+  // Entity access: `client.Geodn().list()` / `client.Geodn().load({ id })`.
   Geodn(data?: any) {
     const self = this
     return new GeodnEntity(self,data)
   }
 
 
-  _geoping?: GeopingEntity
-
-  // Idiomatic facade: `client.geoping.list()` / `client.geoping.load({ id })`.
-  get geoping(): GeopingEntity {
-    return (this._geoping ??= new GeopingEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.geoping` instead. */
+  // Entity access: `client.Geoping().list()` / `client.Geoping().load({ id })`.
   Geoping(data?: any) {
     const self = this
     return new GeopingEntity(self,data)
   }
 
 
-  _ping?: PingEntity
-
-  // Idiomatic facade: `client.ping.list()` / `client.ping.load({ id })`.
-  get ping(): PingEntity {
-    return (this._ping ??= new PingEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.ping` instead. */
+  // Entity access: `client.Ping().list()` / `client.Ping().load({ id })`.
   Ping(data?: any) {
     const self = this
     return new PingEntity(self,data)

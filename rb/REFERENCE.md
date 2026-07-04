@@ -98,7 +98,7 @@ same parameters as `direct()`. Raises on error.
 ## DnsEntity
 
 ```ruby
-dns = client.dns
+dns = client.Dns
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ dns = client.dns
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.dns.load({ "id" => "dns_id" })
+result = client.Dns.load({ "id" => "dns_id" })
 ```
 
 ### Common Methods
@@ -151,7 +151,7 @@ Return the entity name.
 ## GeodnEntity
 
 ```ruby
-geodn = client.geodn
+geodn = client.Geodn
 ```
 
 ### Fields
@@ -168,7 +168,7 @@ geodn = client.geodn
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.geodn.load({ "id" => "geodn_id" })
+result = client.Geodn.load({ "id" => "geodn_id" })
 ```
 
 ### Common Methods
@@ -204,7 +204,7 @@ Return the entity name.
 ## GeopingEntity
 
 ```ruby
-geoping = client.geoping
+geoping = client.Geoping
 ```
 
 ### Fields
@@ -229,7 +229,7 @@ geoping = client.geoping
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.geoping.load({ "id" => "geoping_id" })
+result = client.Geoping.load({ "id" => "geoping_id" })
 ```
 
 ### Common Methods
@@ -265,7 +265,7 @@ Return the entity name.
 ## PingEntity
 
 ```ruby
-ping = client.ping
+ping = client.Ping
 ```
 
 ### Fields
@@ -290,7 +290,7 @@ ping = client.ping
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ping.load({ "id" => "ping_id" })
+result = client.Ping.load({ "id" => "ping_id" })
 ```
 
 ### Common Methods

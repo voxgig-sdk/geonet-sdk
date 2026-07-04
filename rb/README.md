@@ -32,8 +32,9 @@ client = GeonetSDK.new
 
 ```ruby
 begin
-  result = client.dns.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Dns record (raises on error).
+  dns = client.Dns.load({ "id" => "example_id" })
+  puts dns
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = GeonetSDK.test
+client = GeonetSDK.test({
+  "entity" => { "dns" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.dns.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+dns = client.Dns.load({ "id" => "test01" })
+puts dns
 ```
 
 ### Use a custom fetch function
@@ -271,7 +276,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.dns`
+Create an instance: `dns = client.Dns`
 
 #### Operations
 
@@ -288,14 +293,15 @@ Create an instance: `const dns = client.dns`
 
 #### Example: Load
 
-```ts
-const dns = await client.dns.load({ id: 'dns_id' })
+```ruby
+# load returns the bare Dns record (raises on error).
+dns = client.Dns.load({ "id" => "dns_id" })
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.geodn`
+Create an instance: `geodn = client.Geodn`
 
 #### Operations
 
@@ -312,14 +318,15 @@ Create an instance: `const geodn = client.geodn`
 
 #### Example: Load
 
-```ts
-const geodn = await client.geodn.load({ id: 'geodn_id' })
+```ruby
+# load returns the bare Geodn record (raises on error).
+geodn = client.Geodn.load({ "id" => "geodn_id" })
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.geoping`
+Create an instance: `geoping = client.Geoping`
 
 #### Operations
 
@@ -344,14 +351,15 @@ Create an instance: `const geoping = client.geoping`
 
 #### Example: Load
 
-```ts
-const geoping = await client.geoping.load({ id: 'geoping_id' })
+```ruby
+# load returns the bare Geoping record (raises on error).
+geoping = client.Geoping.load({ "id" => "geoping_id" })
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.ping`
+Create an instance: `ping = client.Ping`
 
 #### Operations
 
@@ -376,8 +384,9 @@ Create an instance: `const ping = client.ping`
 
 #### Example: Load
 
-```ts
-const ping = await client.ping.load({ id: 'ping_id' })
+```ruby
+# load returns the bare Ping record (raises on error).
+ping = client.Ping.load({ "id" => "ping_id" })
 ```
 
 
@@ -452,7 +461,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-dns = client.dns
+dns = client.Dns
 dns.load({ "id" => "example_id" })
 
 # dns.data_get now returns the loaded dns data

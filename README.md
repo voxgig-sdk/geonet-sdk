@@ -26,9 +26,9 @@ import { GeonetSDK } from '@voxgig-sdk/geonet'
 
 const client = new GeonetSDK()
 
-// Load dns data
-const dns = await client.dns.load({})
-console.log(dns.data)
+// Load dns data (returns a Dns)
+const dns = await client.Dns().load()
+console.log(dns)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -87,8 +87,8 @@ from geonet_sdk import GeonetSDK
 client = GeonetSDK()
 
 
-# Load a specific dns
-dns = client.dns.load({"id": "example_id"})
+# Load a specific dns (returns the record, raises on error)
+dns = client.Dns().load({"id": "example_id"})
 print(dns)
 ```
 
@@ -101,8 +101,8 @@ require_once 'geonet_sdk.php';
 $client = new GeonetSDK();
 
 
-// Load a specific dns
-$dns = $client->dns()->load(["id" => "example_id"]);
+// Load a specific dns (returns the bare record; throws on error)
+$dns = $client->Dns()->load(["id" => "example_id"]);
 print_r($dns);
 ```
 
@@ -126,8 +126,8 @@ require_relative "Geonet_sdk"
 client = GeonetSDK.new
 
 
-# Load a specific dns
-dns = client.dns.load({ "id" => "example_id" })
+# Load a specific dns (returns the bare record; raises on error)
+dns = client.Dns.load({ "id" => "example_id" })
 puts dns
 ```
 
@@ -140,7 +140,7 @@ local client = sdk.new()
 
 
 -- Load a specific dns
-local dns, err = client:dns():load({ id = "example_id" })
+local dns, err = client:Dns():load({ id = "example_id" })
 print(dns)
 ```
 
@@ -153,22 +153,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = GeonetSDK.test()
-const result = await client.dns.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const dns = await client.Dns().load({ id: 'test01' })
+// dns is a bare Dns populated with mock data
+console.log(dns)
 ```
 
 ### Python
 
 ```python
 client = GeonetSDK.test()
-result = client.dns.load({"id": "test01"})
+dns = client.Dns().load({"id": "test01"})
+print(dns)
 ```
 
 ### PHP
 
 ```php
-$client = GeonetSDK::test();
-$result = $client->dns()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = GeonetSDK::test([
+    "entity" => ["dns" => ["test01" => ["id" => "test01"]]],
+]);
+$dns = $client->Dns()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -183,15 +188,18 @@ result, err := client.Dns(nil).Load(
 ### Ruby
 
 ```ruby
-client = GeonetSDK.test
-result = client.dns.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = GeonetSDK.test({
+  "entity" => { "dns" => { "test01" => { "id" => "test01" } } },
+})
+dns = client.Dns.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:dns():load({ id = "test01" })
+local result, err = client:Dns():load({ id = "test01" })
 ```
 
 ## How it works
@@ -239,6 +247,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

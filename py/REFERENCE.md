@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DnsEntity
 
 ```python
-dns = client.dns
+dns = client.Dns()
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ dns = client.dns
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.dns.load({"id": "dns_id"})
+result = client.Dns().load({"id": "dns_id"})
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## GeodnEntity
 
 ```python
-geodn = client.geodn
+geodn = client.Geodn()
 ```
 
 ### Fields
@@ -161,7 +161,7 @@ geodn = client.geodn
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.geodn.load({"id": "geodn_id"})
+result = client.Geodn().load({"id": "geodn_id"})
 ```
 
 ### Common Methods
@@ -196,7 +196,7 @@ Return the entity name.
 ## GeopingEntity
 
 ```python
-geoping = client.geoping
+geoping = client.Geoping()
 ```
 
 ### Fields
@@ -221,7 +221,7 @@ geoping = client.geoping
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.geoping.load({"id": "geoping_id"})
+result = client.Geoping().load({"id": "geoping_id"})
 ```
 
 ### Common Methods
@@ -256,7 +256,7 @@ Return the entity name.
 ## PingEntity
 
 ```python
-ping = client.ping
+ping = client.Ping()
 ```
 
 ### Fields
@@ -281,7 +281,7 @@ ping = client.ping
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ping.load({"id": "ping_id"})
+result = client.Ping().load({"id": "ping_id"})
 ```
 
 ### Common Methods

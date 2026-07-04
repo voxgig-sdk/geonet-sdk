@@ -208,52 +208,28 @@ class GeonetSDK
   end
 
 
-  # Idiomatic facade: client.dns.list / client.dns.load({ "id" => ... })
-  def dns
-    require_relative 'entity/dns_entity'
-    @dns ||= DnsEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.dns instead.
+  # Canonical facade: client.Dns.list / client.Dns.load({ "id" => ... })
   def Dns(data = nil)
     require_relative 'entity/dns_entity'
     DnsEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.geodn.list / client.geodn.load({ "id" => ... })
-  def geodn
-    require_relative 'entity/geodn_entity'
-    @geodn ||= GeodnEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.geodn instead.
+  # Canonical facade: client.Geodn.list / client.Geodn.load({ "id" => ... })
   def Geodn(data = nil)
     require_relative 'entity/geodn_entity'
     GeodnEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.geoping.list / client.geoping.load({ "id" => ... })
-  def geoping
-    require_relative 'entity/geoping_entity'
-    @geoping ||= GeopingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.geoping instead.
+  # Canonical facade: client.Geoping.list / client.Geoping.load({ "id" => ... })
   def Geoping(data = nil)
     require_relative 'entity/geoping_entity'
     GeopingEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.ping.list / client.ping.load({ "id" => ... })
-  def ping
-    require_relative 'entity/ping_entity'
-    @ping ||= PingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ping instead.
+  # Canonical facade: client.Ping.list / client.Ping.load({ "id" => ... })
   def Ping(data = nil)
     require_relative 'entity/ping_entity'
     PingEntity.new(self, data)
