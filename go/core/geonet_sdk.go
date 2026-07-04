@@ -245,21 +245,33 @@ func (sdk *GeonetSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Dns returns a Dns entity bound to this client.
+// Idiomatic usage: client.Dns(nil).List(nil, nil) or
+// client.Dns(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GeonetSDK) Dns(data map[string]any) GeonetEntity {
 	return NewDnsEntityFunc(sdk, data)
 }
 
 
+// Geodn returns a Geodn entity bound to this client.
+// Idiomatic usage: client.Geodn(nil).List(nil, nil) or
+// client.Geodn(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GeonetSDK) Geodn(data map[string]any) GeonetEntity {
 	return NewGeodnEntityFunc(sdk, data)
 }
 
 
+// Geoping returns a Geoping entity bound to this client.
+// Idiomatic usage: client.Geoping(nil).List(nil, nil) or
+// client.Geoping(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GeonetSDK) Geoping(data map[string]any) GeonetEntity {
 	return NewGeopingEntityFunc(sdk, data)
 }
 
 
+// Ping returns a Ping entity bound to this client.
+// Idiomatic usage: client.Ping(nil).List(nil, nil) or
+// client.Ping(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *GeonetSDK) Ping(data map[string]any) GeonetEntity {
 	return NewPingEntityFunc(sdk, data)
 }

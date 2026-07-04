@@ -15,9 +15,6 @@ module GeonetConfig
       },
       "options" => {
         "base" => "https://geonet.shodan.io",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -63,6 +60,7 @@ module GeonetConfig
                         "orig" => "hostname",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -143,6 +141,7 @@ module GeonetConfig
                         "orig" => "hostname",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -279,6 +278,7 @@ module GeonetConfig
                         "orig" => "ip",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -403,6 +403,7 @@ module GeonetConfig
                         "orig" => "ip",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

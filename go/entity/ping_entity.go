@@ -85,6 +85,27 @@ func (e *PingEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Ping; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *PingEntity) DataTyped(data ...Ping) Ping {
+	if len(data) > 0 {
+		return typedFrom[Ping](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Ping](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Ping (all fields
+// optional at the wire level).
+func (e *PingEntity) MatchTyped(match ...Ping) Ping {
+	if len(match) > 0 {
+		return typedFrom[Ping](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Ping](e.Match())
+}
+
 
 func (e *PingEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *PingEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// PingLoadMatch and returns an Ping. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *PingEntity) LoadTyped(reqmatch PingLoadMatch, ctrl map[string]any) (Ping, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Ping{}, err
+	}
+	return typedFrom[Ping](res), nil
 }
 
 

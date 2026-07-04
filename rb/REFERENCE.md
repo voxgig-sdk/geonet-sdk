@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -66,9 +65,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -82,14 +83,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -97,7 +98,7 @@ same parameters as `direct()`.
 ## DnsEntity
 
 ```ruby
-dns = client.Dns
+dns = client.dns
 ```
 
 ### Fields
@@ -109,12 +110,12 @@ dns = client.Dns
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Dns.load({ "id" => "dns_id" })
+result = client.dns.load({ "id" => "dns_id" })
 ```
 
 ### Common Methods
@@ -150,7 +151,7 @@ Return the entity name.
 ## GeodnEntity
 
 ```ruby
-geodn = client.Geodn
+geodn = client.geodn
 ```
 
 ### Fields
@@ -162,12 +163,12 @@ geodn = client.Geodn
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Geodn.load({ "id" => "geodn_id" })
+result = client.geodn.load({ "id" => "geodn_id" })
 ```
 
 ### Common Methods
@@ -203,7 +204,7 @@ Return the entity name.
 ## GeopingEntity
 
 ```ruby
-geoping = client.Geoping
+geoping = client.geoping
 ```
 
 ### Fields
@@ -223,12 +224,12 @@ geoping = client.Geoping
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Geoping.load({ "id" => "geoping_id" })
+result = client.geoping.load({ "id" => "geoping_id" })
 ```
 
 ### Common Methods
@@ -264,7 +265,7 @@ Return the entity name.
 ## PingEntity
 
 ```ruby
-ping = client.Ping
+ping = client.ping
 ```
 
 ### Fields
@@ -284,12 +285,12 @@ ping = client.Ping
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Ping.load({ "id" => "ping_id" })
+result = client.ping.load({ "id" => "ping_id" })
 ```
 
 ### Common Methods

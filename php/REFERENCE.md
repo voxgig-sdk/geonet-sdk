@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -68,7 +67,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -82,11 +84,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -94,7 +97,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## DnsEntity
 
 ```php
-$dns = $client->Dns();
+$dns = $client->dns();
 ```
 
 ### Fields
@@ -106,12 +109,12 @@ $dns = $client->Dns();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Dns()->load(["id" => "dns_id"]);
+$result = $client->dns()->load(["id" => "dns_id"]);
 ```
 
 ### Common Methods
@@ -147,7 +150,7 @@ Return the entity name.
 ## GeodnEntity
 
 ```php
-$geodn = $client->Geodn();
+$geodn = $client->geodn();
 ```
 
 ### Fields
@@ -159,12 +162,12 @@ $geodn = $client->Geodn();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Geodn()->load(["id" => "geodn_id"]);
+$result = $client->geodn()->load(["id" => "geodn_id"]);
 ```
 
 ### Common Methods
@@ -200,7 +203,7 @@ Return the entity name.
 ## GeopingEntity
 
 ```php
-$geoping = $client->Geoping();
+$geoping = $client->geoping();
 ```
 
 ### Fields
@@ -220,12 +223,12 @@ $geoping = $client->Geoping();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Geoping()->load(["id" => "geoping_id"]);
+$result = $client->geoping()->load(["id" => "geoping_id"]);
 ```
 
 ### Common Methods
@@ -261,7 +264,7 @@ Return the entity name.
 ## PingEntity
 
 ```php
-$ping = $client->Ping();
+$ping = $client->ping();
 ```
 
 ### Fields
@@ -281,12 +284,12 @@ $ping = $client->Ping();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Ping()->load(["id" => "ping_id"]);
+$result = $client->ping()->load(["id" => "ping_id"]);
 ```
 
 ### Common Methods

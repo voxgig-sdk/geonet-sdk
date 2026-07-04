@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GeopingLoadMatch
+---@param ctrl? table
+---@return Geoping
+---@return string? err
 function GeopingEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -9,12 +9,9 @@ The Lua SDK for the Geonet API — an entity-oriented client using Lua conventio
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-geonet
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/geonet-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("geonet_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("GEONET_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a dns
 
 ```lua
-local result, err = client:Dns():load({ id = "example_id" })
+local result, err = client:dns():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Geonet():load({ id = "test01" })
+local result, err = client:dns():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -121,7 +116,6 @@ Create a `.env.local` file at the project root:
 
 ```
 GEONET_TEST_LIVE=TRUE
-GEONET_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -274,7 +267,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.Dns()`
+Create an instance: `const dns = client.dns`
 
 #### Operations
 
@@ -292,13 +285,13 @@ Create an instance: `const dns = client.Dns()`
 #### Example: Load
 
 ```ts
-const dns = await client.Dns().load({ id: 'dns_id' })
+const dns = await client.dns.load({ id: 'dns_id' })
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.Geodn()`
+Create an instance: `const geodn = client.geodn`
 
 #### Operations
 
@@ -316,13 +309,13 @@ Create an instance: `const geodn = client.Geodn()`
 #### Example: Load
 
 ```ts
-const geodn = await client.Geodn().load({ id: 'geodn_id' })
+const geodn = await client.geodn.load({ id: 'geodn_id' })
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.Geoping()`
+Create an instance: `const geoping = client.geoping`
 
 #### Operations
 
@@ -348,13 +341,13 @@ Create an instance: `const geoping = client.Geoping()`
 #### Example: Load
 
 ```ts
-const geoping = await client.Geoping().load({ id: 'geoping_id' })
+const geoping = await client.geoping.load({ id: 'geoping_id' })
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.Ping()`
+Create an instance: `const ping = client.ping`
 
 #### Operations
 
@@ -380,7 +373,7 @@ Create an instance: `const ping = client.Ping()`
 #### Example: Load
 
 ```ts
-const ping = await client.Ping().load({ id: 'ping_id' })
+const ping = await client.ping.load({ id: 'ping_id' })
 ```
 
 
@@ -455,11 +448,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local dns = client:dns()
+dns:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- dns:data_get() now returns the loaded dns data
+-- dns:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

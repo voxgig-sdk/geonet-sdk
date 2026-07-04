@@ -49,8 +49,7 @@ class TestGeopingEntity:
         # LOAD
         geoping_ref01_ent = client.Geoping(None)
         geoping_ref01_match_dt0 = {}
-        geoping_ref01_data_dt0_loaded, err = geoping_ref01_ent.load(geoping_ref01_match_dt0, None)
-        assert err is None
+        geoping_ref01_data_dt0_loaded = geoping_ref01_ent.load(geoping_ref01_match_dt0, None)
         assert geoping_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _geoping_basic_setup(extra):
         "GEONET_TEST_GEOPING_ENTID": idmap,
         "GEONET_TEST_LIVE": "FALSE",
         "GEONET_TEST_EXPLAIN": "FALSE",
-        "GEONET_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _geoping_basic_setup(extra):
     if env.get("GEONET_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GEONET_APIKEY"),
             },
             extra or {},
         ])

@@ -49,8 +49,7 @@ class DnsEntityTest extends TestCase
         // LOAD
         $dns_ref01_ent = $client->Dns(null);
         $dns_ref01_match_dt0 = [];
-        [$dns_ref01_data_dt0_loaded, $err] = $dns_ref01_ent->load($dns_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $dns_ref01_data_dt0_loaded = $dns_ref01_ent->load($dns_ref01_match_dt0, null);
         $this->assertNotNull($dns_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function dns_basic_setup($extra)
         "GEONET_TEST_DNS_ENTID" => $idmap,
         "GEONET_TEST_LIVE" => "FALSE",
         "GEONET_TEST_EXPLAIN" => "FALSE",
-        "GEONET_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function dns_basic_setup($extra)
     if ($env["GEONET_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["GEONET_APIKEY"],
             ],
             $extra ?? [],
         ]);

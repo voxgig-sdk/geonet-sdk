@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Geonet_types'
+
 
 class GeonetSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class GeonetSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class GeonetSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue GeonetError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = GeonetHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class GeonetSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,34 +198,62 @@ class GeonetSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.dns.list / client.dns.load({ "id" => ... })
+  def dns
+    require_relative 'entity/dns_entity'
+    @dns ||= DnsEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.dns instead.
   def Dns(data = nil)
     require_relative 'entity/dns_entity'
     DnsEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.geodn.list / client.geodn.load({ "id" => ... })
+  def geodn
+    require_relative 'entity/geodn_entity'
+    @geodn ||= GeodnEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.geodn instead.
   def Geodn(data = nil)
     require_relative 'entity/geodn_entity'
     GeodnEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.geoping.list / client.geoping.load({ "id" => ... })
+  def geoping
+    require_relative 'entity/geoping_entity'
+    @geoping ||= GeopingEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.geoping instead.
   def Geoping(data = nil)
     require_relative 'entity/geoping_entity'
     GeopingEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.ping.list / client.ping.load({ "id" => ... })
+  def ping
+    require_relative 'entity/ping_entity'
+    @ping ||= PingEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.ping instead.
   def Ping(data = nil)
     require_relative 'entity/ping_entity'
     PingEntity.new(self, data)

@@ -49,8 +49,7 @@ class TestPingEntity:
         # LOAD
         ping_ref01_ent = client.Ping(None)
         ping_ref01_match_dt0 = {}
-        ping_ref01_data_dt0_loaded, err = ping_ref01_ent.load(ping_ref01_match_dt0, None)
-        assert err is None
+        ping_ref01_data_dt0_loaded = ping_ref01_ent.load(ping_ref01_match_dt0, None)
         assert ping_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _ping_basic_setup(extra):
         "GEONET_TEST_PING_ENTID": idmap,
         "GEONET_TEST_LIVE": "FALSE",
         "GEONET_TEST_EXPLAIN": "FALSE",
-        "GEONET_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _ping_basic_setup(extra):
     if env.get("GEONET_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GEONET_APIKEY"),
             },
             extra or {},
         ])

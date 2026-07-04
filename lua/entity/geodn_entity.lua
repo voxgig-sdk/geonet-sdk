@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GeodnLoadMatch
+---@param ctrl? table
+---@return Geodn
+---@return string? err
 function GeodnEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

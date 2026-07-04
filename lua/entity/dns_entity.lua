@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DnsLoadMatch
+---@param ctrl? table
+---@return Dns
+---@return string? err
 function DnsEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

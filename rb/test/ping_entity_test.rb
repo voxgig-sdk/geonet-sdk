@@ -42,8 +42,7 @@ class PingEntityTest < Minitest::Test
     # LOAD
     ping_ref01_ent = client.Ping(nil)
     ping_ref01_match_dt0 = {}
-    ping_ref01_data_dt0_loaded, err = ping_ref01_ent.load(ping_ref01_match_dt0, nil)
-    assert_nil err
+    ping_ref01_data_dt0_loaded = ping_ref01_ent.load(ping_ref01_match_dt0, nil)
     assert !ping_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def ping_basic_setup(extra)
     "GEONET_TEST_PING_ENTID" => idmap,
     "GEONET_TEST_LIVE" => "FALSE",
     "GEONET_TEST_EXPLAIN" => "FALSE",
-    "GEONET_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def ping_basic_setup(extra)
   if env["GEONET_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["GEONET_APIKEY"],
       },
       extra || {},
     ])

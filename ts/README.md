@@ -9,9 +9,12 @@ The TypeScript SDK for the Geonet API — a type-safe, entity-oriented client wi
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/geonet
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/geonet-sdk/releases](https://github.com/voxgig-sdk/geonet-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { GeonetSDK } from 'geonet'
+import { GeonetSDK } from '@voxgig-sdk/geonet'
 
-const client = new GeonetSDK({
-  apikey: process.env.GEONET_APIKEY,
-})
+const client = new GeonetSDK()
 ```
 
 ### 3. Load a dns
 
 ```ts
-const result = await client.Dns().load({ id: 'example_id' })
+const result = await client.dns.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GeonetSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.dns.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new GeonetSDK({ apikey: '...' })
+const client = new GeonetSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.dns
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new GeonetSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -134,7 +134,6 @@ Create a `.env.local` file at the project root:
 
 ```
 GEONET_TEST_LIVE=TRUE
-GEONET_APIKEY=<your-key>
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new GeonetSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new GeonetSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -319,7 +316,7 @@ API path: `/api/ping/{ip}`
 
 ### Dns
 
-Create an instance: `const dns = client.Dns()`
+Create an instance: `const dns = client.dns`
 
 #### Operations
 
@@ -337,13 +334,13 @@ Create an instance: `const dns = client.Dns()`
 #### Example: Load
 
 ```ts
-const dns = await client.Dns().load({ id: 'dns_id' })
+const dns = await client.dns.load({ id: 'dns_id' })
 ```
 
 
 ### Geodn
 
-Create an instance: `const geodn = client.Geodn()`
+Create an instance: `const geodn = client.geodn`
 
 #### Operations
 
@@ -361,13 +358,13 @@ Create an instance: `const geodn = client.Geodn()`
 #### Example: Load
 
 ```ts
-const geodn = await client.Geodn().load({ id: 'geodn_id' })
+const geodn = await client.geodn.load({ id: 'geodn_id' })
 ```
 
 
 ### Geoping
 
-Create an instance: `const geoping = client.Geoping()`
+Create an instance: `const geoping = client.geoping`
 
 #### Operations
 
@@ -393,13 +390,13 @@ Create an instance: `const geoping = client.Geoping()`
 #### Example: Load
 
 ```ts
-const geoping = await client.Geoping().load({ id: 'geoping_id' })
+const geoping = await client.geoping.load({ id: 'geoping_id' })
 ```
 
 
 ### Ping
 
-Create an instance: `const ping = client.Ping()`
+Create an instance: `const ping = client.ping`
 
 #### Operations
 
@@ -425,7 +422,7 @@ Create an instance: `const ping = client.Ping()`
 #### Example: Load
 
 ```ts
-const ping = await client.Ping().load({ id: 'ping_id' })
+const ping = await client.ping.load({ id: 'ping_id' })
 ```
 
 
@@ -486,7 +483,7 @@ geonet/
 Import the SDK from the package root:
 
 ```ts
-import { GeonetSDK } from 'geonet'
+import { GeonetSDK } from '@voxgig-sdk/geonet'
 ```
 
 ### Entity state
@@ -496,11 +493,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const dns = client.dns
+await dns.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// dns.data() now returns the loaded dns data
+// dns.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -144,16 +144,23 @@ class GeonetSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class GeonetSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,30 +212,74 @@ class GeonetSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def dns(self):
+        """Idiomatic facade: client.dns.list() / client.dns.load({"id": ...})."""
+        from entity.dns_entity import DnsEntity
+        cached = getattr(self, "_dns", None)
+        if cached is None:
+            cached = DnsEntity(self, None)
+            self._dns = cached
+        return cached
 
     def Dns(self, data=None):
+        # Deprecated: use client.dns instead.
         from entity.dns_entity import DnsEntity
         return DnsEntity(self, data)
 
 
+    @property
+    def geodn(self):
+        """Idiomatic facade: client.geodn.list() / client.geodn.load({"id": ...})."""
+        from entity.geodn_entity import GeodnEntity
+        cached = getattr(self, "_geodn", None)
+        if cached is None:
+            cached = GeodnEntity(self, None)
+            self._geodn = cached
+        return cached
+
     def Geodn(self, data=None):
+        # Deprecated: use client.geodn instead.
         from entity.geodn_entity import GeodnEntity
         return GeodnEntity(self, data)
 
 
+    @property
+    def geoping(self):
+        """Idiomatic facade: client.geoping.list() / client.geoping.load({"id": ...})."""
+        from entity.geoping_entity import GeopingEntity
+        cached = getattr(self, "_geoping", None)
+        if cached is None:
+            cached = GeopingEntity(self, None)
+            self._geoping = cached
+        return cached
+
     def Geoping(self, data=None):
+        # Deprecated: use client.geoping instead.
         from entity.geoping_entity import GeopingEntity
         return GeopingEntity(self, data)
 
 
+    @property
+    def ping(self):
+        """Idiomatic facade: client.ping.list() / client.ping.load({"id": ...})."""
+        from entity.ping_entity import PingEntity
+        cached = getattr(self, "_ping", None)
+        if cached is None:
+            cached = PingEntity(self, None)
+            self._ping = cached
+        return cached
+
     def Ping(self, data=None):
+        # Deprecated: use client.ping instead.
         from entity.ping_entity import PingEntity
         return PingEntity(self, data)
 

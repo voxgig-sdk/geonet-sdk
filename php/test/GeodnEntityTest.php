@@ -49,8 +49,7 @@ class GeodnEntityTest extends TestCase
         // LOAD
         $geodn_ref01_ent = $client->Geodn(null);
         $geodn_ref01_match_dt0 = [];
-        [$geodn_ref01_data_dt0_loaded, $err] = $geodn_ref01_ent->load($geodn_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $geodn_ref01_data_dt0_loaded = $geodn_ref01_ent->load($geodn_ref01_match_dt0, null);
         $this->assertNotNull($geodn_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function geodn_basic_setup($extra)
         "GEONET_TEST_GEODN_ENTID" => $idmap,
         "GEONET_TEST_LIVE" => "FALSE",
         "GEONET_TEST_EXPLAIN" => "FALSE",
-        "GEONET_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function geodn_basic_setup($extra)
     if ($env["GEONET_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["GEONET_APIKEY"],
             ],
             $extra ?? [],
         ]);

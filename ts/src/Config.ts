@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://geonet.shodan.io',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -98,7 +94,8 @@ class Config {
                     "name": "id",
                     "orig": "hostname",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -178,7 +175,8 @@ class Config {
                     "name": "id",
                     "orig": "hostname",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -314,7 +312,8 @@ class Config {
                     "name": "id",
                     "orig": "ip",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -438,7 +437,8 @@ class Config {
                     "name": "id",
                     "orig": "ip",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -96,7 +95,7 @@ same parameters as `direct()`.
 ## DnsEntity
 
 ```lua
-local dns = client:Dns(nil)
+local dns = client:dns(nil)
 ```
 
 ### Fields
@@ -113,7 +112,7 @@ local dns = client:Dns(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Dns():load({ id = "dns_id" })
+local result, err = client:dns():load({ id = "dns_id" })
 ```
 
 ### Common Methods
@@ -149,7 +148,7 @@ Return the entity name.
 ## GeodnEntity
 
 ```lua
-local geodn = client:Geodn(nil)
+local geodn = client:geodn(nil)
 ```
 
 ### Fields
@@ -166,7 +165,7 @@ local geodn = client:Geodn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Geodn():load({ id = "geodn_id" })
+local result, err = client:geodn():load({ id = "geodn_id" })
 ```
 
 ### Common Methods
@@ -202,7 +201,7 @@ Return the entity name.
 ## GeopingEntity
 
 ```lua
-local geoping = client:Geoping(nil)
+local geoping = client:geoping(nil)
 ```
 
 ### Fields
@@ -227,7 +226,7 @@ local geoping = client:Geoping(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Geoping():load({ id = "geoping_id" })
+local result, err = client:geoping():load({ id = "geoping_id" })
 ```
 
 ### Common Methods
@@ -263,7 +262,7 @@ Return the entity name.
 ## PingEntity
 
 ```lua
-local ping = client:Ping(nil)
+local ping = client:ping(nil)
 ```
 
 ### Fields
@@ -288,7 +287,7 @@ local ping = client:Ping(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Ping():load({ id = "ping_id" })
+local result, err = client:ping():load({ id = "ping_id" })
 ```
 
 ### Common Methods

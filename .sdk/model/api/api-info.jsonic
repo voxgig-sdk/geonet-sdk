@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       description: "Run various network tools from multiple geographic locations"
       servers: [
         {

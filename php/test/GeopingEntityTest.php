@@ -49,8 +49,7 @@ class GeopingEntityTest extends TestCase
         // LOAD
         $geoping_ref01_ent = $client->Geoping(null);
         $geoping_ref01_match_dt0 = [];
-        [$geoping_ref01_data_dt0_loaded, $err] = $geoping_ref01_ent->load($geoping_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $geoping_ref01_data_dt0_loaded = $geoping_ref01_ent->load($geoping_ref01_match_dt0, null);
         $this->assertNotNull($geoping_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function geoping_basic_setup($extra)
         "GEONET_TEST_GEOPING_ENTID" => $idmap,
         "GEONET_TEST_LIVE" => "FALSE",
         "GEONET_TEST_EXPLAIN" => "FALSE",
-        "GEONET_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function geoping_basic_setup($extra)
     if ($env["GEONET_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["GEONET_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -45,6 +45,7 @@ class DnsEntity
     end
   end
 
+  # @return [Dns, Hash] the current Dns data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DnsEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Dns fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Dns.
+  #
+  # @param reqmatch [DnsLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Dns, Hash] the loaded Dns; raises GeonetError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

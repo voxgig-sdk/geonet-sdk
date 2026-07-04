@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Geoping,
+  GeopingLoadMatch,
+} from '../GeonetTypes'
 
 // TODO: needs Entity superclass
-class GeopingEntity extends GeonetEntityBase {
+class GeopingEntity extends GeonetEntityBase<Geoping> {
 
   constructor(client: GeonetSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GeopingEntity extends GeonetEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GeopingLoadMatch, ctrl?: Control): Promise<Geoping> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GeopingEntity extends GeonetEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Geoping> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

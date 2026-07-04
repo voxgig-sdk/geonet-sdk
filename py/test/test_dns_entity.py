@@ -49,8 +49,7 @@ class TestDnsEntity:
         # LOAD
         dns_ref01_ent = client.Dns(None)
         dns_ref01_match_dt0 = {}
-        dns_ref01_data_dt0_loaded, err = dns_ref01_ent.load(dns_ref01_match_dt0, None)
-        assert err is None
+        dns_ref01_data_dt0_loaded = dns_ref01_ent.load(dns_ref01_match_dt0, None)
         assert dns_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _dns_basic_setup(extra):
         "GEONET_TEST_DNS_ENTID": idmap,
         "GEONET_TEST_LIVE": "FALSE",
         "GEONET_TEST_EXPLAIN": "FALSE",
-        "GEONET_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _dns_basic_setup(extra):
     if env.get("GEONET_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("GEONET_APIKEY"),
             },
             extra or {},
         ])

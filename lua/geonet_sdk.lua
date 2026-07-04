@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:dns():list() / client:dns():load({ id = ... })
+function GeonetSDK:dns(data)
+  local EntityMod = require("entity.dns_entity")
+  if data == nil then
+    if self._dns == nil then
+      self._dns = EntityMod.new(self, nil)
+    end
+    return self._dns
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:dns() instead.
 function GeonetSDK:Dns(data)
   local EntityMod = require("entity.dns_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:geodn():list() / client:geodn():load({ id = ... })
+function GeonetSDK:geodn(data)
+  local EntityMod = require("entity.geodn_entity")
+  if data == nil then
+    if self._geodn == nil then
+      self._geodn = EntityMod.new(self, nil)
+    end
+    return self._geodn
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:geodn() instead.
 function GeonetSDK:Geodn(data)
   local EntityMod = require("entity.geodn_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:geoping():list() / client:geoping():load({ id = ... })
+function GeonetSDK:geoping(data)
+  local EntityMod = require("entity.geoping_entity")
+  if data == nil then
+    if self._geoping == nil then
+      self._geoping = EntityMod.new(self, nil)
+    end
+    return self._geoping
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:geoping() instead.
 function GeonetSDK:Geoping(data)
   local EntityMod = require("entity.geoping_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:ping():list() / client:ping():load({ id = ... })
+function GeonetSDK:ping(data)
+  local EntityMod = require("entity.ping_entity")
+  if data == nil then
+    if self._ping == nil then
+      self._ping = EntityMod.new(self, nil)
+    end
+    return self._ping
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:ping() instead.
 function GeonetSDK:Ping(data)
   local EntityMod = require("entity.ping_entity")
   return EntityMod.new(self, data)

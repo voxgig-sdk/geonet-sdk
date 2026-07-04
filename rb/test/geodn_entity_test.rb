@@ -42,8 +42,7 @@ class GeodnEntityTest < Minitest::Test
     # LOAD
     geodn_ref01_ent = client.Geodn(nil)
     geodn_ref01_match_dt0 = {}
-    geodn_ref01_data_dt0_loaded, err = geodn_ref01_ent.load(geodn_ref01_match_dt0, nil)
-    assert_nil err
+    geodn_ref01_data_dt0_loaded = geodn_ref01_ent.load(geodn_ref01_match_dt0, nil)
     assert !geodn_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def geodn_basic_setup(extra)
     "GEONET_TEST_GEODN_ENTID" => idmap,
     "GEONET_TEST_LIVE" => "FALSE",
     "GEONET_TEST_EXPLAIN" => "FALSE",
-    "GEONET_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def geodn_basic_setup(extra)
   if env["GEONET_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["GEONET_APIKEY"],
       },
       extra || {},
     ])

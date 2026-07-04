@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://geonet.shodan.io",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -62,6 +59,7 @@ func MakeConfig() map[string]any {
 											"orig": "hostname",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -142,6 +140,7 @@ func MakeConfig() map[string]any {
 											"orig": "hostname",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -278,6 +277,7 @@ func MakeConfig() map[string]any {
 											"orig": "ip",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},
@@ -402,6 +402,7 @@ func MakeConfig() map[string]any {
 											"orig": "ip",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},

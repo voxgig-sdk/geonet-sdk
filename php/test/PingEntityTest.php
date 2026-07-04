@@ -49,8 +49,7 @@ class PingEntityTest extends TestCase
         // LOAD
         $ping_ref01_ent = $client->Ping(null);
         $ping_ref01_match_dt0 = [];
-        [$ping_ref01_data_dt0_loaded, $err] = $ping_ref01_ent->load($ping_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $ping_ref01_data_dt0_loaded = $ping_ref01_ent->load($ping_ref01_match_dt0, null);
         $this->assertNotNull($ping_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function ping_basic_setup($extra)
         "GEONET_TEST_PING_ENTID" => $idmap,
         "GEONET_TEST_LIVE" => "FALSE",
         "GEONET_TEST_EXPLAIN" => "FALSE",
-        "GEONET_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function ping_basic_setup($extra)
     if ($env["GEONET_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["GEONET_APIKEY"],
             ],
             $extra ?? [],
         ]);

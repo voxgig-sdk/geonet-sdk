@@ -42,8 +42,7 @@ class GeopingEntityTest < Minitest::Test
     # LOAD
     geoping_ref01_ent = client.Geoping(nil)
     geoping_ref01_match_dt0 = {}
-    geoping_ref01_data_dt0_loaded, err = geoping_ref01_ent.load(geoping_ref01_match_dt0, nil)
-    assert_nil err
+    geoping_ref01_data_dt0_loaded = geoping_ref01_ent.load(geoping_ref01_match_dt0, nil)
     assert !geoping_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def geoping_basic_setup(extra)
     "GEONET_TEST_GEOPING_ENTID" => idmap,
     "GEONET_TEST_LIVE" => "FALSE",
     "GEONET_TEST_EXPLAIN" => "FALSE",
-    "GEONET_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def geoping_basic_setup(extra)
   if env["GEONET_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["GEONET_APIKEY"],
       },
       extra || {},
     ])

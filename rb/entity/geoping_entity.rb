@@ -45,6 +45,7 @@ class GeopingEntity
     end
   end
 
+  # @return [Geoping, Hash] the current Geoping data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GeopingEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Geoping fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Geoping.
+  #
+  # @param reqmatch [GeopingLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Geoping, Hash] the loaded Geoping; raises GeonetError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

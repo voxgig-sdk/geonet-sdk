@@ -20,9 +20,6 @@ class GeonetConfig
             ],
             "options" => [
                 "base" => "https://geonet.shodan.io",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -68,6 +65,7 @@ class GeonetConfig
                         'orig' => 'hostname',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -148,6 +146,7 @@ class GeonetConfig
                         'orig' => 'hostname',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -284,6 +283,7 @@ class GeonetConfig
                         'orig' => 'ip',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -408,6 +408,7 @@ class GeonetConfig
                         'orig' => 'ip',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
