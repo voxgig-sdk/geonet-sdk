@@ -57,11 +57,11 @@ Create a new `GeopingEntity` instance. Pass `null` for no initial data.
 
 Create a new `PingEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): GeonetUtility`
 
 Return a copy of the SDK utility object.
 
@@ -104,8 +104,8 @@ $dns = $client->Dns();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `array` | Yes |  |
+| `from_loc` | `mixed` | Yes |  |
 
 ### Operations
 
@@ -119,19 +119,19 @@ $result = $client->Dns()->load(["id" => "dns_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -140,7 +140,7 @@ Set the entity match criteria.
 Create a new `DnsEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -157,8 +157,8 @@ $geodn = $client->Geodn();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `array` | Yes |  |
+| `from_loc` | `mixed` | Yes |  |
 
 ### Operations
 
@@ -172,19 +172,19 @@ $result = $client->Geodn()->load(["id" => "geodn_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -193,7 +193,7 @@ Set the entity match criteria.
 Create a new `GeodnEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -210,16 +210,16 @@ $geoping = $client->Geoping();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `float` | Yes |  |
+| `from_loc` | `mixed` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is_alive` | `bool` | Yes |  |
+| `max_rtt` | `float` | Yes |  |
+| `min_rtt` | `float` | Yes |  |
+| `packet_loss` | `float` | Yes |  |
+| `packets_received` | `int` | Yes |  |
+| `packets_sent` | `int` | Yes |  |
+| `rtt` | `array` | Yes |  |
 
 ### Operations
 
@@ -233,19 +233,19 @@ $result = $client->Geoping()->load(["id" => "geoping_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -254,7 +254,7 @@ Set the entity match criteria.
 Create a new `GeopingEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -271,16 +271,16 @@ $ping = $client->Ping();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `float` | Yes |  |
+| `from_loc` | `mixed` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is_alive` | `bool` | Yes |  |
+| `max_rtt` | `float` | Yes |  |
+| `min_rtt` | `float` | Yes |  |
+| `packet_loss` | `float` | Yes |  |
+| `packets_received` | `int` | Yes |  |
+| `packets_sent` | `int` | Yes |  |
+| `rtt` | `array` | Yes |  |
 
 ### Operations
 
@@ -294,19 +294,19 @@ $result = $client->Ping()->load(["id" => "ping_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -315,7 +315,7 @@ Set the entity match criteria.
 Create a new `PingEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

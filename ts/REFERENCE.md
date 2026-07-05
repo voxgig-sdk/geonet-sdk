@@ -152,8 +152,8 @@ const dns = client.Dns()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `any[]` | Yes |  |
+| `from_loc` | `any` | Yes |  |
 
 ### Operations
 
@@ -203,8 +203,8 @@ const geodn = client.Geodn()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `any[]` | Yes |  |
+| `from_loc` | `any` | Yes |  |
 
 ### Operations
 
@@ -254,16 +254,16 @@ const geoping = client.Geoping()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `number` | Yes |  |
+| `from_loc` | `any` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is_alive` | `boolean` | Yes |  |
+| `max_rtt` | `number` | Yes |  |
+| `min_rtt` | `number` | Yes |  |
+| `packet_loss` | `number` | Yes |  |
+| `packets_received` | `number` | Yes |  |
+| `packets_sent` | `number` | Yes |  |
+| `rtt` | `any[]` | Yes |  |
 
 ### Operations
 
@@ -313,16 +313,16 @@ const ping = client.Ping()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `number` | Yes |  |
+| `from_loc` | `any` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is_alive` | `boolean` | Yes |  |
+| `max_rtt` | `number` | Yes |  |
+| `min_rtt` | `number` | Yes |  |
+| `packet_loss` | `number` | Yes |  |
+| `packets_received` | `number` | Yes |  |
+| `packets_sent` | `number` | Yes |  |
+| `rtt` | `any[]` | Yes |  |
 
 ### Operations
 

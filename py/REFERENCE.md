@@ -99,8 +99,8 @@ dns = client.Dns()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `list` | Yes |  |
+| `from_loc` | `Any` | Yes |  |
 
 ### Operations
 
@@ -151,8 +151,8 @@ geodn = client.Geodn()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `list` | Yes |  |
+| `from_loc` | `Any` | Yes |  |
 
 ### Operations
 
@@ -203,16 +203,16 @@ geoping = client.Geoping()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `float` | Yes |  |
+| `from_loc` | `Any` | Yes |  |
+| `ip` | `str` | Yes |  |
+| `is_alive` | `bool` | Yes |  |
+| `max_rtt` | `float` | Yes |  |
+| `min_rtt` | `float` | Yes |  |
+| `packet_loss` | `float` | Yes |  |
+| `packets_received` | `int` | Yes |  |
+| `packets_sent` | `int` | Yes |  |
+| `rtt` | `list` | Yes |  |
 
 ### Operations
 
@@ -263,16 +263,16 @@ ping = client.Ping()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `float` | Yes |  |
+| `from_loc` | `Any` | Yes |  |
+| `ip` | `str` | Yes |  |
+| `is_alive` | `bool` | Yes |  |
+| `max_rtt` | `float` | Yes |  |
+| `min_rtt` | `float` | Yes |  |
+| `packet_loss` | `float` | Yes |  |
+| `packets_received` | `int` | Yes |  |
+| `packets_sent` | `int` | Yes |  |
+| `rtt` | `list` | Yes |  |
 
 ### Operations
 

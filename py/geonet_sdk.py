@@ -221,25 +221,25 @@ class GeonetSDK:
 
 
     def Dns(self, data=None) -> "DnsEntity":
-        """Entity factory: client.Dns().list({}) / client.Dns().load({"id": ...})."""
+        """Entity factory: client.Dns().list() / client.Dns().load({"id": ...})."""
         from entity.dns_entity import DnsEntity
         return DnsEntity(self, data)
 
 
     def Geodn(self, data=None) -> "GeodnEntity":
-        """Entity factory: client.Geodn().list({}) / client.Geodn().load({"id": ...})."""
+        """Entity factory: client.Geodn().list() / client.Geodn().load({"id": ...})."""
         from entity.geodn_entity import GeodnEntity
         return GeodnEntity(self, data)
 
 
     def Geoping(self, data=None) -> "GeopingEntity":
-        """Entity factory: client.Geoping().list({}) / client.Geoping().load({"id": ...})."""
+        """Entity factory: client.Geoping().list() / client.Geoping().load({"id": ...})."""
         from entity.geoping_entity import GeopingEntity
         return GeopingEntity(self, data)
 
 
     def Ping(self, data=None) -> "PingEntity":
-        """Entity factory: client.Ping().list({}) / client.Ping().load({"id": ...})."""
+        """Entity factory: client.Ping().list() / client.Ping().load({"id": ...})."""
         from entity.ping_entity import PingEntity
         return PingEntity(self, data)
 

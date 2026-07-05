@@ -8,7 +8,7 @@ Complete API reference for the Geonet Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'geonet_sdk'
+require_relative 'Geonet_sdk'
 
 client = GeonetSDK.new(options)
 ```
@@ -105,8 +105,8 @@ dns = client.Dns
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `Array` | Yes |  |
+| `from_loc` | `Object` | Yes |  |
 
 ### Operations
 
@@ -158,8 +158,8 @@ geodn = client.Geodn
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$ARRAY`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
+| `answer` | `Array` | Yes |  |
+| `from_loc` | `Object` | Yes |  |
 
 ### Operations
 
@@ -211,16 +211,16 @@ geoping = client.Geoping
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `Float` | Yes |  |
+| `from_loc` | `Object` | Yes |  |
+| `ip` | `String` | Yes |  |
+| `is_alive` | `Boolean` | Yes |  |
+| `max_rtt` | `Float` | Yes |  |
+| `min_rtt` | `Float` | Yes |  |
+| `packet_loss` | `Float` | Yes |  |
+| `packets_received` | `Integer` | Yes |  |
+| `packets_sent` | `Integer` | Yes |  |
+| `rtt` | `Array` | Yes |  |
 
 ### Operations
 
@@ -272,16 +272,16 @@ ping = client.Ping
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_rtt` | ``$NUMBER`` | Yes |  |
-| `from_loc` | ``$ANY`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is_alive` | ``$BOOLEAN`` | Yes |  |
-| `max_rtt` | ``$NUMBER`` | Yes |  |
-| `min_rtt` | ``$NUMBER`` | Yes |  |
-| `packet_loss` | ``$NUMBER`` | Yes |  |
-| `packets_received` | ``$INTEGER`` | Yes |  |
-| `packets_sent` | ``$INTEGER`` | Yes |  |
-| `rtt` | ``$ARRAY`` | Yes |  |
+| `avg_rtt` | `Float` | Yes |  |
+| `from_loc` | `Object` | Yes |  |
+| `ip` | `String` | Yes |  |
+| `is_alive` | `Boolean` | Yes |  |
+| `max_rtt` | `Float` | Yes |  |
+| `min_rtt` | `Float` | Yes |  |
+| `packet_loss` | `Float` | Yes |  |
+| `packets_received` | `Integer` | Yes |  |
+| `packets_sent` | `Integer` | Yes |  |
+| `rtt` | `Array` | Yes |  |
 
 ### Operations
 
