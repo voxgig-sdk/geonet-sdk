@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -641,13 +638,16 @@
       "info": {
         "auth": false,
         "description": "Run various network tools from multiple geographic locations",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "url": "https://geonet.shodan.io"
           }
         ],
+        "summary": "Run various network tools from multiple geographic locations",
         "title": "Geonet",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://geonet.shodan.io"
       },
       "option": {},
       "target": {
@@ -700,6 +700,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -750,6 +753,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

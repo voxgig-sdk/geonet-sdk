@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single dns — the value is the loaded record.
-    dns, err := client.Dns(nil).Load(map[string]any{"id": "example"}, nil)
+    dns, err := client.Dns(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

@@ -103,6 +103,7 @@ same parameters as `Direct()`.
 
 ```go
 dns := client.Dns(nil)
+fmt.Println(dns.GetName()) // "dns"
 ```
 
 ### Fields
@@ -120,6 +121,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Dns(nil).Load(map[string]any{"id": "dns_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -150,6 +155,7 @@ Return the entity name.
 
 ```go
 geodn := client.Geodn(nil)
+fmt.Println(geodn.GetName()) // "geodn"
 ```
 
 ### Fields
@@ -167,6 +173,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Geodn(nil).Load(map[string]any{"id": "geodn_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -197,6 +207,7 @@ Return the entity name.
 
 ```go
 geoping := client.Geoping(nil)
+fmt.Println(geoping.GetName()) // "geoping"
 ```
 
 ### Fields
@@ -222,6 +233,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Geoping(nil).Load(map[string]any{"id": "geoping_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -252,6 +267,7 @@ Return the entity name.
 
 ```go
 ping := client.Ping(nil)
+fmt.Println(ping.GetName()) // "ping"
 ```
 
 ### Fields
@@ -277,6 +293,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Ping(nil).Load(map[string]any{"id": "ping_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
