@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Geonet SDK exists test
 
 local sdk = require("geonet_sdk")
 
