@@ -104,7 +104,7 @@ $dns = $client->Dns();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `array` | Yes |  |
+| `answers` | `array` | Yes |  |
 | `from_loc` | `mixed` | Yes |  |
 
 ### Operations
@@ -157,7 +157,7 @@ $geodn = $client->Geodn();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `array` | Yes |  |
+| `answers` | `array` | Yes |  |
 | `from_loc` | `mixed` | Yes |  |
 
 ### Operations
@@ -219,7 +219,7 @@ $geoping = $client->Geoping();
 | `packet_loss` | `float` | Yes |  |
 | `packets_received` | `int` | Yes |  |
 | `packets_sent` | `int` | Yes |  |
-| `rtt` | `array` | Yes |  |
+| `rtts` | `array` | Yes |  |
 
 ### Operations
 
@@ -280,7 +280,7 @@ $ping = $client->Ping();
 | `packet_loss` | `float` | Yes |  |
 | `packets_received` | `int` | Yes |  |
 | `packets_sent` | `int` | Yes |  |
-| `rtt` | `array` | Yes |  |
+| `rtts` | `array` | Yes |  |
 
 ### Operations
 

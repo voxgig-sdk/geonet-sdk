@@ -110,7 +110,7 @@ fmt.Println(dns.GetName()) // "dns"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `[]any` | Yes |  |
+| `answers` | `[]any` | Yes |  |
 | `from_loc` | `any` | Yes |  |
 
 ### Operations
@@ -162,7 +162,7 @@ fmt.Println(geodn.GetName()) // "geodn"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `[]any` | Yes |  |
+| `answers` | `[]any` | Yes |  |
 | `from_loc` | `any` | Yes |  |
 
 ### Operations
@@ -223,7 +223,7 @@ fmt.Println(geoping.GetName()) // "geoping"
 | `packet_loss` | `float64` | Yes |  |
 | `packets_received` | `int` | Yes |  |
 | `packets_sent` | `int` | Yes |  |
-| `rtt` | `[]any` | Yes |  |
+| `rtts` | `[]any` | Yes |  |
 
 ### Operations
 
@@ -283,7 +283,7 @@ fmt.Println(ping.GetName()) // "ping"
 | `packet_loss` | `float64` | Yes |  |
 | `packets_received` | `int` | Yes |  |
 | `packets_sent` | `int` | Yes |  |
-| `rtt` | `[]any` | Yes |  |
+| `rtts` | `[]any` | Yes |  |
 
 ### Operations
 

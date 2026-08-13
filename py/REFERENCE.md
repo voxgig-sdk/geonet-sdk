@@ -99,7 +99,7 @@ dns = client.Dns()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `list` | Yes |  |
+| `answers` | `list` | Yes |  |
 | `from_loc` | `Any` | Yes |  |
 
 ### Operations
@@ -151,7 +151,7 @@ geodn = client.Geodn()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `list` | Yes |  |
+| `answers` | `list` | Yes |  |
 | `from_loc` | `Any` | Yes |  |
 
 ### Operations
@@ -212,7 +212,7 @@ geoping = client.Geoping()
 | `packet_loss` | `float` | Yes |  |
 | `packets_received` | `int` | Yes |  |
 | `packets_sent` | `int` | Yes |  |
-| `rtt` | `list` | Yes |  |
+| `rtts` | `list` | Yes |  |
 
 ### Operations
 
@@ -272,7 +272,7 @@ ping = client.Ping()
 | `packet_loss` | `float` | Yes |  |
 | `packets_received` | `int` | Yes |  |
 | `packets_sent` | `int` | Yes |  |
-| `rtt` | `list` | Yes |  |
+| `rtts` | `list` | Yes |  |
 
 ### Operations
 

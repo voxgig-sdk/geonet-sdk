@@ -29,7 +29,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "answer",
+						"name": "answers",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -74,6 +74,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/dns/{hostname}",
 								"parts": []any{
@@ -99,7 +100,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -110,7 +110,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "answer",
+						"name": "answers",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -155,6 +155,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/geodns/{hostname}",
 								"parts": []any{
@@ -180,7 +181,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -254,7 +254,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "rtt",
+						"name": "rtts",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -281,6 +281,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/geoping/{ip}",
 								"parts": []any{
@@ -305,7 +306,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -379,7 +379,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "rtt",
+						"name": "rtts",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -406,6 +406,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ping/{ip}",
 								"parts": []any{
@@ -430,7 +431,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

@@ -16,11 +16,11 @@
 import pytest
 
 from geonet_sdk import GeonetSDK
-from core.error import GeonetError
-from core.result import GeonetResult
-from core.response import GeonetResponse
-from core.spec import GeonetSpec
-from feature.base_feature import GeonetBaseFeature
+from geonet_sdk.core.error import GeonetError
+from geonet_sdk.core.result import GeonetResult
+from geonet_sdk.core.response import GeonetResponse
+from geonet_sdk.core.spec import GeonetSpec
+from geonet_sdk.feature.base_feature import GeonetBaseFeature
 
 
 def _client():

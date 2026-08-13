@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from geonet_sdk.utility.voxgig_struct import voxgig_struct as vs
 from geonet_sdk import GeonetSDK
-from core import helpers
+from geonet_sdk.core import helpers
 from test import runner
 
 

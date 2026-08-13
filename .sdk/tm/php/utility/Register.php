@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ GeonetUtility::setRegistrar(function (GeonetUtility $u): void {
     $u->prepare_params = [GeonetPrepareParams::class, 'call'];
     $u->prepare_path = [GeonetPreparePath::class, 'call'];
     $u->prepare_query = [GeonetPrepareQuery::class, 'call'];
+    $u->graphql_body = [GeonetGraphql::class, 'body'];
+    $u->graphql_errors = [GeonetGraphql::class, 'errors'];
     $u->result_basic = [GeonetResultBasic::class, 'call'];
     $u->result_body = [GeonetResultBody::class, 'call'];
     $u->result_headers = [GeonetResultHeaders::class, 'call'];

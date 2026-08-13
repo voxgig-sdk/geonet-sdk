@@ -35,7 +35,7 @@ $client = new GeonetSDK();
 
 ```php
 try {
-    // load() returns the bare Dns record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Dns record (throws on error).
     $dns = $client->Dns()->load(["id" => "example_id"]);
     print_r($dns);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $dns = $client->Dns()->load(["id" => "example_id"]);
+    $geodn = $client->Geodn()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,12 +123,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = GeonetSDK::test([
-    "entity" => ["dns" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["geodn" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$dns = $client->Dns()->load(["id" => "test01"]);
-print_r($dns);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$geodn = $client->Geodn()->load(["id" => "test01"]);
+print_r($geodn);
 ```
 
 ### Use a custom fetch function
@@ -228,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -250,7 +251,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -261,7 +262,7 @@ API path: `/api/dns/{hostname}`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -281,7 +282,7 @@ API path: `/api/geodns/{hostname}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -300,7 +301,7 @@ API path: `/api/geoping/{ip}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -325,13 +326,13 @@ Create an instance: `$dns = $client->Dns();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `array` |  |
+| `answers` | `array` |  |
 | `from_loc` | `mixed` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Dns record (throws on error).
+// load() returns the ENTITY — call data_get() for the Dns record (throws on error).
 $dns = $client->Dns()->load(["id" => "dns_id"]);
 ```
 
@@ -350,13 +351,13 @@ Create an instance: `$geodn = $client->Geodn();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `array` |  |
+| `answers` | `array` |  |
 | `from_loc` | `mixed` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Geodn record (throws on error).
+// load() returns the ENTITY — call data_get() for the Geodn record (throws on error).
 $geodn = $client->Geodn()->load(["id" => "geodn_id"]);
 ```
 
@@ -384,12 +385,12 @@ Create an instance: `$geoping = $client->Geoping();`
 | `packet_loss` | `float` |  |
 | `packets_received` | `int` |  |
 | `packets_sent` | `int` |  |
-| `rtt` | `array` |  |
+| `rtts` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Geoping record (throws on error).
+// load() returns the ENTITY — call data_get() for the Geoping record (throws on error).
 $geoping = $client->Geoping()->load(["id" => "geoping_id"]);
 ```
 
@@ -417,12 +418,12 @@ Create an instance: `$ping = $client->Ping();`
 | `packet_loss` | `float` |  |
 | `packets_received` | `int` |  |
 | `packets_sent` | `int` |  |
-| `rtt` | `array` |  |
+| `rtts` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Ping record (throws on error).
+// load() returns the ENTITY — call data_get() for the Ping record (throws on error).
 $ping = $client->Ping()->load(["id" => "ping_id"]);
 ```
 
@@ -503,11 +504,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$dns = $client->Dns();
-$dns->load(["id" => "example_id"]);
+$geodn = $client->Geodn();
+$geodn->load(["id" => "example_id"]);
 
-// $dns->data_get() now returns the dns data from the last load
-// $dns->match_get() returns the last match criteria
+// $geodn->data_get() now returns the geodn data from the last load
+// $geodn->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

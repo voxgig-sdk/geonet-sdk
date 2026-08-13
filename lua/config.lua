@@ -29,7 +29,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "answer",
+            ["name"] = "answers",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -74,6 +74,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/dns/{hostname}",
                 ["parts"] = {
@@ -110,7 +111,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "answer",
+            ["name"] = "answers",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -155,6 +156,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/geodns/{hostname}",
                 ["parts"] = {
@@ -254,7 +256,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "rtt",
+            ["name"] = "rtts",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -281,6 +283,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/geoping/{ip}",
                 ["parts"] = {
@@ -379,7 +382,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "rtt",
+            ["name"] = "rtts",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -406,6 +409,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ping/{ip}",
                 ["parts"] = {

@@ -10,13 +10,13 @@
 
 # Dns entity data model.
 #
-# @!attribute [rw] answer
+# @!attribute [rw] answers
 #   @return [Array]
 #
 # @!attribute [rw] from_loc
 #   @return [Object]
 Dns = Struct.new(
-  :answer,
+  :answers,
   :from_loc,
   keyword_init: true
 )
@@ -32,13 +32,13 @@ DnsLoadMatch = Struct.new(
 
 # Geodn entity data model.
 #
-# @!attribute [rw] answer
+# @!attribute [rw] answers
 #   @return [Array]
 #
 # @!attribute [rw] from_loc
 #   @return [Object]
 Geodn = Struct.new(
-  :answer,
+  :answers,
   :from_loc,
   keyword_init: true
 )
@@ -81,7 +81,7 @@ GeodnLoadMatch = Struct.new(
 # @!attribute [rw] packets_sent
 #   @return [Integer]
 #
-# @!attribute [rw] rtt
+# @!attribute [rw] rtts
 #   @return [Array]
 Geoping = Struct.new(
   :avg_rtt,
@@ -93,7 +93,7 @@ Geoping = Struct.new(
   :packet_loss,
   :packets_received,
   :packets_sent,
-  :rtt,
+  :rtts,
   keyword_init: true
 )
 
@@ -135,7 +135,7 @@ GeopingLoadMatch = Struct.new(
 # @!attribute [rw] packets_sent
 #   @return [Integer]
 #
-# @!attribute [rw] rtt
+# @!attribute [rw] rtts
 #   @return [Array]
 Ping = Struct.new(
   :avg_rtt,
@@ -147,7 +147,7 @@ Ping = Struct.new(
   :packet_loss,
   :packets_received,
   :packets_sent,
-  :rtt,
+  :rtts,
   keyword_init: true
 )
 

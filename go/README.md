@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-dns, err := client.Dns(nil).Load(map[string]any{"id": "example_id"}, nil)
+geodn, err := client.Geodn(nil).Load(map[string]any{"id": "example_id"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = dns
+_ = geodn
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-dns, err := client.Dns(nil).Load(
+geodn, err := client.Geodn(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(dns) // the returned mock data
+fmt.Println(geodn) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -261,7 +261,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"answer"` |  |
+| `"answers"` |  |
 | `"from_loc"` |  |
 
 Operations: Load.
@@ -272,7 +272,7 @@ API path: `/api/dns/{hostname}`
 
 | Field | Description |
 | --- | --- |
-| `"answer"` |  |
+| `"answers"` |  |
 | `"from_loc"` |  |
 
 Operations: Load.
@@ -292,7 +292,7 @@ API path: `/api/geodns/{hostname}`
 | `"packet_loss"` |  |
 | `"packets_received"` |  |
 | `"packets_sent"` |  |
-| `"rtt"` |  |
+| `"rtts"` |  |
 
 Operations: Load.
 
@@ -311,7 +311,7 @@ API path: `/api/geoping/{ip}`
 | `"packet_loss"` |  |
 | `"packets_received"` |  |
 | `"packets_sent"` |  |
-| `"rtt"` |  |
+| `"rtts"` |  |
 
 Operations: Load.
 
@@ -336,7 +336,7 @@ Create an instance: `dns := client.Dns(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `[]any` |  |
+| `answers` | `[]any` |  |
 | `from_loc` | `any` |  |
 
 #### Example: Load
@@ -364,7 +364,7 @@ Create an instance: `geodn := client.Geodn(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `[]any` |  |
+| `answers` | `[]any` |  |
 | `from_loc` | `any` |  |
 
 #### Example: Load
@@ -401,7 +401,7 @@ Create an instance: `geoping := client.Geoping(nil)`
 | `packet_loss` | `float64` |  |
 | `packets_received` | `int` |  |
 | `packets_sent` | `int` |  |
-| `rtt` | `[]any` |  |
+| `rtts` | `[]any` |  |
 
 #### Example: Load
 
@@ -437,7 +437,7 @@ Create an instance: `ping := client.Ping(nil)`
 | `packet_loss` | `float64` |  |
 | `packets_received` | `int` |  |
 | `packets_sent` | `int` |  |
-| `rtt` | `[]any` |  |
+| `rtts` | `[]any` |  |
 
 #### Example: Load
 
@@ -523,11 +523,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-dns := client.Dns(nil)
-dns.Load(map[string]any{"id": "example_id"}, nil)
+geodn := client.Geodn(nil)
+geodn.Load(map[string]any{"id": "example_id"}, nil)
 
-// dns.Data() now returns the dns data from the last load
-// dns.Match() returns the last match criteria
+// geodn.Data() now returns the geodn data from the last load
+// geodn.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -102,7 +102,7 @@ local dns = client:Dns(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `table` | Yes |  |
+| `answers` | `table` | Yes |  |
 | `from_loc` | `any` | Yes |  |
 
 ### Operations
@@ -155,7 +155,7 @@ local geodn = client:Geodn(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `table` | Yes |  |
+| `answers` | `table` | Yes |  |
 | `from_loc` | `any` | Yes |  |
 
 ### Operations
@@ -217,7 +217,7 @@ local geoping = client:Geoping(nil)
 | `packet_loss` | `number` | Yes |  |
 | `packets_received` | `number` | Yes |  |
 | `packets_sent` | `number` | Yes |  |
-| `rtt` | `table` | Yes |  |
+| `rtts` | `table` | Yes |  |
 
 ### Operations
 
@@ -278,7 +278,7 @@ local ping = client:Ping(nil)
 | `packet_loss` | `number` | Yes |  |
 | `packets_received` | `number` | Yes |  |
 | `packets_sent` | `number` | Yes |  |
-| `rtt` | `table` | Yes |  |
+| `rtts` | `table` | Yes |  |
 
 ### Operations
 

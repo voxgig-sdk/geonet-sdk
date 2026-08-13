@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Geonet',
   }
 
 
@@ -65,7 +65,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "answer",
+          "name": "answers",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 0
@@ -110,6 +110,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/dns/{hostname}",
               "parts": [
@@ -146,7 +147,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "answer",
+          "name": "answers",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 0
@@ -191,6 +192,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/geodns/{hostname}",
               "parts": [
@@ -290,7 +292,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "rtt",
+          "name": "rtts",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 9
@@ -317,6 +319,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/geoping/{ip}",
               "parts": [
@@ -415,7 +418,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "rtt",
+          "name": "rtts",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 9
@@ -442,6 +445,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ping/{ip}",
               "parts": [

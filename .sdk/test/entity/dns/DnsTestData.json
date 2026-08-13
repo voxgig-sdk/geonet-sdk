@@ -2,17 +2,17 @@
   "existing": {
     "dns": {
       "DNS00": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s15",
         "id": "DNS00"
       },
       "DNS01": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s29",
         "id": "DNS01"
       },
       "DNS02": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s3d",
         "id": "DNS02"
       }
@@ -21,7 +21,7 @@
   "new": {
     "dns": {
       "dns_ref01": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s51"
       }
     }

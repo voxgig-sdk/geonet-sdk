@@ -105,7 +105,7 @@ dns = client.Dns
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `Array` | Yes |  |
+| `answers` | `Array` | Yes |  |
 | `from_loc` | `Object` | Yes |  |
 
 ### Operations
@@ -158,7 +158,7 @@ geodn = client.Geodn
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `Array` | Yes |  |
+| `answers` | `Array` | Yes |  |
 | `from_loc` | `Object` | Yes |  |
 
 ### Operations
@@ -220,7 +220,7 @@ geoping = client.Geoping
 | `packet_loss` | `Float` | Yes |  |
 | `packets_received` | `Integer` | Yes |  |
 | `packets_sent` | `Integer` | Yes |  |
-| `rtt` | `Array` | Yes |  |
+| `rtts` | `Array` | Yes |  |
 
 ### Operations
 
@@ -281,7 +281,7 @@ ping = client.Ping
 | `packet_loss` | `Float` | Yes |  |
 | `packets_received` | `Integer` | Yes |  |
 | `packets_sent` | `Integer` | Yes |  |
-| `rtt` | `Array` | Yes |  |
+| `rtts` | `Array` | Yes |  |
 
 ### Operations
 

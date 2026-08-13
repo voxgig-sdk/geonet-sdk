@@ -7,14 +7,14 @@
 -- edit by hand.
 
 ---@class Dns
----@field answer table
+---@field answers table
 ---@field from_loc any
 
 ---@class DnsLoadMatch
 ---@field id string
 
 ---@class Geodn
----@field answer table
+---@field answers table
 ---@field from_loc any
 
 ---@class GeodnLoadMatch
@@ -30,7 +30,7 @@
 ---@field packet_loss number
 ---@field packets_received number
 ---@field packets_sent number
----@field rtt table
+---@field rtts table
 
 ---@class GeopingLoadMatch
 ---@field id string
@@ -45,7 +45,7 @@
 ---@field packet_loss number
 ---@field packets_received number
 ---@field packets_sent number
----@field rtt table
+---@field rtts table
 
 ---@class PingLoadMatch
 ---@field id string

@@ -6,7 +6,7 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Dns {
-  answer: any[]
+  answers: any[]
   from_loc: any
 }
 
@@ -15,7 +15,7 @@ export interface DnsLoadMatch {
 }
 
 export interface Geodn {
-  answer: any[]
+  answers: any[]
   from_loc: any
 }
 
@@ -33,7 +33,7 @@ export interface Geoping {
   packet_loss: number
   packets_received: number
   packets_sent: number
-  rtt: any[]
+  rtts: any[]
 }
 
 export interface GeopingLoadMatch {
@@ -50,7 +50,7 @@ export interface Ping {
   packet_loss: number
   packets_received: number
   packets_sent: number
-  rtt: any[]
+  rtts: any[]
 }
 
 export interface PingLoadMatch {

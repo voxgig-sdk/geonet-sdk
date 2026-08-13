@@ -2,17 +2,17 @@
   "existing": {
     "geodn": {
       "GEODN00": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s15",
         "id": "GEODN00"
       },
       "GEODN01": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s29",
         "id": "GEODN01"
       },
       "GEODN02": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s3d",
         "id": "GEODN02"
       }
@@ -21,7 +21,7 @@
   "new": {
     "geodn": {
       "geodn_ref01": {
-        "answer": [],
+        "answers": [],
         "from_loc": "s51"
       }
     }

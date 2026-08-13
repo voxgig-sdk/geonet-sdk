@@ -152,7 +152,7 @@ const dns = client.Dns()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `any[]` | Yes |  |
+| `answers` | `any[]` | Yes |  |
 | `from_loc` | `any` | Yes |  |
 
 ### Operations
@@ -203,7 +203,7 @@ const geodn = client.Geodn()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `any[]` | Yes |  |
+| `answers` | `any[]` | Yes |  |
 | `from_loc` | `any` | Yes |  |
 
 ### Operations
@@ -263,7 +263,7 @@ const geoping = client.Geoping()
 | `packet_loss` | `number` | Yes |  |
 | `packets_received` | `number` | Yes |  |
 | `packets_sent` | `number` | Yes |  |
-| `rtt` | `any[]` | Yes |  |
+| `rtts` | `any[]` | Yes |  |
 
 ### Operations
 
@@ -322,7 +322,7 @@ const ping = client.Ping()
 | `packet_loss` | `number` | Yes |  |
 | `packets_received` | `number` | Yes |  |
 | `packets_sent` | `number` | Yes |  |
-| `rtt` | `any[]` | Yes |  |
+| `rtts` | `any[]` | Yes |  |
 
 ### Operations
 

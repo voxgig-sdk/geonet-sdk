@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ GeonetUtility.registrar = ->(u) {
   u.prepare_params = GeonetUtilities::PrepareParams
   u.prepare_path = GeonetUtilities::PreparePath
   u.prepare_query = GeonetUtilities::PrepareQuery
+  u.graphql_body = GeonetUtilities::GraphqlBody
+  u.graphql_errors = GeonetUtilities::GraphqlErrors
   u.result_basic = GeonetUtilities::ResultBasic
   u.result_body = GeonetUtilities::ResultBody
   u.result_headers = GeonetUtilities::ResultHeaders

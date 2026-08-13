@@ -38,7 +38,7 @@ client = GeonetSDK()
 
 ### 3. Load a dns
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -55,8 +55,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    dns = client.Dns().load({"id": "example_id"})
-    print(dns)
+    geodn = client.Geodn().load({"id": "example_id"})
+    print(geodn)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,9 +122,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = GeonetSDK.test()
 
-# Entity ops return the bare record and raise on error.
-dns = client.Dns().load({"id": "test01"})
-# dns contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+geodn = client.Geodn().load({"id": "test01"})
+# geodn contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -243,7 +244,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -254,7 +255,7 @@ API path: `/api/dns/{hostname}`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -274,7 +275,7 @@ API path: `/api/geodns/{hostname}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -293,7 +294,7 @@ API path: `/api/geoping/{ip}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -318,7 +319,7 @@ Create an instance: `dns = client.Dns()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `list` |  |
+| `answers` | `list` |  |
 | `from_loc` | `Any` |  |
 
 #### Example: Load
@@ -342,7 +343,7 @@ Create an instance: `geodn = client.Geodn()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `list` |  |
+| `answers` | `list` |  |
 | `from_loc` | `Any` |  |
 
 #### Example: Load
@@ -375,7 +376,7 @@ Create an instance: `geoping = client.Geoping()`
 | `packet_loss` | `float` |  |
 | `packets_received` | `int` |  |
 | `packets_sent` | `int` |  |
-| `rtt` | `list` |  |
+| `rtts` | `list` |  |
 
 #### Example: Load
 
@@ -407,7 +408,7 @@ Create an instance: `ping = client.Ping()`
 | `packet_loss` | `float` |  |
 | `packets_received` | `int` |  |
 | `packets_sent` | `int` |  |
-| `rtt` | `list` |  |
+| `rtts` | `list` |  |
 
 #### Example: Load
 
@@ -491,11 +492,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-dns = client.Dns()
-dns.load({"id": "example_id"})
+geodn = client.Geodn()
+geodn.load({"id": "example_id"})
 
-# dns.data_get() now returns the dns data from the last load
-# dns.match_get() returns the last match criteria
+# geodn.data_get() now returns the geodn data from the last load
+# geodn.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

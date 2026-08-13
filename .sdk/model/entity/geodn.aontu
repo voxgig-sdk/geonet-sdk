@@ -6,7 +6,7 @@ main: kit: entity: geodn: {
 
   fields: [
     {
-      name: "answer"
+      name: "answers"
       req: true
       type: "`$ARRAY`"
     }

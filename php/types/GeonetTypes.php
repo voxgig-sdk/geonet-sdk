@@ -15,7 +15,7 @@ declare(strict_types=1);
 /** Dns entity data model. */
 class Dns
 {
-    public array $answer;
+    public array $answers;
     public mixed $from_loc;
 }
 
@@ -28,7 +28,7 @@ class DnsLoadMatch
 /** Geodn entity data model. */
 class Geodn
 {
-    public array $answer;
+    public array $answers;
     public mixed $from_loc;
 }
 
@@ -50,7 +50,7 @@ class Geoping
     public float $packet_loss;
     public int $packets_received;
     public int $packets_sent;
-    public array $rtt;
+    public array $rtts;
 }
 
 /** Request payload for Geoping#load. */
@@ -71,7 +71,7 @@ class Ping
     public float $packet_loss;
     public int $packets_received;
     public int $packets_sent;
-    public array $rtt;
+    public array $rtts;
 }
 
 /** Request payload for Ping#load. */

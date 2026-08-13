@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new GeonetSDK()
-const dns = await client.Dns().load()
+const dns = await client.Dns().load({ id: "example_id" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = GeonetSDK.test()
-const dns = await client.Dns().load({ id: 'test01' })
-// dns is a bare Dns populated with mock data
-console.log(dns)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = GeonetSDK.test({
+  entity: {
+    geodn: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const geodn = await client.Geodn().load({ id: 'test01' })
+// geodn is the Geodn entity, populated with mock data
+// — call geodn.data() for the record itself
+console.log(geodn)
 ```
 
 ### Python
 
 ```python
 client = GeonetSDK.test()
-dns = client.Dns().load({"id": "test01"})
-print(dns)
+geodn = client.Geodn().load({"id": "test01"})
+print(geodn)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(dns)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = GeonetSDK::test([
-    "entity" => ["dns" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["geodn" => ["test01" => ["id" => "test01"]]],
 ]);
-$dns = $client->Dns()->load(["id" => "test01"]);
+$geodn = $client->Geodn()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Dns(nil).Load(
+result, err := client.Geodn(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Dns(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = GeonetSDK.test({
-  "entity" => { "dns" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "geodn" => { "test01" => { "id" => "test01" } } },
 })
-dns = client.Dns.load({ "id" => "test01" })
+geodn = client.Geodn.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Dns():load({ id = "test01" })
+local result, err = client:Geodn():load({ id = "test01" })
 ```
 
 ## Packages
@@ -185,7 +194,7 @@ require_once 'geonet_sdk.php';
 $client = new GeonetSDK();
 
 
-// Load a specific dns (returns the bare record; throws on error)
+// Load a specific dns (returns the ENTITY; call data_get() for the record; throws on error)
 $dns = $client->Dns()->load(["id" => "example_id"]);
 print_r($dns);
 ```
@@ -213,7 +222,7 @@ require_relative "Geonet_sdk"
 client = GeonetSDK.new
 
 
-# Load a specific dns (returns the bare record; raises on error)
+# Load a specific dns (returns the ENTITY; call data_get for the record)
 dns = client.Dns.load({ "id" => "example_id" })
 puts dns
 ```
@@ -347,6 +356,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://geonet.shodan.io](https://geonet.shodan.io)
 

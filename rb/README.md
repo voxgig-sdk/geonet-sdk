@@ -34,7 +34,7 @@ client = GeonetSDK.new
 
 ```ruby
 begin
-  # load returns the bare Dns record (raises on error).
+  # load returns the ENTITY — call data_get for the Dns record (raises on error).
   dns = client.Dns.load({ "id" => "example_id" })
   puts dns
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  dns = client.Dns.load({ "id" => "example_id" })
+  geodn = client.Geodn.load({ "id" => "example_id" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -117,12 +117,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = GeonetSDK.test({
-  "entity" => { "dns" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "geodn" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-dns = client.Dns.load({ "id" => "test01" })
-puts dns
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+geodn = client.Geodn.load({ "id" => "test01" })
+puts geodn
 ```
 
 ### Use a custom fetch function
@@ -240,7 +241,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -251,7 +252,7 @@ API path: `/api/dns/{hostname}`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -271,7 +272,7 @@ API path: `/api/geodns/{hostname}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -290,7 +291,7 @@ API path: `/api/geoping/{ip}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -315,13 +316,13 @@ Create an instance: `dns = client.Dns`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `Array` |  |
+| `answers` | `Array` |  |
 | `from_loc` | `Object` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Dns record (raises on error).
+# load returns the ENTITY — call data_get for the Dns record (raises on error).
 dns = client.Dns.load({ "id" => "dns_id" })
 ```
 
@@ -340,13 +341,13 @@ Create an instance: `geodn = client.Geodn`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `Array` |  |
+| `answers` | `Array` |  |
 | `from_loc` | `Object` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Geodn record (raises on error).
+# load returns the ENTITY — call data_get for the Geodn record (raises on error).
 geodn = client.Geodn.load({ "id" => "geodn_id" })
 ```
 
@@ -374,12 +375,12 @@ Create an instance: `geoping = client.Geoping`
 | `packet_loss` | `Float` |  |
 | `packets_received` | `Integer` |  |
 | `packets_sent` | `Integer` |  |
-| `rtt` | `Array` |  |
+| `rtts` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Geoping record (raises on error).
+# load returns the ENTITY — call data_get for the Geoping record (raises on error).
 geoping = client.Geoping.load({ "id" => "geoping_id" })
 ```
 
@@ -407,12 +408,12 @@ Create an instance: `ping = client.Ping`
 | `packet_loss` | `Float` |  |
 | `packets_received` | `Integer` |  |
 | `packets_sent` | `Integer` |  |
-| `rtt` | `Array` |  |
+| `rtts` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Ping record (raises on error).
+# load returns the ENTITY — call data_get for the Ping record (raises on error).
 ping = client.Ping.load({ "id" => "ping_id" })
 ```
 
@@ -493,11 +494,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-dns = client.Dns
-dns.load({ "id" => "example_id" })
+geodn = client.Geodn
+geodn.load({ "id" => "example_id" })
 
-# dns.data_get now returns the dns data from the last load
-# dns.match_get returns the last match criteria
+# geodn.data_get now returns the geodn data from the last load
+# geodn.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

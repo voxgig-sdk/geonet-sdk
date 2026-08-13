@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local dns, err = client:Dns():load({ id = "example_id" })
+local geodn, err = client:Geodn():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Dns():load({ id = "test01" })
+local result, err = client:Geodn():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -228,7 +228,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -239,7 +239,7 @@ API path: `/api/dns/{hostname}`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: Load.
@@ -259,7 +259,7 @@ API path: `/api/geodns/{hostname}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -278,7 +278,7 @@ API path: `/api/geoping/{ip}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: Load.
 
@@ -303,7 +303,7 @@ Create an instance: `local dns = client:Dns(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `table` |  |
+| `answers` | `table` |  |
 | `from_loc` | `any` |  |
 
 #### Example: Load
@@ -327,7 +327,7 @@ Create an instance: `local geodn = client:Geodn(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `table` |  |
+| `answers` | `table` |  |
 | `from_loc` | `any` |  |
 
 #### Example: Load
@@ -360,7 +360,7 @@ Create an instance: `local geoping = client:Geoping(nil)`
 | `packet_loss` | `number` |  |
 | `packets_received` | `number` |  |
 | `packets_sent` | `number` |  |
-| `rtt` | `table` |  |
+| `rtts` | `table` |  |
 
 #### Example: Load
 
@@ -392,7 +392,7 @@ Create an instance: `local ping = client:Ping(nil)`
 | `packet_loss` | `number` |  |
 | `packets_received` | `number` |  |
 | `packets_sent` | `number` |  |
-| `rtt` | `table` |  |
+| `rtts` | `table` |  |
 
 #### Example: Load
 
@@ -477,11 +477,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local dns = client:Dns()
-dns:load({ id = "example_id" })
+local geodn = client:Geodn()
+geodn:load({ id = "example_id" })
 
--- dns:data_get() now returns the dns data from the last load
--- dns:match_get() returns the last match criteria
+-- geodn:data_get() now returns the geodn data from the last load
+-- geodn:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

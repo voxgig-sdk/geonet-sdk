@@ -53,8 +53,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const dns = await client.Dns().load({ id: "example_id" })
-  console.log(dns)
+  const geodn = await client.Geodn().load({ id: "example_id" })
+  console.log(geodn)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -120,9 +120,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GeonetSDK.test()
 
-const dns = await client.Dns().load({ id: 'test01' })
-// dns is a bare entity populated with mock response data
-console.log(dns)
+const geodn = await client.Geodn().load({ id: 'test01' })
+// geodn is the entity, populated with mock response data
+// — call geodn.data() for the record itself
+console.log(geodn)
 ```
 
 You can also use the instance method:
@@ -137,7 +138,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Dns()
+const entity = client.Geodn()
 
 // First call runs the operation and stores its result
 await entity.load({ id: 'example' })
@@ -287,7 +288,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: load.
@@ -298,7 +299,7 @@ API path: `/api/dns/{hostname}`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
+| `answers` |  |
 | `from_loc` |  |
 
 Operations: load.
@@ -318,7 +319,7 @@ API path: `/api/geodns/{hostname}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: load.
 
@@ -337,7 +338,7 @@ API path: `/api/geoping/{ip}`
 | `packet_loss` |  |
 | `packets_received` |  |
 | `packets_sent` |  |
-| `rtt` |  |
+| `rtts` |  |
 
 Operations: load.
 
@@ -362,7 +363,7 @@ Create an instance: `const dns = client.Dns()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `any[]` |  |
+| `answers` | `any[]` |  |
 | `from_loc` | `any` |  |
 
 #### Example: Load
@@ -386,7 +387,7 @@ Create an instance: `const geodn = client.Geodn()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `any[]` |  |
+| `answers` | `any[]` |  |
 | `from_loc` | `any` |  |
 
 #### Example: Load
@@ -419,7 +420,7 @@ Create an instance: `const geoping = client.Geoping()`
 | `packet_loss` | `number` |  |
 | `packets_received` | `number` |  |
 | `packets_sent` | `number` |  |
-| `rtt` | `any[]` |  |
+| `rtts` | `any[]` |  |
 
 #### Example: Load
 
@@ -451,7 +452,7 @@ Create an instance: `const ping = client.Ping()`
 | `packet_loss` | `number` |  |
 | `packets_received` | `number` |  |
 | `packets_sent` | `number` |  |
-| `rtt` | `any[]` |  |
+| `rtts` | `any[]` |  |
 
 #### Example: Load
 
@@ -529,11 +530,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const dns = client.Dns()
-await dns.load({ id: "example_id" })
+const geodn = client.Geodn()
+await geodn.load({ id: "example_id" })
 
-// dns.data() now returns the dns data from the last `load`
-// dns.match() returns { id: "example_id" }
+// geodn.data() now returns the geodn data from the last `load`
+// geodn.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -35,7 +35,7 @@ class GeonetConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'answer',
+              'name' => 'answers',
               'req' => true,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -80,6 +80,7 @@ class GeonetConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/dns/{hostname}',
                   'parts' => [
@@ -116,7 +117,7 @@ class GeonetConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'answer',
+              'name' => 'answers',
               'req' => true,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -161,6 +162,7 @@ class GeonetConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/geodns/{hostname}',
                   'parts' => [
@@ -260,7 +262,7 @@ class GeonetConfig
             ],
             [
               'active' => true,
-              'name' => 'rtt',
+              'name' => 'rtts',
               'req' => true,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -287,6 +289,7 @@ class GeonetConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/geoping/{ip}',
                   'parts' => [
@@ -385,7 +388,7 @@ class GeonetConfig
             ],
             [
               'active' => true,
-              'name' => 'rtt',
+              'name' => 'rtts',
               'req' => true,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -412,6 +415,7 @@ class GeonetConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ping/{ip}',
                   'parts' => [
