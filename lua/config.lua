@@ -1,5 +1,8 @@
 -- Geonet SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -28,18 +31,14 @@ local function make_config()
       ["dns"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "answers",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "from_loc",
             ["req"] = true,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "dns",
@@ -49,27 +48,22 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "hostname",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A",
                       ["kind"] = "query",
                       ["name"] = "rtype",
                       ["orig"] = "rtype",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -97,10 +91,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -110,18 +102,14 @@ local function make_config()
       ["geodn"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "answers",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "from_loc",
             ["req"] = true,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "geodn",
@@ -131,27 +119,22 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "hostname",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A",
                       ["kind"] = "query",
                       ["name"] = "rtype",
                       ["orig"] = "rtype",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -179,10 +162,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -192,74 +173,54 @@ local function make_config()
       ["geoping"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "avg_rtt",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "from_loc",
             ["req"] = true,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "ip",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "is_alive",
             ["req"] = true,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "max_rtt",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "min_rtt",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "packet_loss",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "packets_received",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "packets_sent",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "rtts",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
         },
         ["name"] = "geoping",
@@ -269,17 +230,14 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "ip",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -305,10 +263,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -318,74 +274,54 @@ local function make_config()
       ["ping"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "avg_rtt",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "from_loc",
             ["req"] = true,
             ["type"] = "`$ANY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "ip",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "is_alive",
             ["req"] = true,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "max_rtt",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "min_rtt",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "packet_loss",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "packets_received",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "packets_sent",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "rtts",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
         },
         ["name"] = "ping",
@@ -395,17 +331,14 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "ip",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -431,10 +364,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

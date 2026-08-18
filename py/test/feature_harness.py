@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from geonet_sdk.config import make_config
+from geonet_sdk.config import shared_config
 from geonet_sdk.features import _make_feature
 from geonet_sdk.core.control import GeonetControl
 from geonet_sdk.core.error import GeonetError
@@ -24,7 +24,7 @@ from geonet_sdk.core.spec import GeonetSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

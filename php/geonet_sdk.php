@@ -40,7 +40,7 @@ class GeonetSDK
         $utility = new GeonetUtility();
         $this->_utility = $utility;
 
-        $config = GeonetConfig::make_config();
+        $config = GeonetConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

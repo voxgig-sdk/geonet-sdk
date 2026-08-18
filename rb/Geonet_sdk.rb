@@ -28,7 +28,7 @@ class GeonetSDK
     utility = GeonetUtility.new
     @_utility = utility
 
-    config = GeonetConfig.make_config
+    config = GeonetConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -23,8 +23,8 @@ class GeonetSDK:
         utility = GeonetUtility()
         self._utility = utility
 
-        from geonet_sdk.config import make_config
-        config = make_config()
+        from geonet_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class GeonetConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -34,18 +57,14 @@ class GeonetConfig
         'dns' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'answers',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'from_loc',
               'req' => true,
               'type' => '`$ANY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'dns',
@@ -55,27 +74,22 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'hostname',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'A',
                         'kind' => 'query',
                         'name' => 'rtype',
                         'orig' => 'rtype',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -103,10 +117,8 @@ class GeonetConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -116,18 +128,14 @@ class GeonetConfig
         'geodn' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'answers',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'from_loc',
               'req' => true,
               'type' => '`$ANY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'geodn',
@@ -137,27 +145,22 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'hostname',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'A',
                         'kind' => 'query',
                         'name' => 'rtype',
                         'orig' => 'rtype',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -185,10 +188,8 @@ class GeonetConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -198,74 +199,54 @@ class GeonetConfig
         'geoping' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'avg_rtt',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'from_loc',
               'req' => true,
               'type' => '`$ANY`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'ip',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'is_alive',
               'req' => true,
               'type' => '`$BOOLEAN`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'max_rtt',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'min_rtt',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'packet_loss',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'packets_received',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'packets_sent',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'rtts',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 9,
             ],
           ],
           'name' => 'geoping',
@@ -275,17 +256,14 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'ip',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -311,10 +289,8 @@ class GeonetConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -324,74 +300,54 @@ class GeonetConfig
         'ping' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'avg_rtt',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'from_loc',
               'req' => true,
               'type' => '`$ANY`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'ip',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'is_alive',
               'req' => true,
               'type' => '`$BOOLEAN`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'max_rtt',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'min_rtt',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'packet_loss',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'packets_received',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'packets_sent',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'rtts',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 9,
             ],
           ],
           'name' => 'ping',
@@ -401,17 +357,14 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'ip',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -437,10 +390,8 @@ class GeonetConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
