@@ -103,7 +103,7 @@ local dns = client:Dns(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `table` | Yes |  |
-| `from_loc` | `any` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -156,7 +156,7 @@ local geodn = client:Geodn(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `table` | Yes |  |
-| `from_loc` | `any` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -209,8 +209,8 @@ local geoping = client:Geoping(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `number` | Yes |  |
-| `from_loc` | `any` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `boolean` | Yes |  |
 | `max_rtt` | `number` | Yes |  |
 | `min_rtt` | `number` | Yes |  |
@@ -270,8 +270,8 @@ local ping = client:Ping(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `number` | Yes |  |
-| `from_loc` | `any` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `boolean` | Yes |  |
 | `max_rtt` | `number` | Yes |  |
 | `min_rtt` | `number` | Yes |  |

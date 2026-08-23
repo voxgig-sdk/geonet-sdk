@@ -106,7 +106,7 @@ dns = client.Dns
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `Array` | Yes |  |
-| `from_loc` | `Object` | Yes |  |
+| `from_loc` | `Object` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -159,7 +159,7 @@ geodn = client.Geodn
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `Array` | Yes |  |
-| `from_loc` | `Object` | Yes |  |
+| `from_loc` | `Object` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -212,8 +212,8 @@ geoping = client.Geoping
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `Float` | Yes |  |
-| `from_loc` | `Object` | Yes |  |
-| `ip` | `String` | Yes |  |
+| `from_loc` | `Object` | Yes | Location of the server that performed the ping |
+| `ip` | `String` | Yes | IP address that was pinged |
 | `is_alive` | `Boolean` | Yes |  |
 | `max_rtt` | `Float` | Yes |  |
 | `min_rtt` | `Float` | Yes |  |
@@ -273,8 +273,8 @@ ping = client.Ping
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `Float` | Yes |  |
-| `from_loc` | `Object` | Yes |  |
-| `ip` | `String` | Yes |  |
+| `from_loc` | `Object` | Yes | Location of the server that performed the ping |
+| `ip` | `String` | Yes | IP address that was pinged |
 | `is_alive` | `Boolean` | Yes |  |
 | `max_rtt` | `Float` | Yes |  |
 | `min_rtt` | `Float` | Yes |  |

@@ -33,6 +33,9 @@ class GeonetConfig
         return [
             "main" => [
                 "name" => "Geonet",
+                "slug" => "geonet",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -64,6 +67,7 @@ class GeonetConfig
             [
               'name' => 'from_loc',
               'req' => true,
+              'short' => 'Location of the server that performed the DNS lookup',
               'type' => '`$ANY`',
             ],
           ],
@@ -135,6 +139,7 @@ class GeonetConfig
             [
               'name' => 'from_loc',
               'req' => true,
+              'short' => 'Location of the server that performed the DNS lookup',
               'type' => '`$ANY`',
             ],
           ],
@@ -206,11 +211,13 @@ class GeonetConfig
             [
               'name' => 'from_loc',
               'req' => true,
+              'short' => 'Location of the server that performed the ping',
               'type' => '`$ANY`',
             ],
             [
               'name' => 'ip',
               'req' => true,
+              'short' => 'IP address that was pinged',
               'type' => '`$STRING`',
             ],
             [
@@ -307,11 +314,13 @@ class GeonetConfig
             [
               'name' => 'from_loc',
               'req' => true,
+              'short' => 'Location of the server that performed the ping',
               'type' => '`$ANY`',
             ],
             [
               'name' => 'ip',
               'req' => true,
+              'short' => 'IP address that was pinged',
               'type' => '`$STRING`',
             ],
             [

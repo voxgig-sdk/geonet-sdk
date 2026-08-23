@@ -242,7 +242,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `answers` |  |
-| `from_loc` |  |
+| `from_loc` | Location of the server that performed the DNS lookup |
 
 Operations: Load.
 
@@ -253,7 +253,7 @@ API path: `/api/dns/{hostname}`
 | Field | Description |
 | --- | --- |
 | `answers` |  |
-| `from_loc` |  |
+| `from_loc` | Location of the server that performed the DNS lookup |
 
 Operations: Load.
 
@@ -264,8 +264,8 @@ API path: `/api/geodns/{hostname}`
 | Field | Description |
 | --- | --- |
 | `avg_rtt` |  |
-| `from_loc` |  |
-| `ip` |  |
+| `from_loc` | Location of the server that performed the ping |
+| `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
 | `min_rtt` |  |
@@ -283,8 +283,8 @@ API path: `/api/geoping/{ip}`
 | Field | Description |
 | --- | --- |
 | `avg_rtt` |  |
-| `from_loc` |  |
-| `ip` |  |
+| `from_loc` | Location of the server that performed the ping |
+| `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
 | `min_rtt` |  |
@@ -317,7 +317,7 @@ Create an instance: `dns = client.Dns`
 | Field | Type | Description |
 | --- | --- | --- |
 | `answers` | `Array` |  |
-| `from_loc` | `Object` |  |
+| `from_loc` | `Object` | Location of the server that performed the DNS lookup |
 
 #### Example: Load
 
@@ -342,7 +342,7 @@ Create an instance: `geodn = client.Geodn`
 | Field | Type | Description |
 | --- | --- | --- |
 | `answers` | `Array` |  |
-| `from_loc` | `Object` |  |
+| `from_loc` | `Object` | Location of the server that performed the DNS lookup |
 
 #### Example: Load
 
@@ -367,8 +367,8 @@ Create an instance: `geoping = client.Geoping`
 | Field | Type | Description |
 | --- | --- | --- |
 | `avg_rtt` | `Float` |  |
-| `from_loc` | `Object` |  |
-| `ip` | `String` |  |
+| `from_loc` | `Object` | Location of the server that performed the ping |
+| `ip` | `String` | IP address that was pinged |
 | `is_alive` | `Boolean` |  |
 | `max_rtt` | `Float` |  |
 | `min_rtt` | `Float` |  |
@@ -400,8 +400,8 @@ Create an instance: `ping = client.Ping`
 | Field | Type | Description |
 | --- | --- | --- |
 | `avg_rtt` | `Float` |  |
-| `from_loc` | `Object` |  |
-| `ip` | `String` |  |
+| `from_loc` | `Object` | Location of the server that performed the ping |
+| `ip` | `String` | IP address that was pinged |
 | `is_alive` | `Boolean` |  |
 | `max_rtt` | `Float` |  |
 | `min_rtt` | `Float` |  |

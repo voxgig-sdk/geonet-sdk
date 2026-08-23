@@ -111,7 +111,7 @@ fmt.Println(dns.GetName()) // "dns"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `[]any` | Yes |  |
-| `from_loc` | `any` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -163,7 +163,7 @@ fmt.Println(geodn.GetName()) // "geodn"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `[]any` | Yes |  |
-| `from_loc` | `any` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -215,8 +215,8 @@ fmt.Println(geoping.GetName()) // "geoping"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `float64` | Yes |  |
-| `from_loc` | `any` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `bool` | Yes |  |
 | `max_rtt` | `float64` | Yes |  |
 | `min_rtt` | `float64` | Yes |  |
@@ -275,8 +275,8 @@ fmt.Println(ping.GetName()) // "ping"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `float64` | Yes |  |
-| `from_loc` | `any` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `bool` | Yes |  |
 | `max_rtt` | `float64` | Yes |  |
 | `min_rtt` | `float64` | Yes |  |

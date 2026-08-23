@@ -1,0 +1,107 @@
+# Entity: ping
+
+main: kit: entity: ping: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avg_rtt"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "from_loc"
+      req: true
+      short: "Location of the server that performed the ping"
+      type: "`$ANY`"
+    }
+    {
+      name: "ip"
+      req: true
+      short: "IP address that was pinged"
+      type: "`$STRING`"
+    }
+    {
+      name: "is_alive"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "max_rtt"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "min_rtt"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "packet_loss"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "packets_received"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "packets_sent"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rtts"
+      req: true
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "ping"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "ip"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/ping/{ip}"
+          parts: [
+            "api"
+            "ping"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              ip: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Geonet",
+            "slug": "geonet",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -59,6 +62,7 @@ def make_config():
           {
             "name": "from_loc",
             "req": True,
+            "short": "Location of the server that performed the DNS lookup",
             "type": "`$ANY`",
           },
         ],
@@ -130,6 +134,7 @@ def make_config():
           {
             "name": "from_loc",
             "req": True,
+            "short": "Location of the server that performed the DNS lookup",
             "type": "`$ANY`",
           },
         ],
@@ -201,11 +206,13 @@ def make_config():
           {
             "name": "from_loc",
             "req": True,
+            "short": "Location of the server that performed the ping",
             "type": "`$ANY`",
           },
           {
             "name": "ip",
             "req": True,
+            "short": "IP address that was pinged",
             "type": "`$STRING`",
           },
           {
@@ -302,11 +309,13 @@ def make_config():
           {
             "name": "from_loc",
             "req": True,
+            "short": "Location of the server that performed the ping",
             "type": "`$ANY`",
           },
           {
             "name": "ip",
             "req": True,
+            "short": "IP address that was pinged",
             "type": "`$STRING`",
           },
           {

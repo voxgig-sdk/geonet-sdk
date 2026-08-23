@@ -153,7 +153,7 @@ const dns = client.Dns()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `any[]` | Yes |  |
-| `from_loc` | `any` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -204,7 +204,7 @@ const geodn = client.Geodn()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `any[]` | Yes |  |
-| `from_loc` | `any` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -255,8 +255,8 @@ const geoping = client.Geoping()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `number` | Yes |  |
-| `from_loc` | `any` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `boolean` | Yes |  |
 | `max_rtt` | `number` | Yes |  |
 | `min_rtt` | `number` | Yes |  |
@@ -314,8 +314,8 @@ const ping = client.Ping()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `number` | Yes |  |
-| `from_loc` | `any` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `boolean` | Yes |  |
 | `max_rtt` | `number` | Yes |  |
 | `min_rtt` | `number` | Yes |  |

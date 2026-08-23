@@ -19,6 +19,9 @@ module GeonetConfig
     {
       "main" => {
         "name" => "Geonet",
+        "slug" => "geonet",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -50,6 +53,7 @@ module GeonetConfig
             {
               "name" => "from_loc",
               "req" => true,
+              "short" => "Location of the server that performed the DNS lookup",
               "type" => "`$ANY`",
             },
           ],
@@ -121,6 +125,7 @@ module GeonetConfig
             {
               "name" => "from_loc",
               "req" => true,
+              "short" => "Location of the server that performed the DNS lookup",
               "type" => "`$ANY`",
             },
           ],
@@ -192,11 +197,13 @@ module GeonetConfig
             {
               "name" => "from_loc",
               "req" => true,
+              "short" => "Location of the server that performed the ping",
               "type" => "`$ANY`",
             },
             {
               "name" => "ip",
               "req" => true,
+              "short" => "IP address that was pinged",
               "type" => "`$STRING`",
             },
             {
@@ -293,11 +300,13 @@ module GeonetConfig
             {
               "name" => "from_loc",
               "req" => true,
+              "short" => "Location of the server that performed the ping",
               "type" => "`$ANY`",
             },
             {
               "name" => "ip",
               "req" => true,
+              "short" => "IP address that was pinged",
               "type" => "`$STRING`",
             },
             {

@@ -1,0 +1,77 @@
+# Entity: dns
+
+main: kit: entity: dns: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "answers"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "from_loc"
+      req: true
+      short: "Location of the server that performed the DNS lookup"
+      type: "`$ANY`"
+    }
+  ]
+
+  name: "dns"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "hostname"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "A"
+                kind: "query"
+                name: "rtype"
+                orig: "rtype"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/dns/{hostname}"
+          parts: [
+            "api"
+            "dns"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              hostname: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+              "rtype"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

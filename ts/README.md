@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -289,7 +289,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `answers` |  |
-| `from_loc` |  |
+| `from_loc` | Location of the server that performed the DNS lookup |
 
 Operations: load.
 
@@ -300,7 +300,7 @@ API path: `/api/dns/{hostname}`
 | Field | Description |
 | --- | --- |
 | `answers` |  |
-| `from_loc` |  |
+| `from_loc` | Location of the server that performed the DNS lookup |
 
 Operations: load.
 
@@ -311,8 +311,8 @@ API path: `/api/geodns/{hostname}`
 | Field | Description |
 | --- | --- |
 | `avg_rtt` |  |
-| `from_loc` |  |
-| `ip` |  |
+| `from_loc` | Location of the server that performed the ping |
+| `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
 | `min_rtt` |  |
@@ -330,8 +330,8 @@ API path: `/api/geoping/{ip}`
 | Field | Description |
 | --- | --- |
 | `avg_rtt` |  |
-| `from_loc` |  |
-| `ip` |  |
+| `from_loc` | Location of the server that performed the ping |
+| `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
 | `min_rtt` |  |
@@ -364,7 +364,7 @@ Create an instance: `const dns = client.Dns()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `answers` | `any[]` |  |
-| `from_loc` | `any` |  |
+| `from_loc` | `any` | Location of the server that performed the DNS lookup |
 
 #### Example: Load
 
@@ -388,7 +388,7 @@ Create an instance: `const geodn = client.Geodn()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `answers` | `any[]` |  |
-| `from_loc` | `any` |  |
+| `from_loc` | `any` | Location of the server that performed the DNS lookup |
 
 #### Example: Load
 
@@ -412,8 +412,8 @@ Create an instance: `const geoping = client.Geoping()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `avg_rtt` | `number` |  |
-| `from_loc` | `any` |  |
-| `ip` | `string` |  |
+| `from_loc` | `any` | Location of the server that performed the ping |
+| `ip` | `string` | IP address that was pinged |
 | `is_alive` | `boolean` |  |
 | `max_rtt` | `number` |  |
 | `min_rtt` | `number` |  |
@@ -444,8 +444,8 @@ Create an instance: `const ping = client.Ping()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `avg_rtt` | `number` |  |
-| `from_loc` | `any` |  |
-| `ip` | `string` |  |
+| `from_loc` | `any` | Location of the server that performed the ping |
+| `ip` | `string` | IP address that was pinged |
 | `is_alive` | `boolean` |  |
 | `max_rtt` | `number` |  |
 | `min_rtt` | `number` |  |

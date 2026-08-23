@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Geonet',
+        slug: "geonet",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -71,6 +82,7 @@ class Config {
         {
           "name": "from_loc",
           "req": true,
+          "short": "Location of the server that performed the DNS lookup",
           "type": "`$ANY`"
         }
       ],
@@ -142,6 +154,7 @@ class Config {
         {
           "name": "from_loc",
           "req": true,
+          "short": "Location of the server that performed the DNS lookup",
           "type": "`$ANY`"
         }
       ],
@@ -213,11 +226,13 @@ class Config {
         {
           "name": "from_loc",
           "req": true,
+          "short": "Location of the server that performed the ping",
           "type": "`$ANY`"
         },
         {
           "name": "ip",
           "req": true,
+          "short": "IP address that was pinged",
           "type": "`$STRING`"
         },
         {
@@ -314,11 +329,13 @@ class Config {
         {
           "name": "from_loc",
           "req": true,
+          "short": "Location of the server that performed the ping",
           "type": "`$ANY`"
         },
         {
           "name": "ip",
           "req": true,
+          "short": "IP address that was pinged",
           "type": "`$STRING`"
         },
         {

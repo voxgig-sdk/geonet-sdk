@@ -105,7 +105,7 @@ $dns = $client->Dns();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `array` | Yes |  |
-| `from_loc` | `mixed` | Yes |  |
+| `from_loc` | `mixed` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -158,7 +158,7 @@ $geodn = $client->Geodn();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `answers` | `array` | Yes |  |
-| `from_loc` | `mixed` | Yes |  |
+| `from_loc` | `mixed` | Yes | Location of the server that performed the DNS lookup |
 
 ### Operations
 
@@ -211,8 +211,8 @@ $geoping = $client->Geoping();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `float` | Yes |  |
-| `from_loc` | `mixed` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `mixed` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `bool` | Yes |  |
 | `max_rtt` | `float` | Yes |  |
 | `min_rtt` | `float` | Yes |  |
@@ -272,8 +272,8 @@ $ping = $client->Ping();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `avg_rtt` | `float` | Yes |  |
-| `from_loc` | `mixed` | Yes |  |
-| `ip` | `string` | Yes |  |
+| `from_loc` | `mixed` | Yes | Location of the server that performed the ping |
+| `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `bool` | Yes |  |
 | `max_rtt` | `float` | Yes |  |
 | `min_rtt` | `float` | Yes |  |
