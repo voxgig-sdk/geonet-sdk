@@ -104,6 +104,7 @@ local dns = client:Dns(nil)
 | --- | --- | --- | --- |
 | `answers` | `table` | Yes |  |
 | `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -157,6 +158,7 @@ local geodn = client:Geodn(nil)
 | --- | --- | --- | --- |
 | `answers` | `table` | Yes |  |
 | `from_loc` | `any` | Yes | Location of the server that performed the DNS lookup |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -210,6 +212,7 @@ local geoping = client:Geoping(nil)
 | --- | --- | --- | --- |
 | `avg_rtt` | `number` | Yes |  |
 | `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `id` | `string` | No |  |
 | `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `boolean` | Yes |  |
 | `max_rtt` | `number` | Yes |  |
@@ -271,6 +274,7 @@ local ping = client:Ping(nil)
 | --- | --- | --- | --- |
 | `avg_rtt` | `number` | Yes |  |
 | `from_loc` | `any` | Yes | Location of the server that performed the ping |
+| `id` | `string` | No |  |
 | `ip` | `string` | Yes | IP address that was pinged |
 | `is_alive` | `boolean` | Yes |  |
 | `max_rtt` | `number` | Yes |  |

@@ -15,9 +15,13 @@
 #
 # @!attribute [rw] from_loc
 #   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 Dns = Struct.new(
   :answers,
   :from_loc,
+  :id,
   keyword_init: true
 )
 
@@ -37,9 +41,13 @@ DnsLoadMatch = Struct.new(
 #
 # @!attribute [rw] from_loc
 #   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 Geodn = Struct.new(
   :answers,
   :from_loc,
+  :id,
   keyword_init: true
 )
 
@@ -59,6 +67,9 @@ GeodnLoadMatch = Struct.new(
 #
 # @!attribute [rw] from_loc
 #   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 #
 # @!attribute [rw] ip
 #   @return [String]
@@ -86,6 +97,7 @@ GeodnLoadMatch = Struct.new(
 Geoping = Struct.new(
   :avg_rtt,
   :from_loc,
+  :id,
   :ip,
   :is_alive,
   :max_rtt,
@@ -114,6 +126,9 @@ GeopingLoadMatch = Struct.new(
 # @!attribute [rw] from_loc
 #   @return [Object]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] ip
 #   @return [String]
 #
@@ -140,6 +155,7 @@ GeopingLoadMatch = Struct.new(
 Ping = Struct.new(
   :avg_rtt,
   :from_loc,
+  :id,
   :ip,
   :is_alive,
   :max_rtt,

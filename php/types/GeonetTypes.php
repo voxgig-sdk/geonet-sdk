@@ -17,6 +17,7 @@ class Dns
 {
     public array $answers;
     public mixed $from_loc;
+    public ?string $id = null;
 }
 
 /** Request payload for Dns#load. */
@@ -30,6 +31,7 @@ class Geodn
 {
     public array $answers;
     public mixed $from_loc;
+    public ?string $id = null;
 }
 
 /** Request payload for Geodn#load. */
@@ -43,6 +45,7 @@ class Geoping
 {
     public float $avg_rtt;
     public mixed $from_loc;
+    public ?string $id = null;
     public string $ip;
     public bool $is_alive;
     public float $max_rtt;
@@ -64,6 +67,7 @@ class Ping
 {
     public float $avg_rtt;
     public mixed $from_loc;
+    public ?string $id = null;
     public string $ip;
     public bool $is_alive;
     public float $max_rtt;

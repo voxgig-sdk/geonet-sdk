@@ -48,9 +48,13 @@ class GeopingEntityTest extends TestCase
 
         // LOAD
         $geoping_ref01_ent = $client->Geoping(null);
-        $geoping_ref01_match_dt0 = [];
+        $geoping_ref01_match_dt0 = [
+            "id" => $geoping_ref01_data["id"],
+        ];
         $geoping_ref01_data_dt0_loaded = $geoping_ref01_ent->load($geoping_ref01_match_dt0, null);
-        $this->assertNotNull($geoping_ref01_data_dt0_loaded);
+        $geoping_ref01_data_dt0_load_result = Helpers::to_map(is_object($geoping_ref01_data_dt0_loaded) && method_exists($geoping_ref01_data_dt0_loaded, 'data_get') ? $geoping_ref01_data_dt0_loaded->data_get() : $geoping_ref01_data_dt0_loaded);
+        $this->assertNotNull($geoping_ref01_data_dt0_load_result);
+        $this->assertEquals($geoping_ref01_data_dt0_load_result["id"], $geoping_ref01_data["id"]);
 
     }
 }

@@ -16,6 +16,7 @@ import (
 type Dns struct {
 	Answers []any `json:"answers"`
 	FromLoc any `json:"from_loc"`
+	Id *string `json:"id,omitempty"`
 }
 
 // DnsLoadMatch is the typed request payload for Dns.LoadTyped.
@@ -27,6 +28,7 @@ type DnsLoadMatch struct {
 type Geodn struct {
 	Answers []any `json:"answers"`
 	FromLoc any `json:"from_loc"`
+	Id *string `json:"id,omitempty"`
 }
 
 // GeodnLoadMatch is the typed request payload for Geodn.LoadTyped.
@@ -38,6 +40,7 @@ type GeodnLoadMatch struct {
 type Geoping struct {
 	AvgRtt float64 `json:"avg_rtt"`
 	FromLoc any `json:"from_loc"`
+	Id *string `json:"id,omitempty"`
 	Ip string `json:"ip"`
 	IsAlive bool `json:"is_alive"`
 	MaxRtt float64 `json:"max_rtt"`
@@ -57,6 +60,7 @@ type GeopingLoadMatch struct {
 type Ping struct {
 	AvgRtt float64 `json:"avg_rtt"`
 	FromLoc any `json:"from_loc"`
+	Id *string `json:"id,omitempty"`
 	Ip string `json:"ip"`
 	IsAlive bool `json:"is_alive"`
 	MaxRtt float64 `json:"max_rtt"`

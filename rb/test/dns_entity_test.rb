@@ -41,9 +41,13 @@ class DnsEntityTest < Minitest::Test
 
     # LOAD
     dns_ref01_ent = client.Dns(nil)
-    dns_ref01_match_dt0 = {}
+    dns_ref01_match_dt0 = {
+      "id" => dns_ref01_data["id"],
+    }
     dns_ref01_data_dt0_loaded = dns_ref01_ent.load(dns_ref01_match_dt0, nil)
-    assert !dns_ref01_data_dt0_loaded.nil?
+    dns_ref01_data_dt0_load_result = Helpers.to_map(dns_ref01_data_dt0_loaded.respond_to?(:data_get) ? dns_ref01_data_dt0_loaded.data_get : dns_ref01_data_dt0_loaded)
+    assert !dns_ref01_data_dt0_load_result.nil?
+    assert_equal dns_ref01_data_dt0_load_result["id"], dns_ref01_data["id"]
 
   end
 end

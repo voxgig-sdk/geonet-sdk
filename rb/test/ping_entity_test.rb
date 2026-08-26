@@ -41,9 +41,13 @@ class PingEntityTest < Minitest::Test
 
     # LOAD
     ping_ref01_ent = client.Ping(nil)
-    ping_ref01_match_dt0 = {}
+    ping_ref01_match_dt0 = {
+      "id" => ping_ref01_data["id"],
+    }
     ping_ref01_data_dt0_loaded = ping_ref01_ent.load(ping_ref01_match_dt0, nil)
-    assert !ping_ref01_data_dt0_loaded.nil?
+    ping_ref01_data_dt0_load_result = Helpers.to_map(ping_ref01_data_dt0_loaded.respond_to?(:data_get) ? ping_ref01_data_dt0_loaded.data_get : ping_ref01_data_dt0_loaded)
+    assert !ping_ref01_data_dt0_load_result.nil?
+    assert_equal ping_ref01_data_dt0_load_result["id"], ping_ref01_data["id"]
 
   end
 end

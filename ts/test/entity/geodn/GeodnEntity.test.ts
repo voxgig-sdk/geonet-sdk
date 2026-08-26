@@ -59,9 +59,12 @@ describe('GeodnEntity', async () => {
 
     let geodn_ref01_data = Object.values(setup.data.existing.geodn)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const geodn_ref01_ent = client.Geodn()
+    const geodn_ref01_match_dt0: any = {}
+    geodn_ref01_match_dt0.id = geodn_ref01_data.id
+    const geodn_ref01_data_dt0 = (await geodn_ref01_ent.load(geodn_ref01_match_dt0)).data()
+    assert(geodn_ref01_data_dt0.id === geodn_ref01_data.id)
 
 
   })

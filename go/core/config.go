@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -47,6 +48,10 @@ func MakeConfig() map[string]any {
 						"req": true,
 						"short": "Location of the server that performed the DNS lookup",
 						"type": "`$ANY`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 				},
 				"name": "dns",
@@ -120,6 +125,10 @@ func MakeConfig() map[string]any {
 						"short": "Location of the server that performed the DNS lookup",
 						"type": "`$ANY`",
 					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
 				},
 				"name": "geodn",
 				"op": map[string]any{
@@ -191,6 +200,10 @@ func MakeConfig() map[string]any {
 						"req": true,
 						"short": "Location of the server that performed the ping",
 						"type": "`$ANY`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ip",
@@ -294,6 +307,10 @@ func MakeConfig() map[string]any {
 						"req": true,
 						"short": "Location of the server that performed the ping",
 						"type": "`$ANY`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ip",

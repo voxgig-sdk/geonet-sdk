@@ -28,6 +28,7 @@ module GeonetConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -55,6 +56,10 @@ module GeonetConfig
               "req" => true,
               "short" => "Location of the server that performed the DNS lookup",
               "type" => "`$ANY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
           ],
           "name" => "dns",
@@ -128,6 +133,10 @@ module GeonetConfig
               "short" => "Location of the server that performed the DNS lookup",
               "type" => "`$ANY`",
             },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
           ],
           "name" => "geodn",
           "op" => {
@@ -199,6 +208,10 @@ module GeonetConfig
               "req" => true,
               "short" => "Location of the server that performed the ping",
               "type" => "`$ANY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "ip",
@@ -302,6 +315,10 @@ module GeonetConfig
               "req" => true,
               "short" => "Location of the server that performed the ping",
               "type" => "`$ANY`",
+            },
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
             },
             {
               "name" => "ip",

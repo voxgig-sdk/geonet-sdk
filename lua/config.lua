@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -43,6 +44,10 @@ local function make_config()
             ["req"] = true,
             ["short"] = "Location of the server that performed the DNS lookup",
             ["type"] = "`$ANY`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
         },
         ["name"] = "dns",
@@ -116,6 +121,10 @@ local function make_config()
             ["short"] = "Location of the server that performed the DNS lookup",
             ["type"] = "`$ANY`",
           },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
         },
         ["name"] = "geodn",
         ["op"] = {
@@ -187,6 +196,10 @@ local function make_config()
             ["req"] = true,
             ["short"] = "Location of the server that performed the ping",
             ["type"] = "`$ANY`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "ip",
@@ -290,6 +303,10 @@ local function make_config()
             ["req"] = true,
             ["short"] = "Location of the server that performed the ping",
             ["type"] = "`$ANY`",
+          },
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "ip",

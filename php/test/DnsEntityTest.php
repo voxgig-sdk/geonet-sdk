@@ -48,9 +48,13 @@ class DnsEntityTest extends TestCase
 
         // LOAD
         $dns_ref01_ent = $client->Dns(null);
-        $dns_ref01_match_dt0 = [];
+        $dns_ref01_match_dt0 = [
+            "id" => $dns_ref01_data["id"],
+        ];
         $dns_ref01_data_dt0_loaded = $dns_ref01_ent->load($dns_ref01_match_dt0, null);
-        $this->assertNotNull($dns_ref01_data_dt0_loaded);
+        $dns_ref01_data_dt0_load_result = Helpers::to_map(is_object($dns_ref01_data_dt0_loaded) && method_exists($dns_ref01_data_dt0_loaded, 'data_get') ? $dns_ref01_data_dt0_loaded->data_get() : $dns_ref01_data_dt0_loaded);
+        $this->assertNotNull($dns_ref01_data_dt0_load_result);
+        $this->assertEquals($dns_ref01_data_dt0_load_result["id"], $dns_ref01_data["id"]);
 
     }
 }

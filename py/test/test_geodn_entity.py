@@ -48,9 +48,13 @@ class TestGeodnEntity:
 
         # LOAD
         geodn_ref01_ent = client.Geodn(None)
-        geodn_ref01_match_dt0 = {}
+        geodn_ref01_match_dt0 = {
+            "id": geodn_ref01_data["id"],
+        }
         geodn_ref01_data_dt0_loaded = geodn_ref01_ent.load(geodn_ref01_match_dt0, None)
-        assert geodn_ref01_data_dt0_loaded is not None
+        geodn_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(geodn_ref01_data_dt0_loaded))
+        assert geodn_ref01_data_dt0_load_result is not None
+        assert geodn_ref01_data_dt0_load_result["id"] == geodn_ref01_data["id"]
 
 
 

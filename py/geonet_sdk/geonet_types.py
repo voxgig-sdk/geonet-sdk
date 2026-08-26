@@ -16,25 +16,33 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Dns(TypedDict):
+class DnsRequired(TypedDict):
     answers: list
     from_loc: Any
+
+
+class Dns(DnsRequired, total=False):
+    id: str
 
 
 class DnsLoadMatch(TypedDict):
     id: str
 
 
-class Geodn(TypedDict):
+class GeodnRequired(TypedDict):
     answers: list
     from_loc: Any
+
+
+class Geodn(GeodnRequired, total=False):
+    id: str
 
 
 class GeodnLoadMatch(TypedDict):
     id: str
 
 
-class Geoping(TypedDict):
+class GeopingRequired(TypedDict):
     avg_rtt: float
     from_loc: Any
     ip: str
@@ -45,13 +53,17 @@ class Geoping(TypedDict):
     packets_received: int
     packets_sent: int
     rtts: list
+
+
+class Geoping(GeopingRequired, total=False):
+    id: str
 
 
 class GeopingLoadMatch(TypedDict):
     id: str
 
 
-class Ping(TypedDict):
+class PingRequired(TypedDict):
     avg_rtt: float
     from_loc: Any
     ip: str
@@ -62,6 +74,10 @@ class Ping(TypedDict):
     packets_received: int
     packets_sent: int
     rtts: list
+
+
+class Ping(PingRequired, total=False):
+    id: str
 
 
 class PingLoadMatch(TypedDict):

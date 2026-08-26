@@ -61,13 +61,19 @@ func TestPingEntity(t *testing.T) {
 
 		// LOAD
 		pingRef01Ent := client.Ping(nil)
-		pingRef01MatchDt0 := map[string]any{}
+		pingRef01MatchDt0 := map[string]any{
+			"id": pingRef01Data["id"],
+		}
 		pingRef01DataDt0Loaded, err := pingRef01Ent.Load(pingRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if pingRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		pingRef01DataDt0LoadResult := core.ToMapAny(entityData(pingRef01DataDt0Loaded))
+		if pingRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if pingRef01DataDt0LoadResult["id"] != pingRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

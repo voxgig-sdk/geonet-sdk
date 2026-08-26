@@ -246,6 +246,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `answers` |  |
 | `from_loc` | Location of the server that performed the DNS lookup |
+| `id` |  |
 
 Operations: Load.
 
@@ -257,6 +258,7 @@ API path: `/api/dns/{hostname}`
 | --- | --- |
 | `answers` |  |
 | `from_loc` | Location of the server that performed the DNS lookup |
+| `id` |  |
 
 Operations: Load.
 
@@ -268,6 +270,7 @@ API path: `/api/geodns/{hostname}`
 | --- | --- |
 | `avg_rtt` |  |
 | `from_loc` | Location of the server that performed the ping |
+| `id` |  |
 | `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
@@ -287,6 +290,7 @@ API path: `/api/geoping/{ip}`
 | --- | --- |
 | `avg_rtt` |  |
 | `from_loc` | Location of the server that performed the ping |
+| `id` |  |
 | `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
@@ -321,6 +325,7 @@ Create an instance: `dns = client.Dns()`
 | --- | --- | --- |
 | `answers` | `list` |  |
 | `from_loc` | `Any` | Location of the server that performed the DNS lookup |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -345,6 +350,7 @@ Create an instance: `geodn = client.Geodn()`
 | --- | --- | --- |
 | `answers` | `list` |  |
 | `from_loc` | `Any` | Location of the server that performed the DNS lookup |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -369,6 +375,7 @@ Create an instance: `geoping = client.Geoping()`
 | --- | --- | --- |
 | `avg_rtt` | `float` |  |
 | `from_loc` | `Any` | Location of the server that performed the ping |
+| `id` | `str` |  |
 | `ip` | `str` | IP address that was pinged |
 | `is_alive` | `bool` |  |
 | `max_rtt` | `float` |  |
@@ -401,6 +408,7 @@ Create an instance: `ping = client.Ping()`
 | --- | --- | --- |
 | `avg_rtt` | `float` |  |
 | `from_loc` | `Any` | Location of the server that performed the ping |
+| `id` | `str` |  |
 | `ip` | `str` | IP address that was pinged |
 | `is_alive` | `bool` |  |
 | `max_rtt` | `float` |  |

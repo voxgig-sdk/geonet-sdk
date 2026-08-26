@@ -3,17 +3,17 @@
     "dns": {
       "DNS00": {
         "answers": [],
-        "from_loc": "s15",
+        "from_loc": "s1f",
         "id": "DNS00"
       },
       "DNS01": {
         "answers": [],
-        "from_loc": "s29",
+        "from_loc": "s3d",
         "id": "DNS01"
       },
       "DNS02": {
         "answers": [],
-        "from_loc": "s3d",
+        "from_loc": "s5b",
         "id": "DNS02"
       }
     }
@@ -22,7 +22,7 @@
     "dns": {
       "dns_ref01": {
         "answers": [],
-        "from_loc": "s51"
+        "from_loc": "s79"
       }
     }
   }

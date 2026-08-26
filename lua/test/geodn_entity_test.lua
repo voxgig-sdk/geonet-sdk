@@ -44,10 +44,14 @@ describe("GeodnEntity", function()
 
     -- LOAD
     local geodn_ref01_ent = client:Geodn(nil)
-    local geodn_ref01_match_dt0 = {}
+    local geodn_ref01_match_dt0 = {
+      id = geodn_ref01_data["id"],
+    }
     local geodn_ref01_data_dt0_loaded, err = geodn_ref01_ent:load(geodn_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(geodn_ref01_data_dt0_loaded)
+    local geodn_ref01_data_dt0_load_result = helpers.to_map(type(geodn_ref01_data_dt0_loaded) == 'table' and geodn_ref01_data_dt0_loaded.data_get and geodn_ref01_data_dt0_loaded:data_get() or geodn_ref01_data_dt0_loaded)
+    assert.is_not_nil(geodn_ref01_data_dt0_load_result)
+    assert.are.equal(geodn_ref01_data_dt0_load_result["id"], geodn_ref01_data["id"])
 
   end)
 end)

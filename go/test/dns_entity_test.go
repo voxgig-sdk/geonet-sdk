@@ -61,13 +61,19 @@ func TestDnsEntity(t *testing.T) {
 
 		// LOAD
 		dnsRef01Ent := client.Dns(nil)
-		dnsRef01MatchDt0 := map[string]any{}
+		dnsRef01MatchDt0 := map[string]any{
+			"id": dnsRef01Data["id"],
+		}
 		dnsRef01DataDt0Loaded, err := dnsRef01Ent.Load(dnsRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if dnsRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		dnsRef01DataDt0LoadResult := core.ToMapAny(entityData(dnsRef01DataDt0Loaded))
+		if dnsRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if dnsRef01DataDt0LoadResult["id"] != dnsRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

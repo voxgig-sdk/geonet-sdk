@@ -263,6 +263,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"answers"` |  |
 | `"from_loc"` | Location of the server that performed the DNS lookup |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -274,6 +275,7 @@ API path: `/api/dns/{hostname}`
 | --- | --- |
 | `"answers"` |  |
 | `"from_loc"` | Location of the server that performed the DNS lookup |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -285,6 +287,7 @@ API path: `/api/geodns/{hostname}`
 | --- | --- |
 | `"avg_rtt"` |  |
 | `"from_loc"` | Location of the server that performed the ping |
+| `"id"` |  |
 | `"ip"` | IP address that was pinged |
 | `"is_alive"` |  |
 | `"max_rtt"` |  |
@@ -304,6 +307,7 @@ API path: `/api/geoping/{ip}`
 | --- | --- |
 | `"avg_rtt"` |  |
 | `"from_loc"` | Location of the server that performed the ping |
+| `"id"` |  |
 | `"ip"` | IP address that was pinged |
 | `"is_alive"` |  |
 | `"max_rtt"` |  |
@@ -338,6 +342,7 @@ Create an instance: `dns := client.Dns(nil)`
 | --- | --- | --- |
 | `answers` | `[]any` |  |
 | `from_loc` | `any` | Location of the server that performed the DNS lookup |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -366,6 +371,7 @@ Create an instance: `geodn := client.Geodn(nil)`
 | --- | --- | --- |
 | `answers` | `[]any` |  |
 | `from_loc` | `any` | Location of the server that performed the DNS lookup |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -394,6 +400,7 @@ Create an instance: `geoping := client.Geoping(nil)`
 | --- | --- | --- |
 | `avg_rtt` | `float64` |  |
 | `from_loc` | `any` | Location of the server that performed the ping |
+| `id` | `string` |  |
 | `ip` | `string` | IP address that was pinged |
 | `is_alive` | `bool` |  |
 | `max_rtt` | `float64` |  |
@@ -430,6 +437,7 @@ Create an instance: `ping := client.Ping(nil)`
 | --- | --- | --- |
 | `avg_rtt` | `float64` |  |
 | `from_loc` | `any` | Location of the server that performed the ping |
+| `id` | `string` |  |
 | `ip` | `string` | IP address that was pinged |
 | `is_alive` | `bool` |  |
 | `max_rtt` | `float64` |  |

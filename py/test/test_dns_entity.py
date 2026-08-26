@@ -48,9 +48,13 @@ class TestDnsEntity:
 
         # LOAD
         dns_ref01_ent = client.Dns(None)
-        dns_ref01_match_dt0 = {}
+        dns_ref01_match_dt0 = {
+            "id": dns_ref01_data["id"],
+        }
         dns_ref01_data_dt0_loaded = dns_ref01_ent.load(dns_ref01_match_dt0, None)
-        assert dns_ref01_data_dt0_loaded is not None
+        dns_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(dns_ref01_data_dt0_loaded))
+        assert dns_ref01_data_dt0_load_result is not None
+        assert dns_ref01_data_dt0_load_result["id"] == dns_ref01_data["id"]
 
 
 

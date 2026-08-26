@@ -61,13 +61,19 @@ func TestGeodnEntity(t *testing.T) {
 
 		// LOAD
 		geodnRef01Ent := client.Geodn(nil)
-		geodnRef01MatchDt0 := map[string]any{}
+		geodnRef01MatchDt0 := map[string]any{
+			"id": geodnRef01Data["id"],
+		}
 		geodnRef01DataDt0Loaded, err := geodnRef01Ent.Load(geodnRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if geodnRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		geodnRef01DataDt0LoadResult := core.ToMapAny(entityData(geodnRef01DataDt0Loaded))
+		if geodnRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if geodnRef01DataDt0LoadResult["id"] != geodnRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

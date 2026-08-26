@@ -61,13 +61,19 @@ func TestGeopingEntity(t *testing.T) {
 
 		// LOAD
 		geopingRef01Ent := client.Geoping(nil)
-		geopingRef01MatchDt0 := map[string]any{}
+		geopingRef01MatchDt0 := map[string]any{
+			"id": geopingRef01Data["id"],
+		}
 		geopingRef01DataDt0Loaded, err := geopingRef01Ent.Load(geopingRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if geopingRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		geopingRef01DataDt0LoadResult := core.ToMapAny(entityData(geopingRef01DataDt0Loaded))
+		if geopingRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if geopingRef01DataDt0LoadResult["id"] != geopingRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

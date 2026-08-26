@@ -9,6 +9,7 @@
 ---@class Dns
 ---@field answers table
 ---@field from_loc any
+---@field id? string
 
 ---@class DnsLoadMatch
 ---@field id string
@@ -16,6 +17,7 @@
 ---@class Geodn
 ---@field answers table
 ---@field from_loc any
+---@field id? string
 
 ---@class GeodnLoadMatch
 ---@field id string
@@ -23,6 +25,7 @@
 ---@class Geoping
 ---@field avg_rtt number
 ---@field from_loc any
+---@field id? string
 ---@field ip string
 ---@field is_alive boolean
 ---@field max_rtt number
@@ -38,6 +41,7 @@
 ---@class Ping
 ---@field avg_rtt number
 ---@field from_loc any
+---@field id? string
 ---@field ip string
 ---@field is_alive boolean
 ---@field max_rtt number

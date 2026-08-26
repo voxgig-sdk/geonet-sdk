@@ -16,7 +16,17 @@ main: kit: entity: dns: {
       short: "Location of the server that performed the DNS lookup"
       type: "`$ANY`"
     }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "dns"
   op: {

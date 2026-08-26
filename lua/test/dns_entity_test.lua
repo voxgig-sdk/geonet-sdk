@@ -44,10 +44,14 @@ describe("DnsEntity", function()
 
     -- LOAD
     local dns_ref01_ent = client:Dns(nil)
-    local dns_ref01_match_dt0 = {}
+    local dns_ref01_match_dt0 = {
+      id = dns_ref01_data["id"],
+    }
     local dns_ref01_data_dt0_loaded, err = dns_ref01_ent:load(dns_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(dns_ref01_data_dt0_loaded)
+    local dns_ref01_data_dt0_load_result = helpers.to_map(type(dns_ref01_data_dt0_loaded) == 'table' and dns_ref01_data_dt0_loaded.data_get and dns_ref01_data_dt0_loaded:data_get() or dns_ref01_data_dt0_loaded)
+    assert.is_not_nil(dns_ref01_data_dt0_load_result)
+    assert.are.equal(dns_ref01_data_dt0_load_result["id"], dns_ref01_data["id"])
 
   end)
 end)

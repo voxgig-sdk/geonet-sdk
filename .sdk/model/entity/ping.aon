@@ -17,6 +17,11 @@ main: kit: entity: ping: {
       type: "`$ANY`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "ip"
       req: true
       short: "IP address that was pinged"
@@ -58,6 +63,11 @@ main: kit: entity: ping: {
       type: "`$ARRAY`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "ping"
   op: {

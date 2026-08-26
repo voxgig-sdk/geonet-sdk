@@ -48,9 +48,13 @@ class PingEntityTest extends TestCase
 
         // LOAD
         $ping_ref01_ent = $client->Ping(null);
-        $ping_ref01_match_dt0 = [];
+        $ping_ref01_match_dt0 = [
+            "id" => $ping_ref01_data["id"],
+        ];
         $ping_ref01_data_dt0_loaded = $ping_ref01_ent->load($ping_ref01_match_dt0, null);
-        $this->assertNotNull($ping_ref01_data_dt0_loaded);
+        $ping_ref01_data_dt0_load_result = Helpers::to_map(is_object($ping_ref01_data_dt0_loaded) && method_exists($ping_ref01_data_dt0_loaded, 'data_get') ? $ping_ref01_data_dt0_loaded->data_get() : $ping_ref01_data_dt0_loaded);
+        $this->assertNotNull($ping_ref01_data_dt0_load_result);
+        $this->assertEquals($ping_ref01_data_dt0_load_result["id"], $ping_ref01_data["id"]);
 
     }
 }

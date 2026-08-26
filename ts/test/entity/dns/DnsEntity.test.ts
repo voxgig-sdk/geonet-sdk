@@ -59,9 +59,12 @@ describe('DnsEntity', async () => {
 
     let dns_ref01_data = Object.values(setup.data.existing.dns)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const dns_ref01_ent = client.Dns()
+    const dns_ref01_match_dt0: any = {}
+    dns_ref01_match_dt0.id = dns_ref01_data.id
+    const dns_ref01_data_dt0 = (await dns_ref01_ent.load(dns_ref01_match_dt0)).data()
+    assert(dns_ref01_data_dt0.id === dns_ref01_data.id)
 
 
   })

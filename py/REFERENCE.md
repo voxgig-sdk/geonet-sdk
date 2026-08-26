@@ -101,6 +101,7 @@ dns = client.Dns()
 | --- | --- | --- | --- |
 | `answers` | `list` | Yes |  |
 | `from_loc` | `Any` | Yes | Location of the server that performed the DNS lookup |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -153,6 +154,7 @@ geodn = client.Geodn()
 | --- | --- | --- | --- |
 | `answers` | `list` | Yes |  |
 | `from_loc` | `Any` | Yes | Location of the server that performed the DNS lookup |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -205,6 +207,7 @@ geoping = client.Geoping()
 | --- | --- | --- | --- |
 | `avg_rtt` | `float` | Yes |  |
 | `from_loc` | `Any` | Yes | Location of the server that performed the ping |
+| `id` | `str` | No |  |
 | `ip` | `str` | Yes | IP address that was pinged |
 | `is_alive` | `bool` | Yes |  |
 | `max_rtt` | `float` | Yes |  |
@@ -265,6 +268,7 @@ ping = client.Ping()
 | --- | --- | --- | --- |
 | `avg_rtt` | `float` | Yes |  |
 | `from_loc` | `Any` | Yes | Location of the server that performed the ping |
+| `id` | `str` | No |  |
 | `ip` | `str` | Yes | IP address that was pinged |
 | `is_alive` | `bool` | Yes |  |
 | `max_rtt` | `float` | Yes |  |

@@ -59,9 +59,12 @@ describe('PingEntity', async () => {
 
     let ping_ref01_data = Object.values(setup.data.existing.ping)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const ping_ref01_ent = client.Ping()
+    const ping_ref01_match_dt0: any = {}
+    ping_ref01_match_dt0.id = ping_ref01_data.id
+    const ping_ref01_data_dt0 = (await ping_ref01_ent.load(ping_ref01_match_dt0)).data()
+    assert(ping_ref01_data_dt0.id === ping_ref01_data.id)
 
 
   })

@@ -48,9 +48,13 @@ class TestPingEntity:
 
         # LOAD
         ping_ref01_ent = client.Ping(None)
-        ping_ref01_match_dt0 = {}
+        ping_ref01_match_dt0 = {
+            "id": ping_ref01_data["id"],
+        }
         ping_ref01_data_dt0_loaded = ping_ref01_ent.load(ping_ref01_match_dt0, None)
-        assert ping_ref01_data_dt0_loaded is not None
+        ping_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(ping_ref01_data_dt0_loaded))
+        assert ping_ref01_data_dt0_load_result is not None
+        assert ping_ref01_data_dt0_load_result["id"] == ping_ref01_data["id"]
 
 
 

@@ -8,6 +8,7 @@
 export interface Dns {
   answers: any[]
   from_loc: any
+  id?: string
 }
 
 export interface DnsLoadMatch {
@@ -17,6 +18,7 @@ export interface DnsLoadMatch {
 export interface Geodn {
   answers: any[]
   from_loc: any
+  id?: string
 }
 
 export interface GeodnLoadMatch {
@@ -26,6 +28,7 @@ export interface GeodnLoadMatch {
 export interface Geoping {
   avg_rtt: number
   from_loc: any
+  id?: string
   ip: string
   is_alive: boolean
   max_rtt: number
@@ -43,6 +46,7 @@ export interface GeopingLoadMatch {
 export interface Ping {
   avg_rtt: number
   from_loc: any
+  id?: string
   ip: string
   is_alive: boolean
   max_rtt: number

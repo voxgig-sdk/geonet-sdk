@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -84,6 +85,10 @@ class Config {
           "req": true,
           "short": "Location of the server that performed the DNS lookup",
           "type": "`$ANY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         }
       ],
       "name": "dns",
@@ -156,6 +161,10 @@ class Config {
           "req": true,
           "short": "Location of the server that performed the DNS lookup",
           "type": "`$ANY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         }
       ],
       "name": "geodn",
@@ -228,6 +237,10 @@ class Config {
           "req": true,
           "short": "Location of the server that performed the ping",
           "type": "`$ANY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "ip",
@@ -331,6 +344,10 @@ class Config {
           "req": true,
           "short": "Location of the server that performed the ping",
           "type": "`$ANY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "ip",

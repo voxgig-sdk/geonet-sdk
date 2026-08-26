@@ -2,58 +2,58 @@
   "existing": {
     "geoping": {
       "GEOPING00": {
-        "avg_rtt": 100,
-        "from_loc": "s65",
-        "ip": "s66",
-        "is_alive": false,
-        "max_rtt": 104,
-        "min_rtt": 105,
-        "packet_loss": 106,
-        "packets_received": "s6b",
-        "packets_sent": "s6c",
-        "rtts": [],
-        "id": "GEOPING00"
+        "avg_rtt": 110,
+        "from_loc": "s6f",
+        "id": "GEOPING00",
+        "ip": "s71",
+        "is_alive": true,
+        "max_rtt": 115,
+        "min_rtt": 116,
+        "packet_loss": 117,
+        "packets_received": "s76",
+        "packets_sent": "s77",
+        "rtts": []
       },
       "GEOPING01": {
-        "avg_rtt": 200,
-        "from_loc": "sc9",
-        "ip": "sca",
-        "is_alive": false,
-        "max_rtt": 204,
-        "min_rtt": 205,
-        "packet_loss": 206,
-        "packets_received": "scf",
-        "packets_sent": "sd0",
-        "rtts": [],
-        "id": "GEOPING01"
+        "avg_rtt": 220,
+        "from_loc": "sdd",
+        "id": "GEOPING01",
+        "ip": "sdf",
+        "is_alive": true,
+        "max_rtt": 225,
+        "min_rtt": 226,
+        "packet_loss": 227,
+        "packets_received": "se4",
+        "packets_sent": "se5",
+        "rtts": []
       },
       "GEOPING02": {
-        "avg_rtt": 300,
-        "from_loc": "s12d",
-        "ip": "s12e",
-        "is_alive": false,
-        "max_rtt": 304,
-        "min_rtt": 305,
-        "packet_loss": 306,
-        "packets_received": "s133",
-        "packets_sent": "s134",
-        "rtts": [],
-        "id": "GEOPING02"
+        "avg_rtt": 330,
+        "from_loc": "s14b",
+        "id": "GEOPING02",
+        "ip": "s14d",
+        "is_alive": true,
+        "max_rtt": 335,
+        "min_rtt": 336,
+        "packet_loss": 337,
+        "packets_received": "s152",
+        "packets_sent": "s153",
+        "rtts": []
       }
     }
   },
   "new": {
     "geoping": {
       "geoping_ref01": {
-        "avg_rtt": 400,
-        "from_loc": "s191",
-        "ip": "s192",
-        "is_alive": false,
-        "max_rtt": 404,
-        "min_rtt": 405,
-        "packet_loss": 406,
-        "packets_received": "s197",
-        "packets_sent": "s198",
+        "avg_rtt": 440,
+        "from_loc": "s1b9",
+        "ip": "s1bb",
+        "is_alive": true,
+        "max_rtt": 445,
+        "min_rtt": 446,
+        "packet_loss": 447,
+        "packets_received": "s1c0",
+        "packets_sent": "s1c1",
         "rtts": []
       }
     }

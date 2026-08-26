@@ -44,10 +44,14 @@ describe("PingEntity", function()
 
     -- LOAD
     local ping_ref01_ent = client:Ping(nil)
-    local ping_ref01_match_dt0 = {}
+    local ping_ref01_match_dt0 = {
+      id = ping_ref01_data["id"],
+    }
     local ping_ref01_data_dt0_loaded, err = ping_ref01_ent:load(ping_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(ping_ref01_data_dt0_loaded)
+    local ping_ref01_data_dt0_load_result = helpers.to_map(type(ping_ref01_data_dt0_loaded) == 'table' and ping_ref01_data_dt0_loaded.data_get and ping_ref01_data_dt0_loaded:data_get() or ping_ref01_data_dt0_loaded)
+    assert.is_not_nil(ping_ref01_data_dt0_load_result)
+    assert.are.equal(ping_ref01_data_dt0_load_result["id"], ping_ref01_data["id"])
 
   end)
 end)

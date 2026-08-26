@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -64,6 +65,10 @@ def make_config():
             "req": True,
             "short": "Location of the server that performed the DNS lookup",
             "type": "`$ANY`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
         ],
         "name": "dns",
@@ -137,6 +142,10 @@ def make_config():
             "short": "Location of the server that performed the DNS lookup",
             "type": "`$ANY`",
           },
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
         ],
         "name": "geodn",
         "op": {
@@ -208,6 +217,10 @@ def make_config():
             "req": True,
             "short": "Location of the server that performed the ping",
             "type": "`$ANY`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "ip",
@@ -311,6 +324,10 @@ def make_config():
             "req": True,
             "short": "Location of the server that performed the ping",
             "type": "`$ANY`",
+          },
+          {
+            "name": "id",
+            "type": "`$STRING`",
           },
           {
             "name": "ip",

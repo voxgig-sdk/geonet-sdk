@@ -42,6 +42,7 @@ class GeonetConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -69,6 +70,10 @@ class GeonetConfig
               'req' => true,
               'short' => 'Location of the server that performed the DNS lookup',
               'type' => '`$ANY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
           ],
           'name' => 'dns',
@@ -142,6 +147,10 @@ class GeonetConfig
               'short' => 'Location of the server that performed the DNS lookup',
               'type' => '`$ANY`',
             ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
           ],
           'name' => 'geodn',
           'op' => [
@@ -213,6 +222,10 @@ class GeonetConfig
               'req' => true,
               'short' => 'Location of the server that performed the ping',
               'type' => '`$ANY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'ip',
@@ -316,6 +329,10 @@ class GeonetConfig
               'req' => true,
               'short' => 'Location of the server that performed the ping',
               'type' => '`$ANY`',
+            ],
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
             ],
             [
               'name' => 'ip',

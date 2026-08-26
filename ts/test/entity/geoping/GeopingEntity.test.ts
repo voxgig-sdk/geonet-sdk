@@ -59,9 +59,12 @@ describe('GeopingEntity', async () => {
 
     let geoping_ref01_data = Object.values(setup.data.existing.geoping)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const geoping_ref01_ent = client.Geoping()
+    const geoping_ref01_match_dt0: any = {}
+    geoping_ref01_match_dt0.id = geoping_ref01_data.id
+    const geoping_ref01_data_dt0 = (await geoping_ref01_ent.load(geoping_ref01_match_dt0)).data()
+    assert(geoping_ref01_data_dt0.id === geoping_ref01_data.id)
 
 
   })

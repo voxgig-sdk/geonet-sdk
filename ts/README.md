@@ -145,7 +145,7 @@ await entity.load({ id: 'example' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -290,6 +290,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `answers` |  |
 | `from_loc` | Location of the server that performed the DNS lookup |
+| `id` |  |
 
 Operations: load.
 
@@ -301,6 +302,7 @@ API path: `/api/dns/{hostname}`
 | --- | --- |
 | `answers` |  |
 | `from_loc` | Location of the server that performed the DNS lookup |
+| `id` |  |
 
 Operations: load.
 
@@ -312,6 +314,7 @@ API path: `/api/geodns/{hostname}`
 | --- | --- |
 | `avg_rtt` |  |
 | `from_loc` | Location of the server that performed the ping |
+| `id` |  |
 | `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
@@ -331,6 +334,7 @@ API path: `/api/geoping/{ip}`
 | --- | --- |
 | `avg_rtt` |  |
 | `from_loc` | Location of the server that performed the ping |
+| `id` |  |
 | `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
@@ -365,6 +369,7 @@ Create an instance: `const dns = client.Dns()`
 | --- | --- | --- |
 | `answers` | `any[]` |  |
 | `from_loc` | `any` | Location of the server that performed the DNS lookup |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -389,6 +394,7 @@ Create an instance: `const geodn = client.Geodn()`
 | --- | --- | --- |
 | `answers` | `any[]` |  |
 | `from_loc` | `any` | Location of the server that performed the DNS lookup |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -413,6 +419,7 @@ Create an instance: `const geoping = client.Geoping()`
 | --- | --- | --- |
 | `avg_rtt` | `number` |  |
 | `from_loc` | `any` | Location of the server that performed the ping |
+| `id` | `string` |  |
 | `ip` | `string` | IP address that was pinged |
 | `is_alive` | `boolean` |  |
 | `max_rtt` | `number` |  |
@@ -445,6 +452,7 @@ Create an instance: `const ping = client.Ping()`
 | --- | --- | --- |
 | `avg_rtt` | `number` |  |
 | `from_loc` | `any` | Location of the server that performed the ping |
+| `id` | `string` |  |
 | `ip` | `string` | IP address that was pinged |
 | `is_alive` | `boolean` |  |
 | `max_rtt` | `number` |  |

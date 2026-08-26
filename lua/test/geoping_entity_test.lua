@@ -44,10 +44,14 @@ describe("GeopingEntity", function()
 
     -- LOAD
     local geoping_ref01_ent = client:Geoping(nil)
-    local geoping_ref01_match_dt0 = {}
+    local geoping_ref01_match_dt0 = {
+      id = geoping_ref01_data["id"],
+    }
     local geoping_ref01_data_dt0_loaded, err = geoping_ref01_ent:load(geoping_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(geoping_ref01_data_dt0_loaded)
+    local geoping_ref01_data_dt0_load_result = helpers.to_map(type(geoping_ref01_data_dt0_loaded) == 'table' and geoping_ref01_data_dt0_loaded.data_get and geoping_ref01_data_dt0_loaded:data_get() or geoping_ref01_data_dt0_loaded)
+    assert.is_not_nil(geoping_ref01_data_dt0_load_result)
+    assert.are.equal(geoping_ref01_data_dt0_load_result["id"], geoping_ref01_data["id"])
 
   end)
 end)

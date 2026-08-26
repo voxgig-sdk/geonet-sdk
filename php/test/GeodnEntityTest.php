@@ -48,9 +48,13 @@ class GeodnEntityTest extends TestCase
 
         // LOAD
         $geodn_ref01_ent = $client->Geodn(null);
-        $geodn_ref01_match_dt0 = [];
+        $geodn_ref01_match_dt0 = [
+            "id" => $geodn_ref01_data["id"],
+        ];
         $geodn_ref01_data_dt0_loaded = $geodn_ref01_ent->load($geodn_ref01_match_dt0, null);
-        $this->assertNotNull($geodn_ref01_data_dt0_loaded);
+        $geodn_ref01_data_dt0_load_result = Helpers::to_map(is_object($geodn_ref01_data_dt0_loaded) && method_exists($geodn_ref01_data_dt0_loaded, 'data_get') ? $geodn_ref01_data_dt0_loaded->data_get() : $geodn_ref01_data_dt0_loaded);
+        $this->assertNotNull($geodn_ref01_data_dt0_load_result);
+        $this->assertEquals($geodn_ref01_data_dt0_load_result["id"], $geodn_ref01_data["id"]);
 
     }
 }

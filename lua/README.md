@@ -230,6 +230,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `answers` |  |
 | `from_loc` | Location of the server that performed the DNS lookup |
+| `id` |  |
 
 Operations: Load.
 
@@ -241,6 +242,7 @@ API path: `/api/dns/{hostname}`
 | --- | --- |
 | `answers` |  |
 | `from_loc` | Location of the server that performed the DNS lookup |
+| `id` |  |
 
 Operations: Load.
 
@@ -252,6 +254,7 @@ API path: `/api/geodns/{hostname}`
 | --- | --- |
 | `avg_rtt` |  |
 | `from_loc` | Location of the server that performed the ping |
+| `id` |  |
 | `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
@@ -271,6 +274,7 @@ API path: `/api/geoping/{ip}`
 | --- | --- |
 | `avg_rtt` |  |
 | `from_loc` | Location of the server that performed the ping |
+| `id` |  |
 | `ip` | IP address that was pinged |
 | `is_alive` |  |
 | `max_rtt` |  |
@@ -305,6 +309,7 @@ Create an instance: `local dns = client:Dns(nil)`
 | --- | --- | --- |
 | `answers` | `table` |  |
 | `from_loc` | `any` | Location of the server that performed the DNS lookup |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -329,6 +334,7 @@ Create an instance: `local geodn = client:Geodn(nil)`
 | --- | --- | --- |
 | `answers` | `table` |  |
 | `from_loc` | `any` | Location of the server that performed the DNS lookup |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -353,6 +359,7 @@ Create an instance: `local geoping = client:Geoping(nil)`
 | --- | --- | --- |
 | `avg_rtt` | `number` |  |
 | `from_loc` | `any` | Location of the server that performed the ping |
+| `id` | `string` |  |
 | `ip` | `string` | IP address that was pinged |
 | `is_alive` | `boolean` |  |
 | `max_rtt` | `number` |  |
@@ -385,6 +392,7 @@ Create an instance: `local ping = client:Ping(nil)`
 | --- | --- | --- |
 | `avg_rtt` | `number` |  |
 | `from_loc` | `any` | Location of the server that performed the ping |
+| `id` | `string` |  |
 | `ip` | `string` | IP address that was pinged |
 | `is_alive` | `boolean` |  |
 | `max_rtt` | `number` |  |

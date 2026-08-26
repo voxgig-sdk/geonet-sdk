@@ -41,9 +41,13 @@ class GeodnEntityTest < Minitest::Test
 
     # LOAD
     geodn_ref01_ent = client.Geodn(nil)
-    geodn_ref01_match_dt0 = {}
+    geodn_ref01_match_dt0 = {
+      "id" => geodn_ref01_data["id"],
+    }
     geodn_ref01_data_dt0_loaded = geodn_ref01_ent.load(geodn_ref01_match_dt0, nil)
-    assert !geodn_ref01_data_dt0_loaded.nil?
+    geodn_ref01_data_dt0_load_result = Helpers.to_map(geodn_ref01_data_dt0_loaded.respond_to?(:data_get) ? geodn_ref01_data_dt0_loaded.data_get : geodn_ref01_data_dt0_loaded)
+    assert !geodn_ref01_data_dt0_load_result.nil?
+    assert_equal geodn_ref01_data_dt0_load_result["id"], geodn_ref01_data["id"]
 
   end
 end
