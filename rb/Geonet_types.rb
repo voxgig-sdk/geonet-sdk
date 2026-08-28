@@ -29,8 +29,12 @@ Dns = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] rtype
+#   @return [String, nil]
 DnsLoadMatch = Struct.new(
   :id,
+  :rtype,
   keyword_init: true
 )
 
@@ -55,8 +59,12 @@ Geodn = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] rtype
+#   @return [String, nil]
 GeodnLoadMatch = Struct.new(
   :id,
+  :rtype,
   keyword_init: true
 )
 

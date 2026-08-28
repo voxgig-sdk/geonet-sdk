@@ -13,6 +13,7 @@ export interface Dns {
 
 export interface DnsLoadMatch {
   id: string
+  rtype?: string
 }
 
 export interface Geodn {
@@ -23,6 +24,7 @@ export interface Geodn {
 
 export interface GeodnLoadMatch {
   id: string
+  rtype?: string
 }
 
 export interface Geoping {

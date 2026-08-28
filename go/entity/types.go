@@ -22,6 +22,7 @@ type Dns struct {
 // DnsLoadMatch is the typed request payload for Dns.LoadTyped.
 type DnsLoadMatch struct {
 	Id string `json:"id"`
+	Rtype *string `json:"rtype,omitempty"`
 }
 
 // Geodn is the typed data model for the geodn entity.
@@ -34,6 +35,7 @@ type Geodn struct {
 // GeodnLoadMatch is the typed request payload for Geodn.LoadTyped.
 type GeodnLoadMatch struct {
 	Id string `json:"id"`
+	Rtype *string `json:"rtype,omitempty"`
 }
 
 // Geoping is the typed data model for the geoping entity.

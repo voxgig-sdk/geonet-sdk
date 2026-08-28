@@ -13,6 +13,7 @@
 
 ---@class DnsLoadMatch
 ---@field id string
+---@field rtype? string
 
 ---@class Geodn
 ---@field answers table
@@ -21,6 +22,7 @@
 
 ---@class GeodnLoadMatch
 ---@field id string
+---@field rtype? string
 
 ---@class Geoping
 ---@field avg_rtt number

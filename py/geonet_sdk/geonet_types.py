@@ -25,8 +25,12 @@ class Dns(DnsRequired, total=False):
     id: str
 
 
-class DnsLoadMatch(TypedDict):
+class DnsLoadMatchRequired(TypedDict):
     id: str
+
+
+class DnsLoadMatch(DnsLoadMatchRequired, total=False):
+    rtype: str
 
 
 class GeodnRequired(TypedDict):
@@ -38,8 +42,12 @@ class Geodn(GeodnRequired, total=False):
     id: str
 
 
-class GeodnLoadMatch(TypedDict):
+class GeodnLoadMatchRequired(TypedDict):
     id: str
+
+
+class GeodnLoadMatch(GeodnLoadMatchRequired, total=False):
+    rtype: str
 
 
 class GeopingRequired(TypedDict):

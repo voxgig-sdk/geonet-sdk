@@ -24,6 +24,7 @@ class Dns
 class DnsLoadMatch
 {
     public string $id;
+    public ?string $rtype = null;
 }
 
 /** Geodn entity data model. */
@@ -38,6 +39,7 @@ class Geodn
 class GeodnLoadMatch
 {
     public string $id;
+    public ?string $rtype = null;
 }
 
 /** Geoping entity data model. */
