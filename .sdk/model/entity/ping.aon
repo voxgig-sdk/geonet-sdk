@@ -88,16 +88,22 @@ main: kit: entity: ping: {
           }
           method: "GET"
           orig: "/api/ping/{ip}"
-          parts: [
-            "api"
-            "ping"
-            "{id}"
-          ]
           rename: {
             param: {
               ip: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ping"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -88,16 +88,22 @@ main: kit: entity: geoping: {
           }
           method: "GET"
           orig: "/api/geoping/{ip}"
-          parts: [
-            "api"
-            "geoping"
-            "{id}"
-          ]
           rename: {
             param: {
               ip: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "geoping"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

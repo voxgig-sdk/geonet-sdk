@@ -57,16 +57,22 @@ main: kit: entity: dns: {
           }
           method: "GET"
           orig: "/api/dns/{hostname}"
-          parts: [
-            "api"
-            "dns"
-            "{id}"
-          ]
           rename: {
             param: {
               hostname: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "dns"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

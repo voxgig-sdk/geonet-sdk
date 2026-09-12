@@ -57,16 +57,22 @@ main: kit: entity: geodn: {
           }
           method: "GET"
           orig: "/api/geodns/{hostname}"
-          parts: [
-            "api"
-            "geodns"
-            "{id}"
-          ]
           rename: {
             param: {
               hostname: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "geodns"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -1,6 +1,14 @@
 # Geonet SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -71,6 +79,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "dns",
         "op": {
           "load": {
@@ -101,16 +113,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/dns/{hostname}",
-                "parts": [
-                  "api",
-                  "dns",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "hostname": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "dns",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -121,6 +139,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "dns",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -147,6 +170,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "geodn",
         "op": {
           "load": {
@@ -177,16 +204,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/geodns/{hostname}",
-                "parts": [
-                  "api",
-                  "geodns",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "hostname": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "geodns",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -197,6 +230,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "geodns",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -264,6 +302,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "geoping",
         "op": {
           "load": {
@@ -285,16 +327,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/geoping/{ip}",
-                "parts": [
-                  "api",
-                  "geoping",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "ip": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "geoping",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -304,6 +352,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "geoping",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -371,6 +424,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "ping",
         "op": {
           "load": {
@@ -392,16 +449,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ping/{ip}",
-                "parts": [
-                  "api",
-                  "ping",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "ip": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ping",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -411,6 +474,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ping",
+                  "{id}",
+                ],
               },
             ],
           },

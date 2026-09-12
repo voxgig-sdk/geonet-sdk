@@ -50,6 +50,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "dns",
         ["op"] = {
           ["load"] = {
@@ -80,14 +84,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/dns/{hostname}",
-                ["parts"] = {
-                  "api",
-                  "dns",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["hostname"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "dns",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -99,6 +109,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "dns",
+                  "{id}",
                 },
               },
             },
@@ -125,6 +140,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "geodn",
         ["op"] = {
@@ -156,14 +175,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/geodns/{hostname}",
-                ["parts"] = {
-                  "api",
-                  "geodns",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["hostname"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "geodns",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -175,6 +200,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "geodns",
+                  "{id}",
                 },
               },
             },
@@ -243,6 +273,10 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "geoping",
         ["op"] = {
           ["load"] = {
@@ -264,14 +298,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/geoping/{ip}",
-                ["parts"] = {
-                  "api",
-                  "geoping",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["ip"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "geoping",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -282,6 +322,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "geoping",
+                  "{id}",
                 },
               },
             },
@@ -350,6 +395,10 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "ping",
         ["op"] = {
           ["load"] = {
@@ -371,14 +420,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ping/{ip}",
-                ["parts"] = {
-                  "api",
-                  "ping",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["ip"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "ping",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -389,6 +444,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "ping",
+                  "{id}",
                 },
               },
             },

@@ -62,6 +62,10 @@ module GeonetConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "dns",
           "op" => {
             "load" => {
@@ -92,16 +96,22 @@ module GeonetConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/dns/{hostname}",
-                  "parts" => [
-                    "api",
-                    "dns",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "hostname" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "dns",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -112,6 +122,11 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "dns",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -138,6 +153,10 @@ module GeonetConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "geodn",
           "op" => {
             "load" => {
@@ -168,16 +187,22 @@ module GeonetConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/geodns/{hostname}",
-                  "parts" => [
-                    "api",
-                    "geodns",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "hostname" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "geodns",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -188,6 +213,11 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "geodns",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -255,6 +285,10 @@ module GeonetConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "geoping",
           "op" => {
             "load" => {
@@ -276,16 +310,22 @@ module GeonetConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/geoping/{ip}",
-                  "parts" => [
-                    "api",
-                    "geoping",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "ip" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "geoping",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -295,6 +335,11 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "geoping",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -362,6 +407,10 @@ module GeonetConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "ping",
           "op" => {
             "load" => {
@@ -383,16 +432,22 @@ module GeonetConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ping/{ip}",
-                  "parts" => [
-                    "api",
-                    "ping",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "ip" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "ping",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -402,6 +457,11 @@ module GeonetConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "ping",
+                    "{id}",
+                  ],
                 },
               ],
             },

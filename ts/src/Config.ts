@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -91,6 +102,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "dns",
       "op": {
         "load": {
@@ -121,16 +136,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/dns/{hostname}",
-              "parts": [
-                "api",
-                "dns",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "hostname": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "dns"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id",
@@ -140,7 +161,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "dns",
+                "{id}"
+              ]
             }
           ]
         }
@@ -167,6 +193,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "geodn",
       "op": {
         "load": {
@@ -197,16 +227,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/geodns/{hostname}",
-              "parts": [
-                "api",
-                "geodns",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "hostname": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "geodns"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id",
@@ -216,7 +252,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "geodns",
+                "{id}"
+              ]
             }
           ]
         }
@@ -284,6 +325,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "geoping",
       "op": {
         "load": {
@@ -305,16 +350,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/geoping/{ip}",
-              "parts": [
-                "api",
-                "geoping",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "ip": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "geoping"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -323,7 +374,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "geoping",
+                "{id}"
+              ]
             }
           ]
         }
@@ -391,6 +447,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "ping",
       "op": {
         "load": {
@@ -412,16 +472,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ping/{ip}",
-              "parts": [
-                "api",
-                "ping",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "ip": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ping"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -430,7 +496,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ping",
+                "{id}"
+              ]
             }
           ]
         }
@@ -446,6 +517,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 
