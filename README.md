@@ -105,7 +105,7 @@ local result, err = client:Geodn():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
+| TypeScript | `@voxgig-sdk/geonet-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
 | Python | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
 | PHP | `voxgig-sdk/geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/geonet-sdk/go` | `go get github.com/voxgig-sdk/geonet-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Geodn():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { GeonetSDK } from '@voxgig-sdk/geonet'
+import { GeonetSDK } from '@voxgig-sdk/geonet-sdk'
 
 const client = new GeonetSDK()
 
