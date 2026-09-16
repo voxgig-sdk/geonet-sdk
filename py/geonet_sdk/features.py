@@ -1,12 +1,18 @@
 # Geonet SDK feature factory
 
 from geonet_sdk.feature.base_feature import GeonetBaseFeature
+from geonet_sdk.feature.ratelimit_feature import GeonetRatelimitFeature
+from geonet_sdk.feature.retry_feature import GeonetRetryFeature
 from geonet_sdk.feature.test_feature import GeonetTestFeature
+from geonet_sdk.feature.timeout_feature import GeonetTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: GeonetBaseFeature(),
+    "ratelimit": lambda: GeonetRatelimitFeature(),
+    "retry": lambda: GeonetRetryFeature(),
     "test": lambda: GeonetTestFeature(),
+    "timeout": lambda: GeonetTimeoutFeature(),
 }
 
 

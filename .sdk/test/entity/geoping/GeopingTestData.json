@@ -10,8 +10,8 @@
         "max_rtt": 115,
         "min_rtt": 116,
         "packet_loss": 117,
-        "packets_received": "s76",
-        "packets_sent": "s77",
+        "packets_received": 118,
+        "packets_sent": 119,
         "rtts": []
       },
       "GEOPING01": {
@@ -23,8 +23,8 @@
         "max_rtt": 225,
         "min_rtt": 226,
         "packet_loss": 227,
-        "packets_received": "se4",
-        "packets_sent": "se5",
+        "packets_received": 228,
+        "packets_sent": 229,
         "rtts": []
       },
       "GEOPING02": {
@@ -36,8 +36,8 @@
         "max_rtt": 335,
         "min_rtt": 336,
         "packet_loss": 337,
-        "packets_received": "s152",
-        "packets_sent": "s153",
+        "packets_received": 338,
+        "packets_sent": 339,
         "rtts": []
       }
     }
@@ -52,9 +52,179 @@
         "max_rtt": 445,
         "min_rtt": 446,
         "packet_loss": 447,
-        "packets_received": "s1c0",
-        "packets_sent": "s1c1",
+        "packets_received": 448,
+        "packets_sent": 449,
         "rtts": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/geoping/{ip}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "geoping_api_geoping__ip__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ip",
+            "required": true,
+            "schema": {
+              "title": "Ip",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "avg_rtt": {
+                        "title": "Avg Rtt",
+                        "type": "number"
+                      },
+                      "from_loc": {
+                        "allOf": [
+                          {
+                            "properties": {
+                              "city": {
+                                "title": "City",
+                                "type": "string"
+                              },
+                              "country": {
+                                "title": "Country",
+                                "type": "string"
+                              },
+                              "latlon": {
+                                "title": "Latlon",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "city",
+                              "country",
+                              "latlon"
+                            ],
+                            "title": "Location",
+                            "type": "object"
+                          }
+                        ],
+                        "description": "Location of the server that performed the ping"
+                      },
+                      "ip": {
+                        "description": "IP address that was pinged",
+                        "title": "Ip",
+                        "type": "string"
+                      },
+                      "is_alive": {
+                        "title": "Is Alive",
+                        "type": "boolean"
+                      },
+                      "max_rtt": {
+                        "title": "Max Rtt",
+                        "type": "number"
+                      },
+                      "min_rtt": {
+                        "title": "Min Rtt",
+                        "type": "number"
+                      },
+                      "packet_loss": {
+                        "title": "Packet Loss",
+                        "type": "number"
+                      },
+                      "packets_received": {
+                        "title": "Packets Received",
+                        "type": "integer"
+                      },
+                      "packets_sent": {
+                        "title": "Packets Sent",
+                        "type": "integer"
+                      },
+                      "rtts": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "title": "Rtts",
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "ip",
+                      "is_alive",
+                      "min_rtt",
+                      "avg_rtt",
+                      "max_rtt",
+                      "rtts",
+                      "packets_sent",
+                      "packets_received",
+                      "packet_loss",
+                      "from_loc"
+                    ],
+                    "title": "PingResult",
+                    "type": "object"
+                  },
+                  "title": "Response Geoping Api Geoping  Ip  Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "title": "Location",
+                            "type": "array"
+                          },
+                          "msg": {
+                            "title": "Message",
+                            "type": "string"
+                          },
+                          "type": {
+                            "title": "Error Type",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError",
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    }
+                  },
+                  "title": "HTTPValidationError",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

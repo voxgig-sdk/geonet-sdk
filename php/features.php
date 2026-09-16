@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Geonet SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class GeonetFeatures
@@ -14,8 +17,14 @@ class GeonetFeatures
         switch ($name) {
             case "base":
                 return new GeonetBaseFeature();
+            case "ratelimit":
+                return new GeonetRatelimitFeature();
+            case "retry":
+                return new GeonetRetryFeature();
             case "test":
                 return new GeonetTestFeature();
+            case "timeout":
+                return new GeonetTimeoutFeature();
             default:
                 return new GeonetBaseFeature();
         }
@@ -31,7 +40,10 @@ class GeonetFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

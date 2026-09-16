@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GEONET_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'geoping.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'geoping.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GEONET_TEST_GEOPING_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "avg_rtt", "req": true, "type": "`$NUMBER`", "index$": 0 }, { "active": true, "name": "from_loc", "req": true, "short": "Location of the server that performed the ping", "type": "`$ANY`", "index$": 1 }, { "active": true, "name": "id", "req": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "ip", "req": true, "short": "IP address that was pinged", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "is_alive", "req": true, "type": "`$BOOLEAN`", "index$": 4 }, { "active": true, "name": "max_rtt", "req": true, "type": "`$NUMBER`", "index$": 5 }, { "active": true, "name": "min_rtt", "req": true, "type": "`$NUMBER`", "index$": 6 }, { "active": true, "name": "packet_loss", "req": true, "type": "`$NUMBER`", "index$": 7 }, { "active": true, "name": "packets_received", "req": true, "type": "`$INTEGER`", "index$": 8 }, { "active": true, "name": "packets_sent", "req": true, "type": "`$INTEGER`", "index$": 9 }, { "active": true, "name": "rtts", "req": true, "type": "`$ARRAY`", "index$": 10 }], "id": { "field": "id", "name": "id" }, "name": "geoping", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "id", "orig": "ip", "reqd": true, "type": "`$STRING`", "index$": 0 }] }, "contract": { "id": "GET /api/geoping/{ip}", "json": "{\"operationId\":\"geoping_api_geoping__ip__get\",\"parameters\":[{\"in\":\"path\",\"name\":\"ip\",\"required\":true,\"schema\":{\"title\":\"Ip\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"avg_rtt\":{\"title\":\"Avg Rtt\",\"type\":\"number\"},\"from_loc\":{\"allOf\":[{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"},\"country\":{\"title\":\"Country\",\"type\":\"string\"},\"latlon\":{\"title\":\"Latlon\",\"type\":\"string\"}},\"required\":[\"city\",\"country\",\"latlon\"],\"title\":\"Location\",\"type\":\"object\"}],\"description\":\"Location of the server that performed the ping\"},\"ip\":{\"description\":\"IP address that was pinged\",\"title\":\"Ip\",\"type\":\"string\"},\"is_alive\":{\"title\":\"Is Alive\",\"type\":\"boolean\"},\"max_rtt\":{\"title\":\"Max Rtt\",\"type\":\"number\"},\"min_rtt\":{\"title\":\"Min Rtt\",\"type\":\"number\"},\"packet_loss\":{\"title\":\"Packet Loss\",\"type\":\"number\"},\"packets_received\":{\"title\":\"Packets Received\",\"type\":\"integer\"},\"packets_sent\":{\"title\":\"Packets Sent\",\"type\":\"integer\"},\"rtts\":{\"items\":{\"type\":\"number\"},\"title\":\"Rtts\",\"type\":\"array\"}},\"required\":[\"ip\",\"is_alive\",\"min_rtt\",\"avg_rtt\",\"max_rtt\",\"rtts\",\"packets_sent\",\"packets_received\",\"packet_loss\",\"from_loc\"],\"title\":\"PingResult\",\"type\":\"object\"},\"title\":\"Response Geoping Api Geoping  Ip  Get\",\"type\":\"array\"}}},\"description\":\"Successful Response\"},\"422\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"items\":{\"properties\":{\"loc\":{\"items\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"integer\"}]},\"title\":\"Location\",\"type\":\"array\"},\"msg\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Error Type\",\"type\":\"string\"}},\"required\":[\"loc\",\"msg\",\"type\"],\"title\":\"ValidationError\",\"type\":\"object\"},\"title\":\"Detail\",\"type\":\"array\"}},\"title\":\"HTTPValidationError\",\"type\":\"object\"}}},\"description\":\"Validation Error\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/geoping/{ip}", "rename": { "param": { "ip": "id" } }, "segments": [{ "lit": "api" }, { "lit": "geoping" }, { "var": "id" }], "select": { "exist": ["id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "geoping", "name__orig": "geoping", "Name": "Geoping", "name_": "geoping", "name-": "geoping", "NAME": "GEOPING", "index$": 2 }, { "active": true, "entity": "geoping", "key$": "BasicGeopingFlow", "kind": "basic", "name": "BasicGeopingFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "geoping_ref01", "srcdatavar": "geoping_ref01_data", "suffix": "_dt0" }, "match": { "id": "geoping01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-geoping_ref01" } }], "index$": 0 }] }, 'Geoping');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -103,12 +101,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GEONET_TEST_GEOPING_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GEONET_TEST_GEOPING_ENTID': idmap,
         'GEONET_TEST_LIVE': 'FALSE',
@@ -116,7 +108,13 @@ function basicSetup(extra) {
     });
     idmap = env['GEONET_TEST_GEOPING_ENTID'];
     const live = 'TRUE' === env.GEONET_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GEONET_TEST_GEOPING_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GeonetSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -127,7 +125,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -139,7 +138,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GEONET_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
