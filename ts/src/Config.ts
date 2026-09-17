@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      dns: {
-      },
-
-      geodn: {
-      },
-
-      geoping: {
-      },
-
-      ping: {
-      },
-
+        dns: {
+        },
+  
+        geodn: {
+        },
+  
+        geoping: {
+        },
+  
+        ping: {
+        },
+  
     }
   }
 

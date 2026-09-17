@@ -105,12 +105,12 @@ local result, err = client:Geodn():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/geonet-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
-| Python | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
-| PHP | `voxgig-sdk/geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
+| TypeScript | `@voxgig-sdk/geonet-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/tags) |
+| Python | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/tags) |
+| PHP | `voxgig-sdk/geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/geonet-sdk/go` | `go get github.com/voxgig-sdk/geonet-sdk/go@latest` |
-| Ruby | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
-| Lua | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/releases) |
+| Ruby | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/tags) |
+| Lua | `voxgig-sdk-geonet` | publish pending — [install from git tag](https://github.com/voxgig-sdk/geonet-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/geonet-sdk/go-cli` | `go install github.com/voxgig-sdk/geonet-sdk/go-cli/cmd/geonet@latest` |
 | Go MCP server | `github.com/voxgig-sdk/geonet-sdk/go-mcp` | `go get github.com/voxgig-sdk/geonet-sdk/go-mcp@latest` |
 
