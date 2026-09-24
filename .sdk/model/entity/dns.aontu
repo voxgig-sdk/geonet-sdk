@@ -1,0 +1,101 @@
+# Entity: dns
+
+main: kit: entity: dns: {
+
+  alias: field: {}
+
+  fields: {
+    answers: {
+      h: "Answers"
+      n: "answers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    from_loc: {
+      h: "From Loc"
+      n: "from_loc"
+      r: true
+      sh: "Location of the server that performed the DNS lookup"
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dns"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/dns/{hostname}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "hostname"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "A"
+                k: "query"
+                n: "rtype"
+                or: "rtype"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/dns/{hostname}"
+          q: {
+            exist: [
+              "id"
+              "rtype"
+            ]
+          }
+          r: {
+            param: {
+              hostname: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "dns"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -116,17 +116,20 @@ class GeonetConfig
           'fields' => [
             [
               'name' => 'answers',
-              'req' => true,
+              'title' => 'Answers',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
             [
               'name' => 'from_loc',
+              'title' => 'From Loc',
+              'type' => '`$ANY`',
               'req' => true,
               'short' => 'Location of the server that performed the DNS lookup',
-              'type' => '`$ANY`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -141,34 +144,9 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'hostname',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 'A',
-                        'kind' => 'query',
-                        'name' => 'rtype',
-                        'orig' => 'rtype',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/dns/{hostname}',
-                  'rename' => [
-                    'param' => [
-                      'hostname' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -180,20 +158,45 @@ class GeonetConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                      'rtype',
+                  'parts' => [
+                    'api',
+                    'dns',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'hostname' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'api',
-                    'dns',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'hostname',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'rtype',
+                        'orig' => 'rtype',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'A',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                      'rtype',
+                    ],
                   ],
                 ],
               ],
@@ -207,17 +210,20 @@ class GeonetConfig
           'fields' => [
             [
               'name' => 'answers',
-              'req' => true,
+              'title' => 'Answers',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
             [
               'name' => 'from_loc',
+              'title' => 'From Loc',
+              'type' => '`$ANY`',
               'req' => true,
               'short' => 'Location of the server that performed the DNS lookup',
-              'type' => '`$ANY`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -232,34 +238,9 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'hostname',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => 'A',
-                        'kind' => 'query',
-                        'name' => 'rtype',
-                        'orig' => 'rtype',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/geodns/{hostname}',
-                  'rename' => [
-                    'param' => [
-                      'hostname' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -271,20 +252,45 @@ class GeonetConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                      'rtype',
+                  'parts' => [
+                    'api',
+                    'geodns',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'hostname' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'api',
-                    'geodns',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'hostname',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'rtype',
+                        'orig' => 'rtype',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'A',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                      'rtype',
+                    ],
                   ],
                 ],
               ],
@@ -298,59 +304,70 @@ class GeonetConfig
           'fields' => [
             [
               'name' => 'avg_rtt',
-              'req' => true,
+              'title' => 'Avg Rtt',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'from_loc',
+              'title' => 'From Loc',
+              'type' => '`$ANY`',
               'req' => true,
               'short' => 'Location of the server that performed the ping',
-              'type' => '`$ANY`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'ip',
+              'title' => 'Ip',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'IP address that was pinged',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'is_alive',
-              'req' => true,
+              'title' => 'Is Alive',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
               'name' => 'max_rtt',
-              'req' => true,
+              'title' => 'Max Rtt',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'min_rtt',
-              'req' => true,
+              'title' => 'Min Rtt',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'packet_loss',
-              'req' => true,
+              'title' => 'Packet Loss',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'packets_received',
-              'req' => true,
+              'title' => 'Packets Received',
               'type' => '`$INTEGER`',
+              'req' => true,
             ],
             [
               'name' => 'packets_sent',
-              'req' => true,
+              'title' => 'Packets Sent',
               'type' => '`$INTEGER`',
+              'req' => true,
             ],
             [
               'name' => 'rtts',
-              'req' => true,
+              'title' => 'Rtts',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
           ],
           'id' => [
@@ -364,25 +381,9 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'ip',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/geoping/{ip}',
-                  'rename' => [
-                    'param' => [
-                      'ip' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -394,19 +395,35 @@ class GeonetConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'api',
+                    'geoping',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'ip' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'api',
-                    'geoping',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'ip',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -420,59 +437,70 @@ class GeonetConfig
           'fields' => [
             [
               'name' => 'avg_rtt',
-              'req' => true,
+              'title' => 'Avg Rtt',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'from_loc',
+              'title' => 'From Loc',
+              'type' => '`$ANY`',
               'req' => true,
               'short' => 'Location of the server that performed the ping',
-              'type' => '`$ANY`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'ip',
+              'title' => 'Ip',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'IP address that was pinged',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'is_alive',
-              'req' => true,
+              'title' => 'Is Alive',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
               'name' => 'max_rtt',
-              'req' => true,
+              'title' => 'Max Rtt',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'min_rtt',
-              'req' => true,
+              'title' => 'Min Rtt',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'packet_loss',
-              'req' => true,
+              'title' => 'Packet Loss',
               'type' => '`$NUMBER`',
+              'req' => true,
             ],
             [
               'name' => 'packets_received',
-              'req' => true,
+              'title' => 'Packets Received',
               'type' => '`$INTEGER`',
+              'req' => true,
             ],
             [
               'name' => 'packets_sent',
-              'req' => true,
+              'title' => 'Packets Sent',
               'type' => '`$INTEGER`',
+              'req' => true,
             ],
             [
               'name' => 'rtts',
-              'req' => true,
+              'title' => 'Rtts',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
           ],
           'id' => [
@@ -486,25 +514,9 @@ class GeonetConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'ip',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ping/{ip}',
-                  'rename' => [
-                    'param' => [
-                      'ip' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'api',
@@ -516,19 +528,35 @@ class GeonetConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'api',
+                    'ping',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'ip' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'api',
-                    'ping',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'ip',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],

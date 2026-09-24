@@ -1,0 +1,101 @@
+# Entity: geodn
+
+main: kit: entity: geodn: {
+
+  alias: field: {}
+
+  fields: {
+    answers: {
+      h: "Answers"
+      n: "answers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    from_loc: {
+      h: "From Loc"
+      n: "from_loc"
+      r: true
+      sh: "Location of the server that performed the DNS lookup"
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "geodn"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/geodns/{hostname}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "hostname"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "A"
+                k: "query"
+                n: "rtype"
+                or: "rtype"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/geodns/{hostname}"
+          q: {
+            exist: [
+              "id"
+              "rtype"
+            ]
+          }
+          r: {
+            param: {
+              hostname: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "geodns"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

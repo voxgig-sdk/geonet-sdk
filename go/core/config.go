@@ -94,17 +94,20 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "answers",
-						"req": true,
+						"title": "Answers",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "from_loc",
+						"title": "From Loc",
+						"type": "`$ANY`",
 						"req": true,
 						"short": "Location of the server that performed the DNS lookup",
-						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -119,34 +122,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "hostname",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "A",
-											"kind": "query",
-											"name": "rtype",
-											"orig": "rtype",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/dns/{hostname}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"hostname": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -158,20 +136,45 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"rtype",
+								"parts": []any{
+									"api",
+									"dns",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"hostname": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"dns",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "hostname",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "rtype",
+											"orig": "rtype",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "A",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"rtype",
+									},
 								},
 							},
 						},
@@ -185,17 +188,20 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "answers",
-						"req": true,
+						"title": "Answers",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "from_loc",
+						"title": "From Loc",
+						"type": "`$ANY`",
 						"req": true,
 						"short": "Location of the server that performed the DNS lookup",
-						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -210,34 +216,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "hostname",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "A",
-											"kind": "query",
-											"name": "rtype",
-											"orig": "rtype",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/geodns/{hostname}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"hostname": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -249,20 +230,45 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"rtype",
+								"parts": []any{
+									"api",
+									"geodns",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"hostname": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"geodns",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "hostname",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "rtype",
+											"orig": "rtype",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "A",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"rtype",
+									},
 								},
 							},
 						},
@@ -276,59 +282,70 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "avg_rtt",
-						"req": true,
+						"title": "Avg Rtt",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "from_loc",
+						"title": "From Loc",
+						"type": "`$ANY`",
 						"req": true,
 						"short": "Location of the server that performed the ping",
-						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ip",
+						"title": "Ip",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "IP address that was pinged",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "is_alive",
-						"req": true,
+						"title": "Is Alive",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "max_rtt",
-						"req": true,
+						"title": "Max Rtt",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "min_rtt",
-						"req": true,
+						"title": "Min Rtt",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "packet_loss",
-						"req": true,
+						"title": "Packet Loss",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "packets_received",
-						"req": true,
+						"title": "Packets Received",
 						"type": "`$INTEGER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "packets_sent",
-						"req": true,
+						"title": "Packets Sent",
 						"type": "`$INTEGER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "rtts",
-						"req": true,
+						"title": "Rtts",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 				},
 				"id": map[string]any{
@@ -342,25 +359,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "ip",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/geoping/{ip}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"ip": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -372,19 +373,35 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"api",
+									"geoping",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"ip": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"geoping",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "ip",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -398,59 +415,70 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "avg_rtt",
-						"req": true,
+						"title": "Avg Rtt",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "from_loc",
+						"title": "From Loc",
+						"type": "`$ANY`",
 						"req": true,
 						"short": "Location of the server that performed the ping",
-						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ip",
+						"title": "Ip",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "IP address that was pinged",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "is_alive",
-						"req": true,
+						"title": "Is Alive",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "max_rtt",
-						"req": true,
+						"title": "Max Rtt",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "min_rtt",
-						"req": true,
+						"title": "Min Rtt",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "packet_loss",
-						"req": true,
+						"title": "Packet Loss",
 						"type": "`$NUMBER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "packets_received",
-						"req": true,
+						"title": "Packets Received",
 						"type": "`$INTEGER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "packets_sent",
-						"req": true,
+						"title": "Packets Sent",
 						"type": "`$INTEGER`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "rtts",
-						"req": true,
+						"title": "Rtts",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 				},
 				"id": map[string]any{
@@ -464,25 +492,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "ip",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ping/{ip}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"ip": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -494,19 +506,35 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"api",
+									"ping",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"ip": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"ping",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "ip",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

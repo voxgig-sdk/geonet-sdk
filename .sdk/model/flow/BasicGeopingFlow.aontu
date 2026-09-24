@@ -1,0 +1,32 @@
+# BasicGeopingFlow
+
+main: kit: flow: BasicGeopingFlow:
+{
+  entity: "geoping",
+  kind: "basic",
+  name: "BasicGeopingFlow",
+  step: [
+    {
+      i: {
+        ref: "geoping_ref01",
+        srcdatavar: "geoping_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "geoping01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-geoping_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGeopingFlow"
+}

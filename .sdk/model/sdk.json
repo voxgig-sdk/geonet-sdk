@@ -24,33 +24,102 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "dns": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "answers",
-              "req": true,
-              "type": "`$ARRAY`"
+          "fields": {
+            "answers": {
+              "a": true,
+              "h": "Answers",
+              "n": "answers",
+              "r": true,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "from_loc",
-              "req": true,
-              "short": "Location of the server that performed the DNS lookup",
-              "type": "`$ANY`"
+            "from_loc": {
+              "a": true,
+              "h": "From Loc",
+              "n": "from_loc",
+              "r": true,
+              "sh": "Location of the server that performed the DNS lookup",
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -62,45 +131,50 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/dns/{hostname}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "hostname",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "hostname",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "example": "A",
-                        "kind": "query",
-                        "name": "rtype",
-                        "orig": "rtype",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "A",
+                        "k": "query",
+                        "n": "rtype",
+                        "or": "rtype",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/dns/{hostname}",
-                    "json": "{\"operationId\":\"dns_query_api_dns__hostname__get\",\"parameters\":[{\"in\":\"path\",\"name\":\"hostname\",\"required\":true,\"schema\":{\"title\":\"Hostname\",\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"rtype\",\"required\":false,\"schema\":{\"default\":\"A\",\"title\":\"Rtype\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"answers\":{\"items\":{\"properties\":{\"type\":{\"title\":\"Type\",\"type\":\"string\"},\"value\":{\"title\":\"Value\",\"type\":\"string\"}},\"required\":[\"type\",\"value\"],\"title\":\"DnsRecord\",\"type\":\"object\"},\"title\":\"Answers\",\"type\":\"array\"},\"from_loc\":{\"allOf\":[{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"},\"country\":{\"title\":\"Country\",\"type\":\"string\"},\"latlon\":{\"title\":\"Latlon\",\"type\":\"string\"}},\"required\":[\"city\",\"country\",\"latlon\"],\"title\":\"Location\",\"type\":\"object\"}],\"description\":\"Location of the server that performed the DNS lookup\"}},\"required\":[\"answers\",\"from_loc\"],\"title\":\"DnsResult\",\"type\":\"object\"}}},\"description\":\"Successful Response\"},\"422\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"items\":{\"properties\":{\"loc\":{\"items\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"integer\"}]},\"title\":\"Location\",\"type\":\"array\"},\"msg\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Error Type\",\"type\":\"string\"}},\"required\":[\"loc\",\"msg\",\"type\"],\"title\":\"ValidationError\",\"type\":\"object\"},\"title\":\"Detail\",\"type\":\"array\"}},\"title\":\"HTTPValidationError\",\"type\":\"object\"}}},\"description\":\"Validation Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/dns/{hostname}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "rtype"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/dns/{hostname}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "hostname": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -111,13 +185,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "rtype"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -134,27 +202,30 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "answers",
-              "req": true,
-              "type": "`$ARRAY`"
+          "fields": {
+            "answers": {
+              "a": true,
+              "h": "Answers",
+              "n": "answers",
+              "r": true,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "from_loc",
-              "req": true,
-              "short": "Location of the server that performed the DNS lookup",
-              "type": "`$ANY`"
+            "from_loc": {
+              "a": true,
+              "h": "From Loc",
+              "n": "from_loc",
+              "r": true,
+              "sh": "Location of the server that performed the DNS lookup",
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -166,45 +237,50 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/geodns/{hostname}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "hostname",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "hostname",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "example": "A",
-                        "kind": "query",
-                        "name": "rtype",
-                        "orig": "rtype",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "A",
+                        "k": "query",
+                        "n": "rtype",
+                        "or": "rtype",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/geodns/{hostname}",
-                    "json": "{\"operationId\":\"geo_dns_query_api_geodns__hostname__get\",\"parameters\":[{\"in\":\"path\",\"name\":\"hostname\",\"required\":true,\"schema\":{\"title\":\"Hostname\",\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"rtype\",\"required\":false,\"schema\":{\"default\":\"A\",\"title\":\"Rtype\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"answers\":{\"items\":{\"properties\":{\"type\":{\"title\":\"Type\",\"type\":\"string\"},\"value\":{\"title\":\"Value\",\"type\":\"string\"}},\"required\":[\"type\",\"value\"],\"title\":\"DnsRecord\",\"type\":\"object\"},\"title\":\"Answers\",\"type\":\"array\"},\"from_loc\":{\"allOf\":[{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"},\"country\":{\"title\":\"Country\",\"type\":\"string\"},\"latlon\":{\"title\":\"Latlon\",\"type\":\"string\"}},\"required\":[\"city\",\"country\",\"latlon\"],\"title\":\"Location\",\"type\":\"object\"}],\"description\":\"Location of the server that performed the DNS lookup\"}},\"required\":[\"answers\",\"from_loc\"],\"title\":\"DnsResult\",\"type\":\"object\"},\"title\":\"Response Geo Dns Query Api Geodns  Hostname  Get\",\"type\":\"array\"}}},\"description\":\"Successful Response\"},\"422\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"items\":{\"properties\":{\"loc\":{\"items\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"integer\"}]},\"title\":\"Location\",\"type\":\"array\"},\"msg\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Error Type\",\"type\":\"string\"}},\"required\":[\"loc\",\"msg\",\"type\"],\"title\":\"ValidationError\",\"type\":\"object\"},\"title\":\"Detail\",\"type\":\"array\"}},\"title\":\"HTTPValidationError\",\"type\":\"object\"}}},\"description\":\"Validation Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/geodns/{hostname}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "rtype"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/geodns/{hostname}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "hostname": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -215,13 +291,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "rtype"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -238,76 +308,87 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "avg_rtt",
-              "req": true,
-              "type": "`$NUMBER`"
+          "fields": {
+            "avg_rtt": {
+              "a": true,
+              "h": "Avg Rtt",
+              "n": "avg_rtt",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "from_loc",
-              "req": true,
-              "short": "Location of the server that performed the ping",
-              "type": "`$ANY`"
+            "from_loc": {
+              "a": true,
+              "h": "From Loc",
+              "n": "from_loc",
+              "r": true,
+              "sh": "Location of the server that performed the ping",
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "ip",
-              "req": true,
-              "short": "IP address that was pinged",
-              "type": "`$STRING`"
+            "ip": {
+              "a": true,
+              "h": "Ip",
+              "n": "ip",
+              "r": true,
+              "sh": "IP address that was pinged",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "is_alive",
-              "req": true,
-              "type": "`$BOOLEAN`"
+            "is_alive": {
+              "a": true,
+              "h": "Is Alive",
+              "n": "is_alive",
+              "r": true,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "max_rtt",
-              "req": true,
-              "type": "`$NUMBER`"
+            "max_rtt": {
+              "a": true,
+              "h": "Max Rtt",
+              "n": "max_rtt",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "min_rtt",
-              "req": true,
-              "type": "`$NUMBER`"
+            "min_rtt": {
+              "a": true,
+              "h": "Min Rtt",
+              "n": "min_rtt",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "packet_loss",
-              "req": true,
-              "type": "`$NUMBER`"
+            "packet_loss": {
+              "a": true,
+              "h": "Packet Loss",
+              "n": "packet_loss",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "packets_received",
-              "req": true,
-              "type": "`$INTEGER`"
+            "packets_received": {
+              "a": true,
+              "h": "Packets Received",
+              "n": "packets_received",
+              "r": true,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "packets_sent",
-              "req": true,
-              "type": "`$INTEGER`"
+            "packets_sent": {
+              "a": true,
+              "h": "Packets Sent",
+              "n": "packets_sent",
+              "r": true,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rtts",
-              "req": true,
-              "type": "`$ARRAY`"
+            "rtts": {
+              "a": true,
+              "h": "Rtts",
+              "n": "rtts",
+              "r": true,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -319,34 +400,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/geoping/{ip}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "ip",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "ip",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/geoping/{ip}",
-                    "json": "{\"operationId\":\"geoping_api_geoping__ip__get\",\"parameters\":[{\"in\":\"path\",\"name\":\"ip\",\"required\":true,\"schema\":{\"title\":\"Ip\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"avg_rtt\":{\"title\":\"Avg Rtt\",\"type\":\"number\"},\"from_loc\":{\"allOf\":[{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"},\"country\":{\"title\":\"Country\",\"type\":\"string\"},\"latlon\":{\"title\":\"Latlon\",\"type\":\"string\"}},\"required\":[\"city\",\"country\",\"latlon\"],\"title\":\"Location\",\"type\":\"object\"}],\"description\":\"Location of the server that performed the ping\"},\"ip\":{\"description\":\"IP address that was pinged\",\"title\":\"Ip\",\"type\":\"string\"},\"is_alive\":{\"title\":\"Is Alive\",\"type\":\"boolean\"},\"max_rtt\":{\"title\":\"Max Rtt\",\"type\":\"number\"},\"min_rtt\":{\"title\":\"Min Rtt\",\"type\":\"number\"},\"packet_loss\":{\"title\":\"Packet Loss\",\"type\":\"number\"},\"packets_received\":{\"title\":\"Packets Received\",\"type\":\"integer\"},\"packets_sent\":{\"title\":\"Packets Sent\",\"type\":\"integer\"},\"rtts\":{\"items\":{\"type\":\"number\"},\"title\":\"Rtts\",\"type\":\"array\"}},\"required\":[\"ip\",\"is_alive\",\"min_rtt\",\"avg_rtt\",\"max_rtt\",\"rtts\",\"packets_sent\",\"packets_received\",\"packet_loss\",\"from_loc\"],\"title\":\"PingResult\",\"type\":\"object\"},\"title\":\"Response Geoping Api Geoping  Ip  Get\",\"type\":\"array\"}}},\"description\":\"Successful Response\"},\"422\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"items\":{\"properties\":{\"loc\":{\"items\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"integer\"}]},\"title\":\"Location\",\"type\":\"array\"},\"msg\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Error Type\",\"type\":\"string\"}},\"required\":[\"loc\",\"msg\",\"type\"],\"title\":\"ValidationError\",\"type\":\"object\"},\"title\":\"Detail\",\"type\":\"array\"}},\"title\":\"HTTPValidationError\",\"type\":\"object\"}}},\"description\":\"Validation Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/geoping/{ip}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/geoping/{ip}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "ip": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -357,12 +442,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -379,76 +459,87 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "avg_rtt",
-              "req": true,
-              "type": "`$NUMBER`"
+          "fields": {
+            "avg_rtt": {
+              "a": true,
+              "h": "Avg Rtt",
+              "n": "avg_rtt",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "from_loc",
-              "req": true,
-              "short": "Location of the server that performed the ping",
-              "type": "`$ANY`"
+            "from_loc": {
+              "a": true,
+              "h": "From Loc",
+              "n": "from_loc",
+              "r": true,
+              "sh": "Location of the server that performed the ping",
+              "t": "`$ANY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "ip",
-              "req": true,
-              "short": "IP address that was pinged",
-              "type": "`$STRING`"
+            "ip": {
+              "a": true,
+              "h": "Ip",
+              "n": "ip",
+              "r": true,
+              "sh": "IP address that was pinged",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "is_alive",
-              "req": true,
-              "type": "`$BOOLEAN`"
+            "is_alive": {
+              "a": true,
+              "h": "Is Alive",
+              "n": "is_alive",
+              "r": true,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "max_rtt",
-              "req": true,
-              "type": "`$NUMBER`"
+            "max_rtt": {
+              "a": true,
+              "h": "Max Rtt",
+              "n": "max_rtt",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "min_rtt",
-              "req": true,
-              "type": "`$NUMBER`"
+            "min_rtt": {
+              "a": true,
+              "h": "Min Rtt",
+              "n": "min_rtt",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "packet_loss",
-              "req": true,
-              "type": "`$NUMBER`"
+            "packet_loss": {
+              "a": true,
+              "h": "Packet Loss",
+              "n": "packet_loss",
+              "r": true,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "packets_received",
-              "req": true,
-              "type": "`$INTEGER`"
+            "packets_received": {
+              "a": true,
+              "h": "Packets Received",
+              "n": "packets_received",
+              "r": true,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "packets_sent",
-              "req": true,
-              "type": "`$INTEGER`"
+            "packets_sent": {
+              "a": true,
+              "h": "Packets Sent",
+              "n": "packets_sent",
+              "r": true,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rtts",
-              "req": true,
-              "type": "`$ARRAY`"
+            "rtts": {
+              "a": true,
+              "h": "Rtts",
+              "n": "rtts",
+              "r": true,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -460,34 +551,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/ping/{ip}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "ip",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "ip",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/ping/{ip}",
-                    "json": "{\"operationId\":\"ping_api_ping__ip__get\",\"parameters\":[{\"in\":\"path\",\"name\":\"ip\",\"required\":true,\"schema\":{\"title\":\"Ip\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"avg_rtt\":{\"title\":\"Avg Rtt\",\"type\":\"number\"},\"from_loc\":{\"allOf\":[{\"properties\":{\"city\":{\"title\":\"City\",\"type\":\"string\"},\"country\":{\"title\":\"Country\",\"type\":\"string\"},\"latlon\":{\"title\":\"Latlon\",\"type\":\"string\"}},\"required\":[\"city\",\"country\",\"latlon\"],\"title\":\"Location\",\"type\":\"object\"}],\"description\":\"Location of the server that performed the ping\"},\"ip\":{\"description\":\"IP address that was pinged\",\"title\":\"Ip\",\"type\":\"string\"},\"is_alive\":{\"title\":\"Is Alive\",\"type\":\"boolean\"},\"max_rtt\":{\"title\":\"Max Rtt\",\"type\":\"number\"},\"min_rtt\":{\"title\":\"Min Rtt\",\"type\":\"number\"},\"packet_loss\":{\"title\":\"Packet Loss\",\"type\":\"number\"},\"packets_received\":{\"title\":\"Packets Received\",\"type\":\"integer\"},\"packets_sent\":{\"title\":\"Packets Sent\",\"type\":\"integer\"},\"rtts\":{\"items\":{\"type\":\"number\"},\"title\":\"Rtts\",\"type\":\"array\"}},\"required\":[\"ip\",\"is_alive\",\"min_rtt\",\"avg_rtt\",\"max_rtt\",\"rtts\",\"packets_sent\",\"packets_received\",\"packet_loss\",\"from_loc\"],\"title\":\"PingResult\",\"type\":\"object\"}}},\"description\":\"Successful Response\"},\"422\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"items\":{\"properties\":{\"loc\":{\"items\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"integer\"}]},\"title\":\"Location\",\"type\":\"array\"},\"msg\":{\"title\":\"Message\",\"type\":\"string\"},\"type\":{\"title\":\"Error Type\",\"type\":\"string\"}},\"required\":[\"loc\",\"msg\",\"type\"],\"title\":\"ValidationError\",\"type\":\"object\"},\"title\":\"Detail\",\"type\":\"array\"}},\"title\":\"HTTPValidationError\",\"type\":\"object\"}}},\"description\":\"Validation Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ping/{ip}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ping/{ip}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "ip": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -498,12 +593,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -932,19 +1022,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "dns_ref01",
                 "srcdatavar": "dns_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "dns01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -964,19 +1054,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "geodn_ref01",
                 "srcdatavar": "geodn_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "geodn01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -996,19 +1086,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "geoping_ref01",
                 "srcdatavar": "geoping_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "geoping01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1028,19 +1118,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "ping_ref01",
                 "srcdatavar": "ping_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "ping01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

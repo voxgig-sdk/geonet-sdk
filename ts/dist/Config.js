@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -117,17 +110,20 @@ class Config {
             "fields": [
                 {
                     "name": "answers",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Answers",
+                    "type": "`$ARRAY`",
+                    "req": true
                 },
                 {
                     "name": "from_loc",
+                    "title": "From Loc",
+                    "type": "`$ANY`",
                     "req": true,
-                    "short": "Location of the server that performed the DNS lookup",
-                    "type": "`$ANY`"
+                    "short": "Location of the server that performed the DNS lookup"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -142,34 +138,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "hostname",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "example": "A",
-                                        "kind": "query",
-                                        "name": "rtype",
-                                        "orig": "rtype",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/dns/{hostname}",
-                            "rename": {
-                                "param": {
-                                    "hostname": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "api"
@@ -181,21 +152,46 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id",
-                                    "rtype"
-                                ]
+                            "parts": [
+                                "api",
+                                "dns",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "hostname": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "dns",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "hostname",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "rtype",
+                                        "orig": "rtype",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "A"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id",
+                                    "rtype"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -208,17 +204,20 @@ class Config {
             "fields": [
                 {
                     "name": "answers",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Answers",
+                    "type": "`$ARRAY`",
+                    "req": true
                 },
                 {
                     "name": "from_loc",
+                    "title": "From Loc",
+                    "type": "`$ANY`",
                     "req": true,
-                    "short": "Location of the server that performed the DNS lookup",
-                    "type": "`$ANY`"
+                    "short": "Location of the server that performed the DNS lookup"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -233,34 +232,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "hostname",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "example": "A",
-                                        "kind": "query",
-                                        "name": "rtype",
-                                        "orig": "rtype",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/geodns/{hostname}",
-                            "rename": {
-                                "param": {
-                                    "hostname": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "api"
@@ -272,21 +246,46 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id",
-                                    "rtype"
-                                ]
+                            "parts": [
+                                "api",
+                                "geodns",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "hostname": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "geodns",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "hostname",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "rtype",
+                                        "orig": "rtype",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "A"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id",
+                                    "rtype"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -299,59 +298,70 @@ class Config {
             "fields": [
                 {
                     "name": "avg_rtt",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Avg Rtt",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "from_loc",
+                    "title": "From Loc",
+                    "type": "`$ANY`",
                     "req": true,
-                    "short": "Location of the server that performed the ping",
-                    "type": "`$ANY`"
+                    "short": "Location of the server that performed the ping"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "ip",
+                    "title": "Ip",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "IP address that was pinged",
-                    "type": "`$STRING`"
+                    "short": "IP address that was pinged"
                 },
                 {
                     "name": "is_alive",
-                    "req": true,
-                    "type": "`$BOOLEAN`"
+                    "title": "Is Alive",
+                    "type": "`$BOOLEAN`",
+                    "req": true
                 },
                 {
                     "name": "max_rtt",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Max Rtt",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "min_rtt",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Min Rtt",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "packet_loss",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Packet Loss",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "packets_received",
-                    "req": true,
-                    "type": "`$INTEGER`"
+                    "title": "Packets Received",
+                    "type": "`$INTEGER`",
+                    "req": true
                 },
                 {
                     "name": "packets_sent",
-                    "req": true,
-                    "type": "`$INTEGER`"
+                    "title": "Packets Sent",
+                    "type": "`$INTEGER`",
+                    "req": true
                 },
                 {
                     "name": "rtts",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Rtts",
+                    "type": "`$ARRAY`",
+                    "req": true
                 }
             ],
             "id": {
@@ -365,25 +375,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "ip",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/geoping/{ip}",
-                            "rename": {
-                                "param": {
-                                    "ip": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "api"
@@ -395,20 +389,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "api",
+                                "geoping",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "ip": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "geoping",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "ip",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -421,59 +431,70 @@ class Config {
             "fields": [
                 {
                     "name": "avg_rtt",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Avg Rtt",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "from_loc",
+                    "title": "From Loc",
+                    "type": "`$ANY`",
                     "req": true,
-                    "short": "Location of the server that performed the ping",
-                    "type": "`$ANY`"
+                    "short": "Location of the server that performed the ping"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "ip",
+                    "title": "Ip",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "IP address that was pinged",
-                    "type": "`$STRING`"
+                    "short": "IP address that was pinged"
                 },
                 {
                     "name": "is_alive",
-                    "req": true,
-                    "type": "`$BOOLEAN`"
+                    "title": "Is Alive",
+                    "type": "`$BOOLEAN`",
+                    "req": true
                 },
                 {
                     "name": "max_rtt",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Max Rtt",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "min_rtt",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Min Rtt",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "packet_loss",
-                    "req": true,
-                    "type": "`$NUMBER`"
+                    "title": "Packet Loss",
+                    "type": "`$NUMBER`",
+                    "req": true
                 },
                 {
                     "name": "packets_received",
-                    "req": true,
-                    "type": "`$INTEGER`"
+                    "title": "Packets Received",
+                    "type": "`$INTEGER`",
+                    "req": true
                 },
                 {
                     "name": "packets_sent",
-                    "req": true,
-                    "type": "`$INTEGER`"
+                    "title": "Packets Sent",
+                    "type": "`$INTEGER`",
+                    "req": true
                 },
                 {
                     "name": "rtts",
-                    "req": true,
-                    "type": "`$ARRAY`"
+                    "title": "Rtts",
+                    "type": "`$ARRAY`",
+                    "req": true
                 }
             ],
             "id": {
@@ -487,25 +508,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "ip",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/api/ping/{ip}",
-                            "rename": {
-                                "param": {
-                                    "ip": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "api"
@@ -517,20 +522,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "api",
+                                "ping",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "ip": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "ping",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "ip",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

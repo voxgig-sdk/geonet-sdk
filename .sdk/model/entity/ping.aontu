@@ -1,0 +1,139 @@
+# Entity: ping
+
+main: kit: entity: ping: {
+
+  alias: field: {}
+
+  fields: {
+    avg_rtt: {
+      h: "Avg Rtt"
+      n: "avg_rtt"
+      r: true
+      t: "`$NUMBER`"
+    }
+    from_loc: {
+      h: "From Loc"
+      n: "from_loc"
+      r: true
+      sh: "Location of the server that performed the ping"
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    ip: {
+      h: "Ip"
+      n: "ip"
+      r: true
+      sh: "IP address that was pinged"
+      t: "`$STRING`"
+    }
+    is_alive: {
+      h: "Is Alive"
+      n: "is_alive"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    max_rtt: {
+      h: "Max Rtt"
+      n: "max_rtt"
+      r: true
+      t: "`$NUMBER`"
+    }
+    min_rtt: {
+      h: "Min Rtt"
+      n: "min_rtt"
+      r: true
+      t: "`$NUMBER`"
+    }
+    packet_loss: {
+      h: "Packet Loss"
+      n: "packet_loss"
+      r: true
+      t: "`$NUMBER`"
+    }
+    packets_received: {
+      h: "Packets Received"
+      n: "packets_received"
+      r: true
+      t: "`$INTEGER`"
+    }
+    packets_sent: {
+      h: "Packets Sent"
+      n: "packets_sent"
+      r: true
+      t: "`$INTEGER`"
+    }
+    rtts: {
+      h: "Rtts"
+      n: "rtts"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "ping"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ping/{ip}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/ping/{ip}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              ip: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ping"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

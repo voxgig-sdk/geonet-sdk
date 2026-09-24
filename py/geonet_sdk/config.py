@@ -119,17 +119,20 @@ def make_config():
         "fields": [
           {
             "name": "answers",
-            "req": True,
+            "title": "Answers",
             "type": "`$ARRAY`",
+            "req": True,
           },
           {
             "name": "from_loc",
+            "title": "From Loc",
+            "type": "`$ANY`",
             "req": True,
             "short": "Location of the server that performed the DNS lookup",
-            "type": "`$ANY`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -144,34 +147,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "hostname",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": "A",
-                      "kind": "query",
-                      "name": "rtype",
-                      "orig": "rtype",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/dns/{hostname}",
-                "rename": {
-                  "param": {
-                    "hostname": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -183,21 +161,46 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "dns",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "hostname": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "hostname",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "rtype",
+                      "orig": "rtype",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "A",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                     "rtype",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "dns",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -210,17 +213,20 @@ def make_config():
         "fields": [
           {
             "name": "answers",
-            "req": True,
+            "title": "Answers",
             "type": "`$ARRAY`",
+            "req": True,
           },
           {
             "name": "from_loc",
+            "title": "From Loc",
+            "type": "`$ANY`",
             "req": True,
             "short": "Location of the server that performed the DNS lookup",
-            "type": "`$ANY`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -235,34 +241,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "hostname",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": "A",
-                      "kind": "query",
-                      "name": "rtype",
-                      "orig": "rtype",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/geodns/{hostname}",
-                "rename": {
-                  "param": {
-                    "hostname": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -274,21 +255,46 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "geodns",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "hostname": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "hostname",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "rtype",
+                      "orig": "rtype",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "A",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
                     "rtype",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "geodns",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -301,59 +307,70 @@ def make_config():
         "fields": [
           {
             "name": "avg_rtt",
-            "req": True,
+            "title": "Avg Rtt",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "from_loc",
+            "title": "From Loc",
+            "type": "`$ANY`",
             "req": True,
             "short": "Location of the server that performed the ping",
-            "type": "`$ANY`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "ip",
+            "title": "Ip",
+            "type": "`$STRING`",
             "req": True,
             "short": "IP address that was pinged",
-            "type": "`$STRING`",
           },
           {
             "name": "is_alive",
-            "req": True,
+            "title": "Is Alive",
             "type": "`$BOOLEAN`",
+            "req": True,
           },
           {
             "name": "max_rtt",
-            "req": True,
+            "title": "Max Rtt",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "min_rtt",
-            "req": True,
+            "title": "Min Rtt",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "packet_loss",
-            "req": True,
+            "title": "Packet Loss",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "packets_received",
-            "req": True,
+            "title": "Packets Received",
             "type": "`$INTEGER`",
+            "req": True,
           },
           {
             "name": "packets_sent",
-            "req": True,
+            "title": "Packets Sent",
             "type": "`$INTEGER`",
+            "req": True,
           },
           {
             "name": "rtts",
-            "req": True,
+            "title": "Rtts",
             "type": "`$ARRAY`",
+            "req": True,
           },
         ],
         "id": {
@@ -367,25 +384,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "ip",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/geoping/{ip}",
-                "rename": {
-                  "param": {
-                    "ip": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -397,20 +398,36 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "geoping",
                   "{id}",
                 ],
+                "rename": {
+                  "param": {
+                    "ip": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "ip",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -423,59 +440,70 @@ def make_config():
         "fields": [
           {
             "name": "avg_rtt",
-            "req": True,
+            "title": "Avg Rtt",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "from_loc",
+            "title": "From Loc",
+            "type": "`$ANY`",
             "req": True,
             "short": "Location of the server that performed the ping",
-            "type": "`$ANY`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "ip",
+            "title": "Ip",
+            "type": "`$STRING`",
             "req": True,
             "short": "IP address that was pinged",
-            "type": "`$STRING`",
           },
           {
             "name": "is_alive",
-            "req": True,
+            "title": "Is Alive",
             "type": "`$BOOLEAN`",
+            "req": True,
           },
           {
             "name": "max_rtt",
-            "req": True,
+            "title": "Max Rtt",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "min_rtt",
-            "req": True,
+            "title": "Min Rtt",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "packet_loss",
-            "req": True,
+            "title": "Packet Loss",
             "type": "`$NUMBER`",
+            "req": True,
           },
           {
             "name": "packets_received",
-            "req": True,
+            "title": "Packets Received",
             "type": "`$INTEGER`",
+            "req": True,
           },
           {
             "name": "packets_sent",
-            "req": True,
+            "title": "Packets Sent",
             "type": "`$INTEGER`",
+            "req": True,
           },
           {
             "name": "rtts",
-            "req": True,
+            "title": "Rtts",
             "type": "`$ARRAY`",
+            "req": True,
           },
         ],
         "id": {
@@ -489,25 +517,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "ip",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ping/{ip}",
-                "rename": {
-                  "param": {
-                    "ip": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -519,20 +531,36 @@ def make_config():
                     "var": "id",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "ping",
                   "{id}",
                 ],
+                "rename": {
+                  "param": {
+                    "ip": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "ip",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
